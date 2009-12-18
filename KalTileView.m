@@ -65,7 +65,25 @@
 }
 
 - (void)setSelected:(BOOL)selected
-{  
+{
+  // In order to draw the selection border the same way that
+  // Apple does in MobileCal, we need to extend the tile 1px
+  // to the left so that it draws its left border on top of
+  // the left-adjacent tile's right border.
+  // (but even this hack does not perfectly mimic the way
+  // that Apple draws the bottom border of a selected tile).
+  if (!self.belongsToAdjacentMonth) {
+      if (self.selected && !selected) {
+        // deselection (shrink)
+        backgroundView.width -= 1.f;
+         backgroundView.left += 1.f;
+       } else if (!self.selected && selected) {
+        // selection (expand)
+        backgroundView.width += 1.f;
+        backgroundView.left -= 1.f;
+       }
+  }
+  
   [super setSelected:selected];
   [self reloadStyle];
 }
