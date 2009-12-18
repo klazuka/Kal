@@ -1,7 +1,11 @@
+
+
 // these values can be used with the TTCalendarTileStateMode mask
 #define kTTCalendarTileTypeRegular  (0 << 16)
 #define kTTCalendarTileTypeAdjacent (1 << 16)
 #define kTTCalendarTileTypeToday    (2 << 16)
+
+#define kKalTileMarked (0x4 << 16)
 
 // The reason that I encode some of the KalTileViewState as UIControlState
 // is that it makes it much easier to integrate with the existing TTStyleSheet

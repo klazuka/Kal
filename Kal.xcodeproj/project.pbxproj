@@ -35,6 +35,7 @@
 		53D9F40910DBF95600759172 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40510DBF95600759172 /* marker.png */; };
 		53D9F40A10DBF95600759172 /* markertoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40610DBF95600759172 /* markertoday.png */; };
 		53D9F52210DC1EB300759172 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F52110DC1EB300759172 /* UIColorAdditions.m */; };
+		53D9F59110DC2A9200759172 /* HolidayCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F59010DC2A9100759172 /* HolidayCalendarDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,8 @@
 		53D9F40610DBF95600759172 /* markertoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markertoday.png; sourceTree = "<group>"; };
 		53D9F52010DC1EB300759172 /* UIColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorAdditions.h; sourceTree = "<group>"; };
 		53D9F52110DC1EB300759172 /* UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorAdditions.m; sourceTree = "<group>"; };
+		53D9F58F10DC2A9100759172 /* HolidayCalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayCalendarDataSource.h; sourceTree = "<group>"; };
+		53D9F59010DC2A9100759172 /* HolidayCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayCalendarDataSource.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Kal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Kal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +102,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				53D9F58F10DC2A9100759172 /* HolidayCalendarDataSource.h */,
+				53D9F59010DC2A9100759172 /* HolidayCalendarDataSource.m */,
 				1D3623240D0F684500981E51 /* KalAppDelegate.h */,
 				1D3623250D0F684500981E51 /* KalAppDelegate.m */,
 			);
@@ -286,6 +291,7 @@
 				53D9F3E110DBD75F00759172 /* UIViewAdditions.m in Sources */,
 				53D9F3E410DBDC1800759172 /* NSMutableArrayAdditions.m in Sources */,
 				53D9F52210DC1EB300759172 /* UIColorAdditions.m in Sources */,
+				53D9F59110DC2A9200759172 /* HolidayCalendarDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "KalAppDelegate.h"
 #import "KalViewController.h"
+#import "HolidayCalendarDataSource.h"
 
 @implementation KalAppDelegate
 
@@ -15,8 +16,10 @@
 
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
-{    
-  navController = [[UINavigationController alloc] initWithRootViewController:[[[KalViewController alloc] init] autorelease]];
+{
+  KalViewController *kal = [[KalViewController alloc] initWithDataSource:[HolidayCalendarDataSource dataSource]];
+  navController = [[UINavigationController alloc] initWithRootViewController:kal];
+  [kal release];
   [window addSubview:navController.view];
   [window makeKeyAndVisible];
 }

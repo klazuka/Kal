@@ -4,7 +4,7 @@
 // their calculations.
 
 + (NSDate *)cc_today;
-+ (NSDate *)cc_dateForDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year; // TODO delete me after I'm done with this convenience method. It should only be needed during the initial build-out of the calendar model.
++ (NSDate *)cc_dateForDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year;
 
 - (BOOL)cc_isToday;
 - (NSDate *)cc_dateByMovingToFirstDayOfTheMonth;

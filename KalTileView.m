@@ -214,7 +214,7 @@
 
 - (BOOL)marked
 {
-  return state & TTCalendarTileStateMarked;
+  return (state & TTCalendarTileStateMarked) == kKalTileMarked;
 }
 
 - (void)setMarked:(BOOL)marked
