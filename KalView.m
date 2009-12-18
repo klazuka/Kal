@@ -80,14 +80,14 @@ static const CGFloat kHeaderHeight = 44.f;
   // Draw the selected month name centered and at the top of the view
   const CGFloat kMonthLabelHeight = 27.f;
   CGRect monthLabelFrame = CGRectMake((self.width/2.0f) - (kMonthLabelWidth/2.0f),
-                                      3.f - kHeaderVerticalAdjust,
+                                      3.f,
                                       kMonthLabelWidth,
                                       kMonthLabelHeight);
   headerTitleLabel = [[UILabel alloc] initWithFrame:monthLabelFrame];
   headerTitleLabel.backgroundColor = [UIColor clearColor];
-  headerTitleLabel.font = [UIFont boldSystemFontOfSize:21.f];
+  headerTitleLabel.font = [UIFont boldSystemFontOfSize:22.f];
   headerTitleLabel.textAlignment = UITextAlignmentCenter;
-  headerTitleLabel.textColor = [UIColor blackColor];
+  headerTitleLabel.textColor = [UIColor calendarTextColor];
   headerTitleLabel.shadowColor = [UIColor whiteColor];
   headerTitleLabel.shadowOffset = CGSizeMake(0.f, 1.f);
   headerTitleLabel.text = [logic selectedMonthNameAndYear];
@@ -111,12 +111,12 @@ static const CGFloat kHeaderHeight = 44.f;
   NSUInteger firstWeekday = [[NSCalendar currentCalendar] firstWeekday];
   NSUInteger i = firstWeekday - 1;
   for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += 46.f, i = (i+1)%7) {
-    CGRect weekdayFrame = CGRectMake(xOffset, 29.f, 46.f, kHeaderHeight - 29.f);
+    CGRect weekdayFrame = CGRectMake(xOffset, 30.f, 46.f, kHeaderHeight - 29.f);
     UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:weekdayFrame];
     weekdayLabel.backgroundColor = [UIColor clearColor];
     weekdayLabel.font = [UIFont boldSystemFontOfSize:10.f];
     weekdayLabel.textAlignment = UITextAlignmentCenter;
-    weekdayLabel.textColor = [UIColor blackColor];
+    weekdayLabel.textColor = RGBCOLOR(84, 84, 84);
     weekdayLabel.shadowColor = [UIColor whiteColor];
     weekdayLabel.shadowOffset = CGSizeMake(0.f, 1.f);
     weekdayLabel.text = [weekdayNames objectAtIndex:i];

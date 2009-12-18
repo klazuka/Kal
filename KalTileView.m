@@ -112,27 +112,31 @@
     case kTTCalendarTileTypeRegular:
       if (self.selected) {
         dayLabel.textColor = [UIColor whiteColor];
+        dayLabel.shadowColor = [UIColor darkGrayColor];
         backgroundView.image = [[UIImage imageNamed:@"tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1];
         markerImage = [UIImage imageNamed:@"marker_selected.png"];
       } else {
-        dayLabel.textColor = [UIColor blackColor];
+        dayLabel.textColor = [UIColor calendarTextColor];
+        dayLabel.shadowColor = [UIColor whiteColor];
         backgroundView.image = [UIImage imageNamed:@"tile.png"];
         markerImage = [UIImage imageNamed:@"marker.png"];
       }
       break;
       
     case kTTCalendarTileTypeAdjacent:
-      dayLabel.textColor = [UIColor grayColor];
+      dayLabel.textColor = [UIColor calendarTextLightColor];
+      dayLabel.shadowColor = nil;
       backgroundView.image = [UIImage imageNamed:@"tile.png"];
       markerImage = [UIImage imageNamed:@"marker_disabled.png"];
       if (self.selected) {
-        self.backgroundColor = [UIColor darkGrayColor];
+        self.backgroundColor = [UIColor lightGrayColor];
       }
       break;
       
     case kTTCalendarTileTypeToday:
       markerImage = [UIImage imageNamed:@"markertoday.png"];
       dayLabel.textColor = [UIColor whiteColor];
+      dayLabel.shadowColor = [UIColor darkGrayColor];
       UIImage *image = self.selected 
                          ? [UIImage imageNamed:@"tiletoday_selected.png"]
                          : [UIImage imageNamed:@"tiletoday.png"];
@@ -143,6 +147,8 @@
       [NSException raise:@"Cannot find calendar tile style" format:@"unknown error"];
       break;
   }
+  
+  dayLabel.shadowOffset = self.selected ? CGSizeMake(0.f, -1.f) : CGSizeMake(0.f, 1.f);
   
   if ([self marked])
     markerView.image = markerImage;

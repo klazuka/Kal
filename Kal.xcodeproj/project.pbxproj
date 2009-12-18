@@ -34,6 +34,7 @@
 		53D9F40810DBF95600759172 /* marker_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40410DBF95600759172 /* marker_selected.png */; };
 		53D9F40910DBF95600759172 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40510DBF95600759172 /* marker.png */; };
 		53D9F40A10DBF95600759172 /* markertoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40610DBF95600759172 /* markertoday.png */; };
+		53D9F52210DC1EB300759172 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F52110DC1EB300759172 /* UIColorAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,8 @@
 		53D9F40410DBF95600759172 /* marker_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker_selected.png; sourceTree = "<group>"; };
 		53D9F40510DBF95600759172 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
 		53D9F40610DBF95600759172 /* markertoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markertoday.png; sourceTree = "<group>"; };
+		53D9F52010DC1EB300759172 /* UIColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorAdditions.h; sourceTree = "<group>"; };
+		53D9F52110DC1EB300759172 /* UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorAdditions.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Kal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Kal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -187,6 +190,8 @@
 				53D9F3BC10DAD51300759172 /* NSDateAdditions.m */,
 				53D9F3E210DBDC1800759172 /* NSMutableArrayAdditions.h */,
 				53D9F3E310DBDC1800759172 /* NSMutableArrayAdditions.m */,
+				53D9F52010DC1EB300759172 /* UIColorAdditions.h */,
+				53D9F52110DC1EB300759172 /* UIColorAdditions.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 				53D9F3BD10DAD51300759172 /* NSDateAdditions.m in Sources */,
 				53D9F3E110DBD75F00759172 /* UIViewAdditions.m in Sources */,
 				53D9F3E410DBDC1800759172 /* NSMutableArrayAdditions.m in Sources */,
+				53D9F52210DC1EB300759172 /* UIColorAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
