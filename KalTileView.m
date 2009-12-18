@@ -6,6 +6,7 @@
 - (void)reloadStyle;
 - (void)addBackground;
 - (void)addDayLabel;
+- (void)addMarkerView;
 @end
 
 #pragma mark -
@@ -23,9 +24,19 @@
       [self resetState];
       [self addBackground];
       [self addDayLabel];
+      [self addMarkerView];
       [self reloadStyle];
     }
     return self;
+}
+
+- (void)addMarkerView
+{
+  CGRect frame = self.frame;
+  frame.origin = CGPointZero;
+  frame = UIEdgeInsetsInsetRect(frame, UIEdgeInsetsMake(36, 21, 5, 21));
+  markerView = [[UIImageView alloc] initWithFrame:frame];
+  [self addSubview:markerView];
 }
 
 - (void)addBackground
@@ -116,17 +127,46 @@
 
 - (void)reloadStyle
 {
-  if (self.selected) {
-    dayLabel.textColor = [UIColor whiteColor];
-    backgroundView.image = [[UIImage imageNamed:@"tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1];
-  } else if ([self belongsToAdjacentMonth]) {
-    dayLabel.textColor = [UIColor grayColor];
-    backgroundView.image = [UIImage imageNamed:@"tile.png"];    
-  } else {
-    dayLabel.textColor = [UIColor blackColor];
-    backgroundView.image = [UIImage imageNamed:@"tile.png"];
+  UIImage *markerImage = nil;
+  
+  self.backgroundColor = [UIColor clearColor];
+  
+  switch (state & TTCalendarTileStateMode) {
+      
+    case kTTCalendarTileTypeRegular:
+      if (self.selected) {
+        dayLabel.textColor = [UIColor whiteColor];
+        backgroundView.image = [[UIImage imageNamed:@"tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1];
+        markerImage = [UIImage imageNamed:@"marker_selected.png"];
+      } else {
+        dayLabel.textColor = [UIColor blackColor];
+        backgroundView.image = [UIImage imageNamed:@"tile.png"];
+        markerImage = [UIImage imageNamed:@"marker.png"];
+      }
+      break;
+      
+    case kTTCalendarTileTypeAdjacent:
+      dayLabel.textColor = [UIColor grayColor];
+      backgroundView.image = [UIImage imageNamed:@"tile.png"];
+      markerImage = [UIImage imageNamed:@"marker_disabled.png"];
+      if (self.selected) {
+        self.backgroundColor = [UIColor darkGrayColor];
+      }
+      break;
+      
+    case kTTCalendarTileTypeToday:
+      markerImage = [UIImage imageNamed:@"markertoday.png"];
+      // TODO display correct bg image for today
+      break;
+      
+    default:
+      [NSException raise:@"Cannot find calendar tile style" format:@"unknown error"];
+      break;
   }
-    
+  
+  if ([self marked])
+    markerView.image = markerImage;
+
 }
 
 - (void)setMode:(NSUInteger)mode
@@ -193,6 +233,7 @@
   [date release];
   [dayLabel release];
   [backgroundView release];
+  [markerView release];
   [super dealloc];
 }
 

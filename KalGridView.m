@@ -9,7 +9,7 @@
 
 static NSString *kSlideAnimationId = @"KLSlideAnimationId";
 static const NSUInteger kTilePoolSize = 6*3; // 6weeks * 3months (always have two spare month's worth of tiles available)
-static const CGSize kTileSize = { 46.f, 46.f };
+static const CGSize kTileSize = { 46.f, 44.f };
 
 @interface KalGridView ()
 - (void)initializeCell:(UIView *)cell;

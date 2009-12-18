@@ -29,6 +29,7 @@ typedef UIControlState TTCalendarTileState;
   NSDate *date;
   UILabel *dayLabel;
   UIImageView *backgroundView;
+  UIImageView *markerView;
   TTCalendarTileState state;
 }
 
