@@ -5,4 +5,8 @@
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
     #import <UIKit/UIKit.h>
+
+    #import "UIViewAdditions.h"
+    #import "NSDateAdditions.h"
+    #import "NSMutableArrayAdditions.h"
 #endif
