@@ -4,13 +4,15 @@
 - (void)resetState;
 - (void)setMode:(NSUInteger)mode;
 - (void)reloadStyle;
+- (void)addBackground;
+- (void)addDayLabel;
 @end
 
 #pragma mark -
 
 @implementation KalTileView
 
-@synthesize date;
+@synthesize date, dayLabel, backgroundView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -19,9 +21,29 @@
       self.backgroundColor = [UIColor clearColor];
       self.clipsToBounds = NO;
       [self resetState];
+      [self addBackground];
+      [self addDayLabel];
       [self reloadStyle];
     }
     return self;
+}
+
+- (void)addBackground
+{
+  backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tile.png"]];
+  CGRect imageFrame = self.frame;
+  imageFrame.origin = CGPointZero;
+  backgroundView.frame = imageFrame;
+  [self addSubview:backgroundView];
+}
+
+- (void)addDayLabel
+{
+  dayLabel = [[UILabel alloc] initWithFrame:self.frame];
+  dayLabel.textAlignment = UITextAlignmentCenter;
+  dayLabel.font = [UIFont boldSystemFontOfSize:24.f];
+  dayLabel.backgroundColor = [UIColor clearColor];
+  [self addSubview:dayLabel];
 }
 
 #pragma mark UIControl
@@ -86,10 +108,7 @@
 
 - (void)resetState
 {
-  // Teset TTCalendarTileState
   state = 0;
-  
-  // Reset UIControlState
   [self setSelected:NO];
   [self setHighlighted:NO];
   [self setEnabled:YES];
@@ -97,7 +116,17 @@
 
 - (void)reloadStyle
 {
-  // TODO display correct PNG for current tile state
+  if (self.selected) {
+    dayLabel.textColor = [UIColor whiteColor];
+    backgroundView.image = [[UIImage imageNamed:@"tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1];
+  } else if ([self belongsToAdjacentMonth]) {
+    dayLabel.textColor = [UIColor grayColor];
+    backgroundView.image = [UIImage imageNamed:@"tile.png"];    
+  } else {
+    dayLabel.textColor = [UIColor blackColor];
+    backgroundView.image = [UIImage imageNamed:@"tile.png"];
+  }
+    
 }
 
 - (void)setMode:(NSUInteger)mode
@@ -110,6 +139,8 @@
   if (date != aDate) {
     [date release];
     date = [aDate retain];
+    
+    [dayLabel setText:[NSString stringWithFormat:@"%u", [date cc_day]]];
     
     if ([date cc_isToday]) {
       [self setMode:kTTCalendarTileTypeToday];
@@ -160,6 +191,8 @@
 - (void)dealloc
 {
   [date release];
+  [dayLabel release];
+  [backgroundView release];
   [super dealloc];
 }
 

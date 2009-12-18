@@ -62,7 +62,7 @@ static const CGFloat kHeaderHeight = 42.f;
   imageFrame.origin = CGPointZero;
   backgroundView.frame = imageFrame;
   [headerView addSubview:backgroundView];
-  [backgroundView release];  
+  [backgroundView release];
   
   // Create the previous month button on the left side of the view
   CGRect previousMonthButtonFrame = CGRectMake(self.left,

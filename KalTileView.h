@@ -27,10 +27,14 @@ typedef UIControlState TTCalendarTileState;
 @interface KalTileView : UIControl
 {
   NSDate *date;
+  UILabel *dayLabel;
+  UIImageView *backgroundView;
   TTCalendarTileState state;
 }
 
+@property (nonatomic, retain) UIImageView *backgroundView;
 @property (nonatomic, retain) NSDate *date;         // The date that this tile represents.
+@property (nonatomic, retain) UILabel *dayLabel;    // Displays the day number for this tile.
 @property (nonatomic) BOOL belongsToAdjacentMonth;  // YES if the tile is part of a partial week from an adjacent month (such tiles are grayed out, just like in Apple's mobile calendar app)
 @property (nonatomic) BOOL marked;                  // YES if the tile should draw a marker underneath the day number. (the mark indicates to the user that the tile's date has one or more associated events)
 
