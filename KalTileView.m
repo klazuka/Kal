@@ -16,7 +16,7 @@
 {
     if (self = [super initWithFrame:frame]) {
       self.opaque = NO;
-      self.backgroundColor = [UIColor orangeColor];
+      self.backgroundColor = [UIColor clearColor];
       self.clipsToBounds = NO;
       [self resetState];
       [self reloadStyle];

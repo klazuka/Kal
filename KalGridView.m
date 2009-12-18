@@ -60,6 +60,11 @@ static const CGSize kTileSize = { 46.f, 46.f };
   return self;
 }
 
+- (void)drawRect:(CGRect)rect
+{
+  [[UIImage imageNamed:@"grid_background.png"] drawInRect:rect];
+}
+
 - (void)refresh
 {
   if (selectedTile)

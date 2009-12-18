@@ -56,6 +56,14 @@ static const CGFloat kHeaderHeight = 42.f;
   const CGFloat kMonthLabelWidth = 200.0f;
   const CGFloat kHeaderVerticalAdjust = 3.f;
   
+  // Header background gradient
+  UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grid_background.png"]];
+  CGRect imageFrame = headerView.frame;
+  imageFrame.origin = CGPointZero;
+  backgroundView.frame = imageFrame;
+  [headerView addSubview:backgroundView];
+  [backgroundView release];  
+  
   // Create the previous month button on the left side of the view
   CGRect previousMonthButtonFrame = CGRectMake(self.left,
                                                self.top - kHeaderVerticalAdjust,
