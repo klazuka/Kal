@@ -65,25 +65,7 @@
 }
 
 - (void)setSelected:(BOOL)selected
-{
-  // In order to draw the selection border the same way that
-  // Apple does in MobileCal, we need to extend the tile 1px
-  // to the left so that it draws its left border on top of
-  // the left-adjacent tile's right border.
-  // (but even this hack does not perfectly mimic the way
-  // that Apple draws the bottom border of a selected tile).
-  if (!self.belongsToAdjacentMonth) {
-    if (self.selected && !selected) {
-      // deselection (shrink)
-      self.width -= 1.f;
-      self.left += 1.f;
-    } else if (!self.selected && selected) {
-      // selection (expand)
-      self.width += 1.f;
-      self.left -= 1.f;
-    }
-  }
-  
+{  
   [super setSelected:selected];
   [self reloadStyle];
 }
@@ -101,12 +83,6 @@
   // that try to bubble up the responder chain. So I hook 
   // everything up here again.
   return [self superview];
-}
-
-- (CGSize)sizeThatFits:(CGSize)size
-{
-  // Always make the tile square to its width.
-  return CGSizeMake(size.width, size.width);
 }
 
 #pragma mark Tile State
@@ -156,7 +132,11 @@
       
     case kTTCalendarTileTypeToday:
       markerImage = [UIImage imageNamed:@"markertoday.png"];
-      // TODO display correct bg image for today
+      dayLabel.textColor = [UIColor whiteColor];
+      UIImage *image = self.selected 
+                         ? [UIImage imageNamed:@"tiletoday_selected.png"]
+                         : [UIImage imageNamed:@"tiletoday.png"];
+      backgroundView.image = [image stretchableImageWithLeftCapWidth:6 topCapHeight:0];
       break;
       
     default:
@@ -216,7 +196,7 @@
 - (void)setMarked:(BOOL)marked
 {
   if ([self marked] == marked)
-    return; // nothing to do
+    return;
   
   if (marked)
     state |= TTCalendarTileStateMarked;

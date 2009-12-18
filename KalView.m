@@ -7,7 +7,7 @@
 - (void)addSubviewsToContentView:(UIView *)contentView;
 @end
 
-static const CGFloat kHeaderHeight = 42.f;
+static const CGFloat kHeaderHeight = 44.f;
 
 @implementation KalView
 

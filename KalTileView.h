@@ -21,8 +21,7 @@ typedef UIControlState TTCalendarTileState;
  *  As a client of the Kal system you should not need to use this class directly
  *  (it is managed by KalGridView).
  *
- *  A KalTileView represents a single square tile for an individual date
- *  on the calendar.
+ *  A KalTileView represents a single day of the month on the calendar.
  */
 @interface KalTileView : UIControl
 {
