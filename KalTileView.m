@@ -33,9 +33,11 @@
 - (void)addMarkerView
 {
   CGRect frame = self.frame;
-  frame.origin = CGPointZero;
-  frame = UIEdgeInsetsInsetRect(frame, UIEdgeInsetsMake(36, 21, 5, 21));
+  frame.origin = CGPointMake(21.f, 35.f);
+  frame.size = CGSizeMake(4.f, 5.f);
+  
   markerView = [[UIImageView alloc] initWithFrame:frame];
+  markerView.contentMode = UIViewContentModeCenter;
   [self addSubview:markerView];
 }
 
