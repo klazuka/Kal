@@ -11,7 +11,7 @@
 
 @implementation UIColor (KalAdditions)
 
-+ (UIColor *)calendarTextColor { return RGBCOLOR(59,73,88); }
++ (UIColor *)calendarTextColor { return RGBCOLOR(49,60,73); }
 
 + (UIColor *)calendarTextLightColor { return RGBCOLOR(147,155,165); }
 
