@@ -59,6 +59,28 @@ NSDate *DateForDayMonthYear(NSUInteger day, NSUInteger month, NSUInteger year)
   return self;
 }
 
+#pragma mark UITableViewDataSource protocol conformance
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  static NSString *identifier = @"MyCell";
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+  if (!cell) {
+    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  }
+  
+  cell.textLabel.text = [items objectAtIndex:indexPath.row];
+  return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  return [items count];
+}
+
+#pragma mark KalDataSource protocol conformance
+
 - (void)loadDate:(NSDate *)date;
 {
   [items removeAllObjects];

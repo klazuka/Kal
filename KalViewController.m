@@ -33,6 +33,7 @@ CGRect KalNavigationFrame() {
 - (void)didSelectDate:(NSDate *)date
 {
   [dataSource loadDate:date];
+  [tableView reloadData];
 }
 
 - (BOOL)shouldMarkTileForDate:(NSDate *)date
@@ -61,6 +62,19 @@ CGRect KalNavigationFrame() {
   logic = [[KalLogic alloc] init];
   self.view = [[[KalView alloc] initWithFrame:KalNavigationFrame() delegate:self logic:logic] autorelease];
   tableView = [[[self calendarView] tableView] retain];
+  tableView.dataSource = dataSource;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  [tableView reloadData];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  [tableView flashScrollIndicators];
 }
 
 // make the compiler happy

@@ -24,7 +24,6 @@
   [window makeKeyAndVisible];
 }
 
-
 - (void)dealloc
 {
   [window release];

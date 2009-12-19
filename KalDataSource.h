@@ -25,7 +25,7 @@
  *  other custom cell for a Three20 table view).
  */
 
-@protocol KalDataSource <NSObject>
+@protocol KalDataSource <NSObject, UITableViewDataSource>
 
 - (BOOL)hasDetailsForDate:(NSDate *)date;
 - (void)loadDate:(NSDate *)date;

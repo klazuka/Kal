@@ -170,7 +170,6 @@
   
   if ([self marked])
     markerView.image = markerImage;
-
 }
 
 - (void)setMode:(NSUInteger)mode
