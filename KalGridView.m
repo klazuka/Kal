@@ -34,7 +34,6 @@ static const CGSize kTileSize = { 46.f, 44.f };
   frame.size.width = 7 * kTileSize.width;
   
   if (self = [super initWithFrame:frame]) {
-    
     self.clipsToBounds = YES;
     reusableCells = [[NSMutableArray alloc] init];
     cellHeight = kTileSize.height;
@@ -44,8 +43,6 @@ static const CGSize kTileSize = { 46.f, 44.f };
     // Allocate the pool of cells. Each cell represents a calendar week (a single row of 7 KalTileViews).
     for (NSUInteger i = 0; i < kTilePoolSize; i++) {
       UIView *cell = [[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, self.width, cellHeight)] autorelease];
-      cell.opaque = NO;
-      cell.backgroundColor = [UIColor clearColor];
       [self initializeCell:cell];
       [reusableCells enqueue:cell];
     }

@@ -5,9 +5,11 @@
 @interface KalView ()
 - (void)addSubviewsToHeaderView:(UIView *)headerView;
 - (void)addSubviewsToContentView:(UIView *)contentView;
+- (void)setHeaderTitleText:(NSString *)text;
 @end
 
 static const CGFloat kHeaderHeight = 44.f;
+static const CGFloat kMonthLabelHeight = 28.f;
 
 @implementation KalView
 
@@ -78,7 +80,6 @@ static const CGFloat kHeaderHeight = 44.f;
   [previousMonthButton release];
   
   // Draw the selected month name centered and at the top of the view
-  const CGFloat kMonthLabelHeight = 27.f;
   CGRect monthLabelFrame = CGRectMake((self.width/2.0f) - (kMonthLabelWidth/2.0f),
                                       3.f,
                                       kMonthLabelWidth,
@@ -90,7 +91,7 @@ static const CGFloat kHeaderHeight = 44.f;
   headerTitleLabel.textColor = [UIColor calendarTextColor];
   headerTitleLabel.shadowColor = [UIColor whiteColor];
   headerTitleLabel.shadowOffset = CGSizeMake(0.f, 1.f);
-  headerTitleLabel.text = [logic selectedMonthNameAndYear];
+  [self setHeaderTitleText:[logic selectedMonthNameAndYear]];
   [headerView addSubview:headerTitleLabel];
   
   // Create the next month button on the right side of the view
@@ -175,19 +176,20 @@ static const CGFloat kHeaderHeight = 44.f;
     frame.size.height = tableView.superview.height - gridBottom;
     tableView.frame = frame;
     
-    /* TODO resize the dropShadow
-    frame.size.height = dropShadow.height;
-    dropShadow.frame = frame;
-     */
-    
   } else if ([keyPath isEqualToString:@"selectedMonthNameAndYear"]) {
-    [headerTitleLabel setText:[change objectForKey:NSKeyValueChangeNewKey]];
+    [self setHeaderTitleText:[change objectForKey:NSKeyValueChangeNewKey]];
     
   } else {
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
   }
 }
 
+- (void)setHeaderTitleText:(NSString *)text
+{
+  [headerTitleLabel setText:text];
+  [headerTitleLabel sizeToFit];
+  headerTitleLabel.left = floorf(self.width/2.f - headerTitleLabel.width/2.f);
+}
 
 - (void)dealloc
 {
