@@ -134,17 +134,20 @@ static const CGFloat kHeaderHeight = 44.f;
   // So the only part of the frame that we need to specify is the width.
   CGRect fullWidthAutomaticLayoutFrame = CGRectMake(0.f, 0.f, self.width, 0.f);
 
-  // The Tile Grid
+  // The tile grid (the calendar body)
   gridView = [[KalGridView alloc] initWithFrame:fullWidthAutomaticLayoutFrame logic:logic delegate:delegate];
   [gridView addObserver:self forKeyPath:@"frame" options:NSKeyValueObservingOptionNew context:NULL];
   [contentView addSubview:gridView];
 
-  // The Day Details
+  // The list of events for the selected day
   tableView = [[UITableView alloc] initWithFrame:fullWidthAutomaticLayoutFrame style:UITableViewStylePlain];
   tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
   [contentView addSubview:tableView];
   
-  // TODO Drop shadow below tile grid and over the list of events for the selected day
+  // Drop shadow below tile grid and over the list of events for the selected day
+  UIImageView *shadowView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grid_shadow.png"]] autorelease];
+  shadowView.width = contentView.width;
+  [tableView addSubview:shadowView];
 
   // Adjust the size of the grid to fit the # of weeks
   // which will also indirectly update the size and position of
