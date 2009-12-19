@@ -20,8 +20,6 @@
 		53D9F3B810DAD4D700759172 /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3B210DAD4D700759172 /* KalView.m */; };
 		53D9F3B910DAD4D700759172 /* KalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3B310DAD4D700759172 /* KalLogic.m */; };
 		53D9F3BD10DAD51300759172 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3BC10DAD51300759172 /* NSDateAdditions.m */; };
-		53D9F3D910DAD81200759172 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3D810DAD81200759172 /* left-arrow.png */; };
-		53D9F3DB10DAD81B00759172 /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3DA10DAD81B00759172 /* right-arrow.png */; };
 		53D9F3E110DBD75F00759172 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3E010DBD75F00759172 /* UIViewAdditions.m */; };
 		53D9F3E410DBDC1800759172 /* NSMutableArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3E310DBDC1800759172 /* NSMutableArrayAdditions.m */; };
 		53D9F3F810DBF8E900759172 /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3F710DBF8E900759172 /* tile.png */; };
@@ -36,6 +34,8 @@
 		53D9F40A10DBF95600759172 /* markertoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40610DBF95600759172 /* markertoday.png */; };
 		53D9F52210DC1EB300759172 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F52110DC1EB300759172 /* UIColorAdditions.m */; };
 		53D9F59110DC2A9200759172 /* HolidayCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F59010DC2A9100759172 /* HolidayCalendarDataSource.m */; };
+		53D9F6DA10DD281600759172 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F6D810DD281600759172 /* left-arrow.png */; };
+		53D9F6DB10DD281600759172 /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F6D910DD281600759172 /* right-arrow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,8 +62,6 @@
 		53D9F3B310DAD4D700759172 /* KalLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalLogic.m; sourceTree = "<group>"; };
 		53D9F3BB10DAD51300759172 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
 		53D9F3BC10DAD51300759172 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
-		53D9F3D810DAD81200759172 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
-		53D9F3DA10DAD81B00759172 /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
 		53D9F3DF10DBD75F00759172 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		53D9F3E010DBD75F00759172 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		53D9F3E210DBDC1800759172 /* NSMutableArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArrayAdditions.h; sourceTree = "<group>"; };
@@ -82,6 +80,8 @@
 		53D9F52110DC1EB300759172 /* UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorAdditions.m; sourceTree = "<group>"; };
 		53D9F58F10DC2A9100759172 /* HolidayCalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayCalendarDataSource.h; sourceTree = "<group>"; };
 		53D9F59010DC2A9100759172 /* HolidayCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayCalendarDataSource.m; sourceTree = "<group>"; };
+		53D9F6D810DD281600759172 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
+		53D9F6D910DD281600759172 /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Kal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Kal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -144,6 +144,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				53D9F6D810DD281600759172 /* left-arrow.png */,
+				53D9F6D910DD281600759172 /* right-arrow.png */,
 				53D9F3F710DBF8E900759172 /* tile.png */,
 				53D9F3FD10DBF92D00759172 /* tile_selected.png */,
 				53D9F3FE10DBF92D00759172 /* tiletoday_selected.png */,
@@ -154,8 +156,6 @@
 				53D9F40610DBF95600759172 /* markertoday.png */,
 				53D9F3F910DBF92300759172 /* grid_background.png */,
 				53D9F3FA10DBF92300759172 /* grid_shadow.png */,
-				53D9F3D810DAD81200759172 /* left-arrow.png */,
-				53D9F3DA10DAD81B00759172 /* right-arrow.png */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* Kal-Info.plist */,
 			);
@@ -257,8 +257,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				53D9F3D910DAD81200759172 /* left-arrow.png in Resources */,
-				53D9F3DB10DAD81B00759172 /* right-arrow.png in Resources */,
 				53D9F3F810DBF8E900759172 /* tile.png in Resources */,
 				53D9F3FB10DBF92300759172 /* grid_background.png in Resources */,
 				53D9F3FC10DBF92300759172 /* grid_shadow.png in Resources */,
@@ -269,6 +267,8 @@
 				53D9F40810DBF95600759172 /* marker_selected.png in Resources */,
 				53D9F40910DBF95600759172 /* marker.png in Resources */,
 				53D9F40A10DBF95600759172 /* markertoday.png in Resources */,
+				53D9F6DA10DD281600759172 /* left-arrow.png in Resources */,
+				53D9F6DB10DD281600759172 /* right-arrow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
