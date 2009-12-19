@@ -1,3 +1,8 @@
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
+
 #import "KalTileView.h"
 
 @interface KalTileView ()
@@ -127,9 +132,9 @@
   
   self.backgroundColor = [UIColor clearColor];
   
-  switch (state & TTCalendarTileStateMode) {
+  switch (state & KalTileStateMode) {
       
-    case kTTCalendarTileTypeRegular:
+    case kKalTileTypeRegular:
       if (self.selected) {
         dayLabel.textColor = [UIColor whiteColor];
         dayLabel.shadowColor = [UIColor darkGrayColor];
@@ -143,7 +148,7 @@
       }
       break;
       
-    case kTTCalendarTileTypeAdjacent:
+    case kKalTileTypeAdjacent:
       dayLabel.textColor = [UIColor calendarTextLightColor];
       dayLabel.shadowColor = nil;
       backgroundView.image = [UIImage imageNamed:@"tile.png"];
@@ -153,7 +158,7 @@
       }
       break;
       
-    case kTTCalendarTileTypeToday:
+    case kKalTileTypeToday:
       markerImage = [UIImage imageNamed:@"markertoday.png"];
       dayLabel.textColor = [UIColor whiteColor];
       dayLabel.shadowColor = [UIColor darkGrayColor];
@@ -180,7 +185,7 @@
 
 - (void)setMode:(NSUInteger)mode
 {
-  state = (state & ~TTCalendarTileStateMode) | mode;
+  state = (state & ~KalTileStateMode) | mode;
 }
 
 - (void)setDate:(NSDate *)aDate
@@ -192,7 +197,7 @@
     [dayLabel setText:[NSString stringWithFormat:@"%u", [date cc_day]]];
     
     if ([date cc_isToday]) {
-      [self setMode:kTTCalendarTileTypeToday];
+      [self setMode:kKalTileTypeToday];
       [self reloadStyle];
     }
   }
@@ -200,18 +205,18 @@
 
 - (BOOL)belongsToAdjacentMonth
 {
-  return (state & TTCalendarTileStateMode) == kTTCalendarTileTypeAdjacent;
+  return (state & KalTileStateMode) == kKalTileTypeAdjacent;
 }
 
 - (void)setBelongsToAdjacentMonth:(BOOL)belongsToAdjacentMonth
 {
   if (belongsToAdjacentMonth) {
-    [self setMode:kTTCalendarTileTypeAdjacent];
+    [self setMode:kKalTileTypeAdjacent];
   } else {
     if ([date cc_isToday])
-      [self setMode:kTTCalendarTileTypeToday];
+      [self setMode:kKalTileTypeToday];
     else
-      [self setMode:kTTCalendarTileTypeRegular];
+      [self setMode:kKalTileTypeRegular];
   }
   
   [self reloadStyle];
@@ -219,7 +224,7 @@
 
 - (BOOL)marked
 {
-  return (state & TTCalendarTileStateMarked) == kKalTileMarked;
+  return (state & KalTileStateMarked) == kKalTileMarked;
 }
 
 - (void)setMarked:(BOOL)marked
@@ -228,9 +233,9 @@
     return;
   
   if (marked)
-    state |= TTCalendarTileStateMarked;
+    state |= KalTileStateMarked;
   else
-    state &= ~TTCalendarTileStateMarked;
+    state &= ~KalTileStateMarked;
   
   [self reloadStyle];
 }

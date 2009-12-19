@@ -1,3 +1,9 @@
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
+
+
 /*
  *    KalLogic
  *    ------------------
@@ -23,7 +29,6 @@
 - (void)retreatToPreviousMonth;
 - (void)advanceToFollowingMonth;
 
-// Each of the daysIn* methords return an array of NSDates in increasing chronological order
 - (NSArray *)daysInFinalWeekOfPreviousMonth;
 - (NSArray *)daysInSelectedMonth;
 - (NSArray *)daysInFirstWeekOfFollowingMonth;

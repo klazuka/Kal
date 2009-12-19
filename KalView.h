@@ -1,3 +1,8 @@
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
+
 @class KalGridView, KalLogic;
 @protocol KalViewDelegate;
 
@@ -32,9 +37,9 @@
  */
 @interface KalView : UIView
 {
-  UILabel *headerTitleLabel;    // Displays the currently selected month and year at the top of the calendar.
-  KalGridView *gridView;        // The calendar proper (between the calendar header and the table view)
-  UITableView *tableView;       // Bottom section (events for the currently selected day)
+  UILabel *headerTitleLabel;
+  KalGridView *gridView;
+  UITableView *tableView;
   id<KalViewDelegate> delegate;
   KalLogic *logic;
 }
@@ -44,7 +49,7 @@
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)delegate logic:(KalLogic *)logic;
 
-- (void)refresh;  // Requery marked tiles and update the table view of events.
+- (void)refresh;
 
 // These 2 methods are exposed for the delegate. They should be called 
 // *after* the KalLogic has moved to the previous or following month.
@@ -54,8 +59,6 @@
 @end
 
 #pragma mark -
-
-/* This protocol will, in most cases, be implemented by a view controller. */
 
 @protocol KalViewDelegate
 

@@ -1,3 +1,8 @@
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
+
 #import "KalView.h" // for the KalViewDelegate protocol
 
 @class KalLogic;
@@ -8,12 +13,10 @@
  *    KalViewController
  *    ------------------------
  *
- *  As a client of Three20's calendar system, this is your main entry-point
- *  into using the calendar in your app. The Kal system aims to mimic
- *  Apple's mobile calendar app as much as possible. When the user taps a date,
- *  any associated events for that date are displayed in a table view directly
- *  below the calendar. Your only responibility is to provide the events
- *  for each date via KalDataSource.
+ *  The Kal system aims to mimic Apple's mobile calendar app as much as possible.
+ *  When the user taps a date, any associated events for that date are displayed
+ *  in a table view directly below the calendar. Your only responibility is
+ *  to provide the events for each date via KalDataSource.
  *
  *  KalViewController automatically creates both the calendar view
  *  and the events table view for you. The only thing you need to provide

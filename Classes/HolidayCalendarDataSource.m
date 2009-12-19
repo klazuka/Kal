@@ -1,10 +1,7 @@
-//
-//  HolidayCalendarDataSource.m
-//  TTCalendar
-//
-//  Created by Keith Lazuka on 7/22/09.
-//  Copyright 2009 The Polypeptides. All rights reserved.
-//
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "HolidayCalendarDataSource.h"
 
@@ -38,7 +35,6 @@ NSDate *DateForDayMonthYear(NSUInteger day, NSUInteger month, NSUInteger year)
   [holidays setObject:@"Columbus Day" forKey:DateForDayMonthYear(12, 10, 2009)];
   [holidays setObject:@"Veteran's Day" forKey:DateForDayMonthYear(11, 11, 2009)];
   [holidays setObject:@"Thanksgiving Day" forKey:DateForDayMonthYear(26, 11, 2009)];
-  [holidays setObject:@"Today! (testing)" forKey:DateForDayMonthYear(19, 12, 2009)];
   [holidays setObject:@"Christmas Day" forKey:DateForDayMonthYear(25, 12, 2009)];
   [holidays setObject:@"New Years Day" forKey:DateForDayMonthYear(1, 1, 2010)];
   [holidays setObject:@"Martin Luther King Day" forKey:DateForDayMonthYear(18, 1, 2010)];

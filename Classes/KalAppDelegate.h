@@ -1,10 +1,7 @@
-//
-//  KalAppDelegate.h
-//  Kal
-//
-//  Created by Keith Lazuka on 12/17/09.
-//  Copyright The Polypeptides 2009. All rights reserved.
-//
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import <UIKit/UIKit.h>
 

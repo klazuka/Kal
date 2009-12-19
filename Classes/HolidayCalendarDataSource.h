@@ -1,10 +1,7 @@
-//
-//  HolidayCalendarDataSource.h
-//  Kal
-//
-//  Created by Keith Lazuka on 7/22/09.
-//  Copyright 2009 The Polypeptides. All rights reserved.
-//
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
 #import "KalDataSource.h"
 
