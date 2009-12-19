@@ -168,8 +168,12 @@
   
   dayLabel.shadowOffset = self.selected ? CGSizeMake(0.f, -1.f) : CGSizeMake(0.f, 1.f);
   
-  if ([self marked])
+  if ([self marked]) {
     markerView.image = markerImage;
+    markerView.hidden = NO;
+  } else {
+    markerView.hidden = YES;
+  }
 }
 
 - (void)setMode:(NSUInteger)mode
