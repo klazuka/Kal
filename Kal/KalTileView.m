@@ -4,6 +4,7 @@
  */
 
 #import "KalTileView.h"
+#import "KalPrivate.h"
 
 @interface KalTileView ()
 - (void)resetState;

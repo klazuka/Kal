@@ -7,82 +7,84 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623260D0F684500981E51 /* KalAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* KalAppDelegate.m */; };
-		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
-		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		53D9F3B410DAD4D700759172 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3AE10DAD4D700759172 /* KalViewController.m */; };
-		53D9F3B510DAD4D700759172 /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3AF10DAD4D700759172 /* KalDataSource.m */; };
-		53D9F3B610DAD4D700759172 /* KalGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3B010DAD4D700759172 /* KalGridView.m */; };
-		53D9F3B710DAD4D700759172 /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3B110DAD4D700759172 /* KalTileView.m */; };
-		53D9F3B810DAD4D700759172 /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3B210DAD4D700759172 /* KalView.m */; };
-		53D9F3B910DAD4D700759172 /* KalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3B310DAD4D700759172 /* KalLogic.m */; };
-		53D9F3BD10DAD51300759172 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3BC10DAD51300759172 /* NSDateAdditions.m */; };
-		53D9F3E110DBD75F00759172 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3E010DBD75F00759172 /* UIViewAdditions.m */; };
-		53D9F3E410DBDC1800759172 /* NSMutableArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F3E310DBDC1800759172 /* NSMutableArrayAdditions.m */; };
-		53D9F3F810DBF8E900759172 /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3F710DBF8E900759172 /* tile.png */; };
-		53D9F3FB10DBF92300759172 /* grid_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3F910DBF92300759172 /* grid_background.png */; };
-		53D9F3FC10DBF92300759172 /* grid_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3FA10DBF92300759172 /* grid_shadow.png */; };
-		53D9F40010DBF92D00759172 /* tile_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3FD10DBF92D00759172 /* tile_selected.png */; };
-		53D9F40110DBF92D00759172 /* tiletoday_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3FE10DBF92D00759172 /* tiletoday_selected.png */; };
-		53D9F40210DBF92D00759172 /* tiletoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F3FF10DBF92D00759172 /* tiletoday.png */; };
-		53D9F40710DBF95600759172 /* marker_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40310DBF95600759172 /* marker_disabled.png */; };
-		53D9F40810DBF95600759172 /* marker_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40410DBF95600759172 /* marker_selected.png */; };
-		53D9F40910DBF95600759172 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40510DBF95600759172 /* marker.png */; };
-		53D9F40A10DBF95600759172 /* markertoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F40610DBF95600759172 /* markertoday.png */; };
-		53D9F52210DC1EB300759172 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F52110DC1EB300759172 /* UIColorAdditions.m */; };
-		53D9F59110DC2A9200759172 /* HolidayCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F59010DC2A9100759172 /* HolidayCalendarDataSource.m */; };
-		53D9F6DA10DD281600759172 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F6D810DD281600759172 /* left-arrow.png */; };
-		53D9F6DB10DD281600759172 /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F6D910DD281600759172 /* right-arrow.png */; };
+		53D9F86510DD9CC800759172 /* HolidayCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */; };
+		53D9F86810DD9CC800759172 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F86310DD9CC800759172 /* main.m */; };
+		53D9F86910DD9CC800759172 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F86410DD9CC800759172 /* MainWindow.xib */; };
+		53D9F88A10DD9CEE00759172 /* grid_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F86A10DD9CEE00759172 /* grid_background.png */; };
+		53D9F88B10DD9CEE00759172 /* grid_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F86B10DD9CEE00759172 /* grid_shadow.png */; };
+		53D9F88C10DD9CEE00759172 /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F86D10DD9CEE00759172 /* KalDataSource.m */; };
+		53D9F88D10DD9CEE00759172 /* KalGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F86F10DD9CEE00759172 /* KalGridView.m */; };
+		53D9F88E10DD9CEE00759172 /* KalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87110DD9CEE00759172 /* KalLogic.m */; };
+		53D9F88F10DD9CEE00759172 /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87310DD9CEE00759172 /* KalTileView.m */; };
+		53D9F89010DD9CEE00759172 /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87510DD9CEE00759172 /* KalView.m */; };
+		53D9F89110DD9CEE00759172 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87710DD9CEE00759172 /* KalViewController.m */; };
+		53D9F89210DD9CEE00759172 /* left-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F87810DD9CEE00759172 /* left-arrow.png */; };
+		53D9F89310DD9CEE00759172 /* marker_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F87910DD9CEE00759172 /* marker_disabled.png */; };
+		53D9F89410DD9CEE00759172 /* marker_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F87A10DD9CEE00759172 /* marker_selected.png */; };
+		53D9F89510DD9CEE00759172 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F87B10DD9CEE00759172 /* marker.png */; };
+		53D9F89610DD9CEE00759172 /* markertoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F87C10DD9CEE00759172 /* markertoday.png */; };
+		53D9F89710DD9CEE00759172 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */; };
+		53D9F89810DD9CEE00759172 /* NSMutableArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */; };
+		53D9F89910DD9CEE00759172 /* right-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F88110DD9CEE00759172 /* right-arrow.png */; };
+		53D9F89A10DD9CEE00759172 /* tile_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F88210DD9CEE00759172 /* tile_selected.png */; };
+		53D9F89B10DD9CEE00759172 /* tile.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F88310DD9CEE00759172 /* tile.png */; };
+		53D9F89C10DD9CEE00759172 /* tiletoday_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F88410DD9CEE00759172 /* tiletoday_selected.png */; };
+		53D9F89D10DD9CEE00759172 /* tiletoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F88510DD9CEE00759172 /* tiletoday.png */; };
+		53D9F89E10DD9CEE00759172 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F88710DD9CEE00759172 /* UIColorAdditions.m */; };
+		53D9F89F10DD9CEE00759172 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F88910DD9CEE00759172 /* UIViewAdditions.m */; };
+		53D9F8AE10DD9D9D00759172 /* HolidayAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F8AC10DD9D9D00759172 /* HolidayAppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623240D0F684500981E51 /* KalAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalAppDelegate.h; sourceTree = "<group>"; };
-		1D3623250D0F684500981E51 /* KalAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalAppDelegate.m; sourceTree = "<group>"; };
-		1D6058910D05DD3D006BFB54 /* Kal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D6058910D05DD3D006BFB54 /* Holidays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holidays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		32CA4F630368D1EE00C91783 /* Kal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kal_Prefix.pch; sourceTree = "<group>"; };
-		53D9F3A810DAD4D700759172 /* KalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalViewController.h; sourceTree = "<group>"; };
-		53D9F3A910DAD4D700759172 /* KalDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalDataSource.h; sourceTree = "<group>"; };
-		53D9F3AA10DAD4D700759172 /* KalGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalGridView.h; sourceTree = "<group>"; };
-		53D9F3AB10DAD4D700759172 /* KalTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalTileView.h; sourceTree = "<group>"; };
-		53D9F3AC10DAD4D700759172 /* KalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalView.h; sourceTree = "<group>"; };
-		53D9F3AD10DAD4D700759172 /* KalLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalLogic.h; sourceTree = "<group>"; };
-		53D9F3AE10DAD4D700759172 /* KalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalViewController.m; sourceTree = "<group>"; };
-		53D9F3AF10DAD4D700759172 /* KalDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalDataSource.m; sourceTree = "<group>"; };
-		53D9F3B010DAD4D700759172 /* KalGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalGridView.m; sourceTree = "<group>"; };
-		53D9F3B110DAD4D700759172 /* KalTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = "<group>"; };
-		53D9F3B210DAD4D700759172 /* KalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalView.m; sourceTree = "<group>"; };
-		53D9F3B310DAD4D700759172 /* KalLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalLogic.m; sourceTree = "<group>"; };
-		53D9F3BB10DAD51300759172 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
-		53D9F3BC10DAD51300759172 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
-		53D9F3DF10DBD75F00759172 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
-		53D9F3E010DBD75F00759172 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
-		53D9F3E210DBDC1800759172 /* NSMutableArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArrayAdditions.h; sourceTree = "<group>"; };
-		53D9F3E310DBDC1800759172 /* NSMutableArrayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableArrayAdditions.m; sourceTree = "<group>"; };
-		53D9F3F710DBF8E900759172 /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
-		53D9F3F910DBF92300759172 /* grid_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid_background.png; sourceTree = "<group>"; };
-		53D9F3FA10DBF92300759172 /* grid_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid_shadow.png; sourceTree = "<group>"; };
-		53D9F3FD10DBF92D00759172 /* tile_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_selected.png; sourceTree = "<group>"; };
-		53D9F3FE10DBF92D00759172 /* tiletoday_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiletoday_selected.png; sourceTree = "<group>"; };
-		53D9F3FF10DBF92D00759172 /* tiletoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiletoday.png; sourceTree = "<group>"; };
-		53D9F40310DBF95600759172 /* marker_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker_disabled.png; sourceTree = "<group>"; };
-		53D9F40410DBF95600759172 /* marker_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker_selected.png; sourceTree = "<group>"; };
-		53D9F40510DBF95600759172 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
-		53D9F40610DBF95600759172 /* markertoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markertoday.png; sourceTree = "<group>"; };
-		53D9F52010DC1EB300759172 /* UIColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorAdditions.h; sourceTree = "<group>"; };
-		53D9F52110DC1EB300759172 /* UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorAdditions.m; sourceTree = "<group>"; };
-		53D9F58F10DC2A9100759172 /* HolidayCalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayCalendarDataSource.h; sourceTree = "<group>"; };
-		53D9F59010DC2A9100759172 /* HolidayCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayCalendarDataSource.m; sourceTree = "<group>"; };
-		53D9F6D810DD281600759172 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
-		53D9F6D910DD281600759172 /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* Kal-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Kal-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		53D9F85D10DD9CC800759172 /* HolidayCalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayCalendarDataSource.h; sourceTree = "<group>"; };
+		53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayCalendarDataSource.m; sourceTree = "<group>"; };
+		53D9F86310DD9CC800759172 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		53D9F86410DD9CC800759172 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		53D9F86A10DD9CEE00759172 /* grid_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid_background.png; sourceTree = "<group>"; };
+		53D9F86B10DD9CEE00759172 /* grid_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grid_shadow.png; sourceTree = "<group>"; };
+		53D9F86C10DD9CEE00759172 /* KalDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalDataSource.h; sourceTree = "<group>"; };
+		53D9F86D10DD9CEE00759172 /* KalDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalDataSource.m; sourceTree = "<group>"; };
+		53D9F86E10DD9CEE00759172 /* KalGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalGridView.h; sourceTree = "<group>"; };
+		53D9F86F10DD9CEE00759172 /* KalGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalGridView.m; sourceTree = "<group>"; };
+		53D9F87010DD9CEE00759172 /* KalLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalLogic.h; sourceTree = "<group>"; };
+		53D9F87110DD9CEE00759172 /* KalLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalLogic.m; sourceTree = "<group>"; };
+		53D9F87210DD9CEE00759172 /* KalTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalTileView.h; sourceTree = "<group>"; };
+		53D9F87310DD9CEE00759172 /* KalTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = "<group>"; };
+		53D9F87410DD9CEE00759172 /* KalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalView.h; sourceTree = "<group>"; };
+		53D9F87510DD9CEE00759172 /* KalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalView.m; sourceTree = "<group>"; };
+		53D9F87610DD9CEE00759172 /* KalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalViewController.h; sourceTree = "<group>"; };
+		53D9F87710DD9CEE00759172 /* KalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalViewController.m; sourceTree = "<group>"; };
+		53D9F87810DD9CEE00759172 /* left-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left-arrow.png"; sourceTree = "<group>"; };
+		53D9F87910DD9CEE00759172 /* marker_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker_disabled.png; sourceTree = "<group>"; };
+		53D9F87A10DD9CEE00759172 /* marker_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker_selected.png; sourceTree = "<group>"; };
+		53D9F87B10DD9CEE00759172 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
+		53D9F87C10DD9CEE00759172 /* markertoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = markertoday.png; sourceTree = "<group>"; };
+		53D9F87D10DD9CEE00759172 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
+		53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
+		53D9F87F10DD9CEE00759172 /* NSMutableArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArrayAdditions.h; sourceTree = "<group>"; };
+		53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableArrayAdditions.m; sourceTree = "<group>"; };
+		53D9F88110DD9CEE00759172 /* right-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right-arrow.png"; sourceTree = "<group>"; };
+		53D9F88210DD9CEE00759172 /* tile_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile_selected.png; sourceTree = "<group>"; };
+		53D9F88310DD9CEE00759172 /* tile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tile.png; sourceTree = "<group>"; };
+		53D9F88410DD9CEE00759172 /* tiletoday_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiletoday_selected.png; sourceTree = "<group>"; };
+		53D9F88510DD9CEE00759172 /* tiletoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tiletoday.png; sourceTree = "<group>"; };
+		53D9F88610DD9CEE00759172 /* UIColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorAdditions.h; sourceTree = "<group>"; };
+		53D9F88710DD9CEE00759172 /* UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorAdditions.m; sourceTree = "<group>"; };
+		53D9F88810DD9CEE00759172 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		53D9F88910DD9CEE00759172 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		53D9F8A910DD9D9D00759172 /* Holiday_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holiday_Prefix.pch; sourceTree = "<group>"; };
+		53D9F8AA10DD9D9D00759172 /* Holiday-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Holiday-Info.plist"; sourceTree = "<group>"; };
+		53D9F8AB10DD9D9D00759172 /* HolidayAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayAppDelegate.h; sourceTree = "<group>"; };
+		53D9F8AC10DD9D9D00759172 /* HolidayAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayAppDelegate.m; sourceTree = "<group>"; };
+		53D9F8B610DD9E4400759172 /* KalPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalPrivate.h; sourceTree = "<group>"; };
+		53D9F8B710DD9E9400759172 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kal.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,21 +101,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				53D9F58F10DC2A9100759172 /* HolidayCalendarDataSource.h */,
-				53D9F59010DC2A9100759172 /* HolidayCalendarDataSource.m */,
-				1D3623240D0F684500981E51 /* KalAppDelegate.h */,
-				1D3623250D0F684500981E51 /* KalAppDelegate.m */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1D6058910D05DD3D006BFB54 /* Kal.app */,
+				1D6058910D05DD3D006BFB54 /* Holidays.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,45 +112,12 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				53D9F3A710DAD4C400759172 /* Calendar */,
-				080E96DDFE201D6D7F000001 /* Classes */,
-				53D9F3BA10DAD4F400759172 /* Additions */,
-				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
+				53D9F85C10DD9C1600759172 /* Kal */,
+				53D9F85810DD9BEB00759172 /* HolidaysDemo */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = CustomTemplate;
-			sourceTree = "<group>";
-		};
-		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
-			isa = PBXGroup;
-			children = (
-				32CA4F630368D1EE00C91783 /* Kal_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-			);
-			name = "Other Sources";
-			sourceTree = "<group>";
-		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				53D9F6D810DD281600759172 /* left-arrow.png */,
-				53D9F6D910DD281600759172 /* right-arrow.png */,
-				53D9F3F710DBF8E900759172 /* tile.png */,
-				53D9F3FD10DBF92D00759172 /* tile_selected.png */,
-				53D9F3FE10DBF92D00759172 /* tiletoday_selected.png */,
-				53D9F3FF10DBF92D00759172 /* tiletoday.png */,
-				53D9F40310DBF95600759172 /* marker_disabled.png */,
-				53D9F40410DBF95600759172 /* marker_selected.png */,
-				53D9F40510DBF95600759172 /* marker.png */,
-				53D9F40610DBF95600759172 /* markertoday.png */,
-				53D9F3F910DBF92300759172 /* grid_background.png */,
-				53D9F3FA10DBF92300759172 /* grid_shadow.png */,
-				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* Kal-Info.plist */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
@@ -172,54 +130,92 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		53D9F3A710DAD4C400759172 /* Calendar */ = {
+		53D9F85810DD9BEB00759172 /* HolidaysDemo */ = {
 			isa = PBXGroup;
 			children = (
-				53D9F3DC10DAD83900759172 /* .h */,
-				53D9F3AE10DAD4D700759172 /* KalViewController.m */,
-				53D9F3AF10DAD4D700759172 /* KalDataSource.m */,
-				53D9F3B010DAD4D700759172 /* KalGridView.m */,
-				53D9F3B110DAD4D700759172 /* KalTileView.m */,
-				53D9F3B210DAD4D700759172 /* KalView.m */,
-				53D9F3B310DAD4D700759172 /* KalLogic.m */,
+				53D9F8AB10DD9D9D00759172 /* HolidayAppDelegate.h */,
+				53D9F8AC10DD9D9D00759172 /* HolidayAppDelegate.m */,
+				53D9F85D10DD9CC800759172 /* HolidayCalendarDataSource.h */,
+				53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */,
+				53D9F86310DD9CC800759172 /* main.m */,
+				53D9F8A910DD9D9D00759172 /* Holiday_Prefix.pch */,
+				53D9F8AA10DD9D9D00759172 /* Holiday-Info.plist */,
+				53D9F86410DD9CC800759172 /* MainWindow.xib */,
 			);
-			name = Calendar;
+			path = HolidaysDemo;
 			sourceTree = "<group>";
 		};
-		53D9F3BA10DAD4F400759172 /* Additions */ = {
+		53D9F85C10DD9C1600759172 /* Kal */ = {
 			isa = PBXGroup;
 			children = (
-				53D9F3DF10DBD75F00759172 /* UIViewAdditions.h */,
-				53D9F3E010DBD75F00759172 /* UIViewAdditions.m */,
-				53D9F3BB10DAD51300759172 /* NSDateAdditions.h */,
-				53D9F3BC10DAD51300759172 /* NSDateAdditions.m */,
-				53D9F3E210DBDC1800759172 /* NSMutableArrayAdditions.h */,
-				53D9F3E310DBDC1800759172 /* NSMutableArrayAdditions.m */,
-				53D9F52010DC1EB300759172 /* UIColorAdditions.h */,
-				53D9F52110DC1EB300759172 /* UIColorAdditions.m */,
+				53D9F8A210DD9CFE00759172 /* Implementation */,
+				53D9F8A110DD9CF800759172 /* Additions */,
+				53D9F8A010DD9CF200759172 /* Resources */,
+				53D9F8B710DD9E9400759172 /* Kal.h */,
+			);
+			path = Kal;
+			sourceTree = "<group>";
+		};
+		53D9F8A010DD9CF200759172 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				53D9F87810DD9CEE00759172 /* left-arrow.png */,
+				53D9F87910DD9CEE00759172 /* marker_disabled.png */,
+				53D9F87A10DD9CEE00759172 /* marker_selected.png */,
+				53D9F87B10DD9CEE00759172 /* marker.png */,
+				53D9F87C10DD9CEE00759172 /* markertoday.png */,
+				53D9F88110DD9CEE00759172 /* right-arrow.png */,
+				53D9F88210DD9CEE00759172 /* tile_selected.png */,
+				53D9F88310DD9CEE00759172 /* tile.png */,
+				53D9F88410DD9CEE00759172 /* tiletoday_selected.png */,
+				53D9F88510DD9CEE00759172 /* tiletoday.png */,
+				53D9F86A10DD9CEE00759172 /* grid_background.png */,
+				53D9F86B10DD9CEE00759172 /* grid_shadow.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		53D9F8A110DD9CF800759172 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				53D9F87D10DD9CEE00759172 /* NSDateAdditions.h */,
+				53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */,
+				53D9F87F10DD9CEE00759172 /* NSMutableArrayAdditions.h */,
+				53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */,
+				53D9F88610DD9CEE00759172 /* UIColorAdditions.h */,
+				53D9F88710DD9CEE00759172 /* UIColorAdditions.m */,
+				53D9F88810DD9CEE00759172 /* UIViewAdditions.h */,
+				53D9F88910DD9CEE00759172 /* UIViewAdditions.m */,
 			);
 			name = Additions;
 			sourceTree = "<group>";
 		};
-		53D9F3DC10DAD83900759172 /* .h */ = {
+		53D9F8A210DD9CFE00759172 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				53D9F3A810DAD4D700759172 /* KalViewController.h */,
-				53D9F3A910DAD4D700759172 /* KalDataSource.h */,
-				53D9F3AA10DAD4D700759172 /* KalGridView.h */,
-				53D9F3AB10DAD4D700759172 /* KalTileView.h */,
-				53D9F3AC10DAD4D700759172 /* KalView.h */,
-				53D9F3AD10DAD4D700759172 /* KalLogic.h */,
+				53D9F87610DD9CEE00759172 /* KalViewController.h */,
+				53D9F87710DD9CEE00759172 /* KalViewController.m */,
+				53D9F86C10DD9CEE00759172 /* KalDataSource.h */,
+				53D9F86D10DD9CEE00759172 /* KalDataSource.m */,
+				53D9F86E10DD9CEE00759172 /* KalGridView.h */,
+				53D9F86F10DD9CEE00759172 /* KalGridView.m */,
+				53D9F87010DD9CEE00759172 /* KalLogic.h */,
+				53D9F87110DD9CEE00759172 /* KalLogic.m */,
+				53D9F87210DD9CEE00759172 /* KalTileView.h */,
+				53D9F87310DD9CEE00759172 /* KalTileView.m */,
+				53D9F87410DD9CEE00759172 /* KalView.h */,
+				53D9F87510DD9CEE00759172 /* KalView.m */,
+				53D9F8B610DD9E4400759172 /* KalPrivate.h */,
 			);
-			name = .h;
+			name = Implementation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1D6058900D05DD3D006BFB54 /* Kal */ = {
+		1D6058900D05DD3D006BFB54 /* Holidays */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Kal" */;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Holidays" */;
 			buildPhases = (
 				1D60588D0D05DD3D006BFB54 /* Resources */,
 				1D60588E0D05DD3D006BFB54 /* Sources */,
@@ -229,9 +225,9 @@
 			);
 			dependencies = (
 			);
-			name = Kal;
+			name = Holidays;
 			productName = Kal;
-			productReference = 1D6058910D05DD3D006BFB54 /* Kal.app */;
+			productReference = 1D6058910D05DD3D006BFB54 /* Holidays.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -246,7 +242,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1D6058900D05DD3D006BFB54 /* Kal */,
+				1D6058900D05DD3D006BFB54 /* Holidays */,
 			);
 		};
 /* End PBXProject section */
@@ -256,19 +252,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
-				53D9F3F810DBF8E900759172 /* tile.png in Resources */,
-				53D9F3FB10DBF92300759172 /* grid_background.png in Resources */,
-				53D9F3FC10DBF92300759172 /* grid_shadow.png in Resources */,
-				53D9F40010DBF92D00759172 /* tile_selected.png in Resources */,
-				53D9F40110DBF92D00759172 /* tiletoday_selected.png in Resources */,
-				53D9F40210DBF92D00759172 /* tiletoday.png in Resources */,
-				53D9F40710DBF95600759172 /* marker_disabled.png in Resources */,
-				53D9F40810DBF95600759172 /* marker_selected.png in Resources */,
-				53D9F40910DBF95600759172 /* marker.png in Resources */,
-				53D9F40A10DBF95600759172 /* markertoday.png in Resources */,
-				53D9F6DA10DD281600759172 /* left-arrow.png in Resources */,
-				53D9F6DB10DD281600759172 /* right-arrow.png in Resources */,
+				53D9F86910DD9CC800759172 /* MainWindow.xib in Resources */,
+				53D9F88A10DD9CEE00759172 /* grid_background.png in Resources */,
+				53D9F88B10DD9CEE00759172 /* grid_shadow.png in Resources */,
+				53D9F89210DD9CEE00759172 /* left-arrow.png in Resources */,
+				53D9F89310DD9CEE00759172 /* marker_disabled.png in Resources */,
+				53D9F89410DD9CEE00759172 /* marker_selected.png in Resources */,
+				53D9F89510DD9CEE00759172 /* marker.png in Resources */,
+				53D9F89610DD9CEE00759172 /* markertoday.png in Resources */,
+				53D9F89910DD9CEE00759172 /* right-arrow.png in Resources */,
+				53D9F89A10DD9CEE00759172 /* tile_selected.png in Resources */,
+				53D9F89B10DD9CEE00759172 /* tile.png in Resources */,
+				53D9F89C10DD9CEE00759172 /* tiletoday_selected.png in Resources */,
+				53D9F89D10DD9CEE00759172 /* tiletoday.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,19 +275,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
-				1D3623260D0F684500981E51 /* KalAppDelegate.m in Sources */,
-				53D9F3B410DAD4D700759172 /* KalViewController.m in Sources */,
-				53D9F3B510DAD4D700759172 /* KalDataSource.m in Sources */,
-				53D9F3B610DAD4D700759172 /* KalGridView.m in Sources */,
-				53D9F3B710DAD4D700759172 /* KalTileView.m in Sources */,
-				53D9F3B810DAD4D700759172 /* KalView.m in Sources */,
-				53D9F3B910DAD4D700759172 /* KalLogic.m in Sources */,
-				53D9F3BD10DAD51300759172 /* NSDateAdditions.m in Sources */,
-				53D9F3E110DBD75F00759172 /* UIViewAdditions.m in Sources */,
-				53D9F3E410DBDC1800759172 /* NSMutableArrayAdditions.m in Sources */,
-				53D9F52210DC1EB300759172 /* UIColorAdditions.m in Sources */,
-				53D9F59110DC2A9200759172 /* HolidayCalendarDataSource.m in Sources */,
+				53D9F86510DD9CC800759172 /* HolidayCalendarDataSource.m in Sources */,
+				53D9F86810DD9CC800759172 /* main.m in Sources */,
+				53D9F88C10DD9CEE00759172 /* KalDataSource.m in Sources */,
+				53D9F88D10DD9CEE00759172 /* KalGridView.m in Sources */,
+				53D9F88E10DD9CEE00759172 /* KalLogic.m in Sources */,
+				53D9F88F10DD9CEE00759172 /* KalTileView.m in Sources */,
+				53D9F89010DD9CEE00759172 /* KalView.m in Sources */,
+				53D9F89110DD9CEE00759172 /* KalViewController.m in Sources */,
+				53D9F89710DD9CEE00759172 /* NSDateAdditions.m in Sources */,
+				53D9F89810DD9CEE00759172 /* NSMutableArrayAdditions.m in Sources */,
+				53D9F89E10DD9CEE00759172 /* UIColorAdditions.m in Sources */,
+				53D9F89F10DD9CEE00759172 /* UIViewAdditions.m in Sources */,
+				53D9F8AE10DD9D9D00759172 /* HolidayAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,9 +302,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Kal_Prefix.pch;
-				INFOPLIST_FILE = "Kal-Info.plist";
-				PRODUCT_NAME = Kal;
+				GCC_PREFIX_HEADER = HolidaysDemo/Holiday_Prefix.pch;
+				INFOPLIST_FILE = "HolidaysDemo/Holiday-Info.plist";
+				PRODUCT_NAME = Holidays;
 			};
 			name = Debug;
 		};
@@ -318,9 +314,9 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Kal_Prefix.pch;
-				INFOPLIST_FILE = "Kal-Info.plist";
-				PRODUCT_NAME = Kal;
+				GCC_PREFIX_HEADER = HolidaysDemo/Holiday_Prefix.pch;
+				INFOPLIST_FILE = "HolidaysDemo/Holiday-Info.plist";
+				PRODUCT_NAME = Holidays;
 			};
 			name = Release;
 		};
@@ -334,7 +330,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.1;
 			};
 			name = Debug;
 		};
@@ -347,14 +343,14 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos3.1.2;
+				SDKROOT = iphoneos3.1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Kal" */ = {
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "Holidays" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,

@@ -4,7 +4,7 @@
  */
 
 #import "KalDataSource.h"
-
+#import "KalPrivate.h"
 
 @implementation SimpleKalDataSource
 

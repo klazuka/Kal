@@ -4,6 +4,7 @@
  */
 
 #import "KalLogic.h"
+#import "KalPrivate.h"
 
 @interface KalLogic ()
 - (NSUInteger)numberOfDaysInPreviousPartialWeek;

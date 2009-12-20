@@ -7,6 +7,7 @@
 #import "KalView.h"
 #import "KalTileView.h"
 #import "KalLogic.h"
+#import "KalPrivate.h"
 
 #define SLIDE_NONE 0
 #define SLIDE_UP 1

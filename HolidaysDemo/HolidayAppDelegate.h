@@ -5,7 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface KalAppDelegate : NSObject <UIApplicationDelegate>
+@interface HolidayAppDelegate : NSObject <UIApplicationDelegate>
 {
   UIWindow *window;
   UINavigationController *navController;

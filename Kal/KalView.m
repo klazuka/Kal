@@ -6,6 +6,7 @@
 #import "KalView.h"
 #import "KalGridView.h"
 #import "KalLogic.h"
+#import "KalPrivate.h"
 
 @interface KalView ()
 - (void)addSubviewsToHeaderView:(UIView *)headerView;

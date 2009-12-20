@@ -6,8 +6,10 @@
 #import "KalViewController.h"
 #import "KalLogic.h"
 #import "KalDataSource.h"
+#import "KalPrivate.h"
 
 #define KAL_ROW_HEIGHT 44
+
 CGRect KalNavigationFrame() {
   CGRect frame = [UIScreen mainScreen].applicationFrame;
   return CGRectMake(0, 0, frame.size.width, frame.size.height - KAL_ROW_HEIGHT);
@@ -31,6 +33,8 @@ CGRect KalNavigationFrame() {
 {
   return [self initWithDataSource:[SimpleKalDataSource dataSource]];
 }
+
+- (KalView*)calendarView { return (KalView*)self.view; }
 
 // -----------------------------------------
 #pragma mark KalViewDelegate protocol
@@ -81,9 +85,6 @@ CGRect KalNavigationFrame() {
   [super viewDidAppear:animated];
   [tableView flashScrollIndicators];
 }
-
-// make the compiler happy
-- (KalView*)calendarView { return (KalView*)self.view; }
 
 #pragma mark -
 

@@ -3,7 +3,7 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-#import "KalDataSource.h"
+#import "Kal.h"
 
 @interface HolidayCalendarDataSource : NSObject <KalDataSource>
 {

@@ -3,11 +3,12 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-#import "KalAppDelegate.h"
-#import "KalViewController.h"
+#import "HolidayAppDelegate.h"
 #import "HolidayCalendarDataSource.h"
+#import "Kal.h"
 
-@implementation KalAppDelegate
+
+@implementation HolidayAppDelegate
 
 @synthesize window;
 
