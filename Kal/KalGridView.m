@@ -65,7 +65,7 @@ static const CGSize kTileSize = { 46.f, 44.f };
 
 - (void)drawRect:(CGRect)rect
 {
-  [[UIImage imageNamed:@"grid_background.png"] drawInRect:rect];
+  [[UIImage imageNamed:@"kal_grid_background.png"] drawInRect:rect];
 }
 
 - (void)refresh

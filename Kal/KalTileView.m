@@ -49,7 +49,7 @@
 
 - (void)addBackground
 {
-  backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"tile.png"]];
+  backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kal_tile.png"]];
   CGRect imageFrame = self.frame;
   imageFrame.origin = CGPointZero;
   backgroundView.frame = imageFrame;
@@ -139,33 +139,33 @@
       if (self.selected) {
         dayLabel.textColor = [UIColor whiteColor];
         dayLabel.shadowColor = [UIColor darkGrayColor];
-        backgroundView.image = [[UIImage imageNamed:@"tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1];
-        markerImage = [UIImage imageNamed:@"marker_selected.png"];
+        backgroundView.image = [[UIImage imageNamed:@"kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1];
+        markerImage = [UIImage imageNamed:@"kal_marker_selected.png"];
       } else {
         dayLabel.textColor = [UIColor calendarTextColor];
         dayLabel.shadowColor = [UIColor whiteColor];
-        backgroundView.image = [UIImage imageNamed:@"tile.png"];
-        markerImage = [UIImage imageNamed:@"marker.png"];
+        backgroundView.image = [UIImage imageNamed:@"kal_tile.png"];
+        markerImage = [UIImage imageNamed:@"kal_marker.png"];
       }
       break;
       
     case kKalTileTypeAdjacent:
       dayLabel.textColor = [UIColor calendarTextLightColor];
       dayLabel.shadowColor = nil;
-      backgroundView.image = [UIImage imageNamed:@"tile.png"];
-      markerImage = [UIImage imageNamed:@"marker_disabled.png"];
+      backgroundView.image = [UIImage imageNamed:@"kal_tile.png"];
+      markerImage = [UIImage imageNamed:@"kal_marker_disabled.png"];
       if (self.selected) {
         self.backgroundColor = [UIColor lightGrayColor];
       }
       break;
       
     case kKalTileTypeToday:
-      markerImage = [UIImage imageNamed:@"markertoday.png"];
+      markerImage = [UIImage imageNamed:@"kal_markertoday.png"];
       dayLabel.textColor = [UIColor whiteColor];
       dayLabel.shadowColor = [UIColor darkGrayColor];
       UIImage *image = self.selected 
-                         ? [UIImage imageNamed:@"tiletoday_selected.png"]
-                         : [UIImage imageNamed:@"tiletoday.png"];
+                         ? [UIImage imageNamed:@"kal_tiletoday_selected.png"]
+                         : [UIImage imageNamed:@"kal_tiletoday.png"];
       backgroundView.image = [image stretchableImageWithLeftCapWidth:6 topCapHeight:0];
       break;
       

@@ -65,7 +65,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
   const CGFloat kHeaderVerticalAdjust = 3.f;
   
   // Header background gradient
-  UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grid_background.png"]];
+  UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kal_grid_background.png"]];
   CGRect imageFrame = headerView.frame;
   imageFrame.origin = CGPointZero;
   backgroundView.frame = imageFrame;
@@ -78,7 +78,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
                                                kChangeMonthButtonWidth,
                                                kChangeMonthButtonHeight);
   UIButton *previousMonthButton = [[UIButton alloc] initWithFrame:previousMonthButtonFrame];
-  [previousMonthButton setImage:[UIImage imageNamed:@"left-arrow.png"] forState:UIControlStateNormal];
+  [previousMonthButton setImage:[UIImage imageNamed:@"kal_left-arrow.png"] forState:UIControlStateNormal];
   previousMonthButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
   previousMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   [previousMonthButton addTarget:delegate action:@selector(showPreviousMonth) forControlEvents:UIControlEventTouchUpInside];
@@ -106,7 +106,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
                                            kChangeMonthButtonWidth,
                                            kChangeMonthButtonHeight);
   UIButton *nextMonthButton = [[UIButton alloc] initWithFrame:nextMonthButtonFrame];
-  [nextMonthButton setImage:[UIImage imageNamed:@"right-arrow.png"] forState:UIControlStateNormal];  
+  [nextMonthButton setImage:[UIImage imageNamed:@"kal_right-arrow.png"] forState:UIControlStateNormal];  
   nextMonthButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
   nextMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
   [nextMonthButton addTarget:delegate action:@selector(showFollowingMonth) forControlEvents:UIControlEventTouchUpInside];
@@ -152,7 +152,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
   [contentView addSubview:tableView];
   
   // Drop shadow below tile grid and over the list of events for the selected day
-  UIImageView *shadowView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"grid_shadow.png"]] autorelease];
+  UIImageView *shadowView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kal_grid_shadow.png"]] autorelease];
   shadowView.width = contentView.width;
   [tableView addSubview:shadowView];
 
