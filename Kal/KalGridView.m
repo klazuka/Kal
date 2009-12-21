@@ -25,7 +25,7 @@ static const CGSize kTileSize = { 46.f, 44.f };
 
 @implementation KalGridView
 
-@synthesize selectedTile;
+@synthesize selectedTile, highlightedTile;
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)theLogic delegate:(id<KalViewDelegate>)theDelegate
 {
@@ -80,16 +80,6 @@ static const CGSize kTileSize = { 46.f, 44.f };
   }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-  UITouch *touch = [touches anyObject];
-  CGPoint location = [touch locationInView:self];
-  UIView *hitView = [self hitTest:location withEvent:event];
-  
-  if ([hitView isKindOfClass:[KalTileView class]])
-    self.selectedTile = (KalTileView*)hitView;
-}
-
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
   UITouch *touch = [touches anyObject];
@@ -99,8 +89,15 @@ static const CGSize kTileSize = { 46.f, 44.f };
   if (!hitView)
     return;
   
-  if ([hitView isKindOfClass:[KalTileView class]])
-    self.selectedTile = (KalTileView*)hitView;
+  if ([hitView isKindOfClass:[KalTileView class]]) {
+    KalTileView *tile = (KalTileView*)hitView;
+    if (tile.belongsToAdjacentMonth) {
+      self.highlightedTile = tile;
+    } else {
+      self.highlightedTile = nil;
+      self.selectedTile = tile;
+    }
+  }
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -118,16 +115,9 @@ static const CGSize kTileSize = { 46.f, 44.f };
         [delegate showPreviousMonth];
       }
     }
-    
     self.selectedTile = tile;
   }
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-  UITouch *touch = [touches anyObject];
-  NSLog(@"cancelled touches at %@", NSStringFromCGPoint([touch locationInView:self]));
-  self.selectedTile = nil;
+  self.highlightedTile = nil;
 }
 
 - (void)updateTilesInKeptCell:(UIView*)cell
@@ -148,6 +138,15 @@ static const CGSize kTileSize = { 46.f, 44.f };
 {
   // Resize |self| such that it is just tall enough to fit all of its subviews.
   self.height = [[self.subviews valueForKeyPath:@"@sum.height"] floatValue];
+}
+
+- (void)setHighlightedTile:(KalTileView *)tile
+{
+  if (highlightedTile != tile) {
+    highlightedTile.highlighted = NO;
+    highlightedTile = [tile retain];
+    tile.highlighted = YES;
+  }
 }
 
 - (void)setSelectedTile:(KalTileView *)tile
@@ -345,6 +344,7 @@ static const CGSize kTileSize = { 46.f, 44.f };
 - (void)dealloc
 {
   [selectedTile release];
+  [highlightedTile release];
   [reusableCells release];
   [logic release];
   [super dealloc];
@@ -352,6 +352,3 @@ static const CGSize kTileSize = { 46.f, 44.f };
 
 
 @end
-
-
-

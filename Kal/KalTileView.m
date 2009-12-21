@@ -96,6 +96,12 @@
   [self reloadStyle];
 }
 
+- (void)setHighlighted:(BOOL)highlighted
+{
+  [super setHighlighted:highlighted];
+  [self reloadStyle];
+}
+
 #pragma mark UIView and UIResponder
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event { [[self nextResponder] touchesBegan:touches withEvent:event]; }
@@ -154,7 +160,7 @@
       dayLabel.shadowColor = nil;
       backgroundView.image = [UIImage imageNamed:@"kal_tile.png"];
       markerImage = [UIImage imageNamed:@"kal_marker_disabled.png"];
-      if (self.selected) {
+      if (self.highlighted) {
         self.backgroundColor = [UIColor lightGrayColor];
       }
       break;

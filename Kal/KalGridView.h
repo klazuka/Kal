@@ -26,11 +26,13 @@
   id<KalViewDelegate> delegate;  // Assigned.
   KalLogic *logic;
   KalTileView *selectedTile;
+  KalTileView *highlightedTile;
   NSMutableArray *reusableCells;        // The pool of reusable cells. If this runs out, the app will crash instead of dynamically allocating more views. So make this just large enough to meet your app needs, but no larger.
   CGFloat cellHeight;                   // Every cell must have the same height: specifically, the height stored here.
 }
 
 @property (nonatomic, retain) KalTileView *selectedTile;
+@property (nonatomic, retain) KalTileView *highlightedTile;
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)logic delegate:(id<KalViewDelegate>)delegate;
 
