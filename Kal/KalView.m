@@ -55,8 +55,6 @@ static const CGFloat kMonthLabelHeight = 28.f;
   return nil;
 }
 
-- (void)refresh { [gridView refresh]; }
-
 - (void)slideDown { [gridView slideDown]; }
 - (void)slideUp { [gridView slideUp]; }
 
@@ -133,9 +131,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
     [headerView addSubview:weekdayLabel];
     [weekdayLabel release];
   }
-
 }
-
 
 - (void)addSubviewsToContentView:(UIView *)contentView
 {
@@ -199,6 +195,10 @@ static const CGFloat kMonthLabelHeight = 28.f;
   [headerTitleLabel sizeToFit];
   headerTitleLabel.left = floorf(self.width/2.f - headerTitleLabel.width/2.f);
 }
+
+- (void)jumpToSelectedMonth { [gridView jumpToSelectedMonth]; }
+
+- (void)selectTodayIfVisible { [gridView selectTodayIfVisible]; }
 
 - (void)dealloc
 {

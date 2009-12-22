@@ -55,6 +55,16 @@
   [[self calendarView] slideUp];
 }
 
+// ---------------------------------------
+#pragma mark -
+
+- (void)showAndSelectToday
+{
+  [logic moveToTodaysMonth];
+  [[self calendarView] jumpToSelectedMonth];
+  [[self calendarView] selectTodayIfVisible];
+}
+
 // -----------------------------------------------------------------------------------
 #pragma mark UIViewController
 

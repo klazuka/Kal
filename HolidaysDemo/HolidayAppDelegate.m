@@ -17,6 +17,7 @@
 {
   KalViewController *kal = [[KalViewController alloc] initWithDataSource:[HolidayCalendarDataSource dataSource]];
   navController = [[UINavigationController alloc] initWithRootViewController:kal];
+  kal.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStyleBordered target:kal action:@selector(showAndSelectToday)] autorelease];
   [kal release];
   [window addSubview:navController.view];
   [window makeKeyAndVisible];

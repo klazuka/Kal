@@ -29,4 +29,6 @@
 
 - (id)initWithDataSource:(id<KalDataSource>)source; // designated initializer
 
+- (void)showAndSelectToday;
+
 @end

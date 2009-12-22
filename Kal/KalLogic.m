@@ -40,6 +40,11 @@
   self.baseDate = [self.baseDate cc_dateByMovingToFirstDayOfTheFollowingMonth];
 }
 
+- (void)moveToTodaysMonth
+{
+  self.baseDate = [[NSDate cc_today] cc_dateByMovingToFirstDayOfTheMonth];
+}
+
 - (NSArray *)daysInFinalWeekOfPreviousMonth
 {
   NSMutableArray *days = [NSMutableArray array];

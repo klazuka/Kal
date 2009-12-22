@@ -36,11 +36,12 @@
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)logic delegate:(id<KalViewDelegate>)delegate;
 
-- (void)refresh;
-
-// These 2 methods should be called *after* the KalLogic
+// These 3 methods should be called *after* the KalLogic
 // has moved to the previous or following month.
 - (void)slideUp;
 - (void)slideDown;
+- (void)jumpToSelectedMonth;    // see comment on KalView
+
+- (void)selectTodayIfVisible;
 
 @end

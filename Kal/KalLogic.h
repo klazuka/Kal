@@ -28,6 +28,7 @@
 
 - (void)retreatToPreviousMonth;
 - (void)advanceToFollowingMonth;
+- (void)moveToTodaysMonth;
 
 - (NSArray *)daysInFinalWeekOfPreviousMonth;
 - (NSArray *)daysInSelectedMonth;

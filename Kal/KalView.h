@@ -49,12 +49,13 @@
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)delegate logic:(KalLogic *)logic;
 
-- (void)refresh;
-
-// These 2 methods are exposed for the delegate. They should be called 
+// These 3 methods are exposed for the delegate. They should be called 
 // *after* the KalLogic has moved to the previous or following month.
 - (void)slideDown;
 - (void)slideUp;
+- (void)jumpToSelectedMonth;    // change months without animation (i.e. when directly switching to "Today")
+
+- (void)selectTodayIfVisible;
 
 @end
 

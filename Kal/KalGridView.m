@@ -68,18 +68,6 @@ static const CGSize kTileSize = { 46.f, 44.f };
   [[UIImage imageNamed:@"kal_grid_background.png"] drawInRect:rect];
 }
 
-- (void)refresh
-{
-  if (selectedTile)
-    [delegate didSelectDate:selectedTile.date];
-  
-  for (UIView *cell in self.subviews) {
-    for (KalTileView *tile in cell.subviews) {
-      tile.marked = [delegate shouldMarkTileForDate:tile.date];
-    }
-  }
-}
-
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
   UITouch *touch = [touches anyObject];
@@ -287,7 +275,7 @@ static const CGSize kTileSize = { 46.f, 44.f };
   // Slide each cell with animation.
   [UIView beginAnimations:kSlideAnimationId context:NULL];
   {
-    [UIView setAnimationsEnabled:YES];
+    [UIView setAnimationsEnabled:direction != SLIDE_NONE];
     [UIView setAnimationDuration:0.45f];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
@@ -337,6 +325,12 @@ static const CGSize kTileSize = { 46.f, 44.f };
       [reusableCells enqueue:cell];
     }
   }
+}
+
+#pragma mark -
+- (void)jumpToSelectedMonth
+{
+  [self slide:SLIDE_NONE];
 }
 
 #pragma mark -
