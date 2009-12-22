@@ -31,9 +31,14 @@
       [self addBackground];
       [self addDayLabel];
       [self addMarkerView];
-      [self reloadStyle];
     }
     return self;
+}
+
+- (void)drawRect:(CGRect)rect
+{
+  [self reloadStyle];
+  [super drawRect:rect];
 }
 
 - (void)addMarkerView
@@ -74,32 +79,17 @@
 
 - (void)setSelected:(BOOL)selected
 {
-  // In order to draw the selection border the same way that
-  // Apple does in MobileCal, we need to extend the tile 1px
-  // to the left so that it draws its left border on top of
-  // the left-adjacent tile's right border.
-  // (but even this hack does not perfectly mimic the way
-  // that Apple draws the bottom border of a selected tile).
-  if (!self.belongsToAdjacentMonth) {
-      if (self.selected && !selected) {
-        // deselection (shrink)
-        backgroundView.width -= 1.f;
-         backgroundView.left += 1.f;
-       } else if (!self.selected && selected) {
-        // selection (expand)
-        backgroundView.width += 1.f;
-        backgroundView.left -= 1.f;
-       }
-  }
-  
   [super setSelected:selected];
-  [self reloadStyle];
+  [self setNeedsDisplay];
 }
 
 - (void)setHighlighted:(BOOL)highlighted
 {
-  [super setHighlighted:highlighted];
-  [self reloadStyle];
+  if (self.highlighted != highlighted) {
+    [super setHighlighted:highlighted];
+    [self reloadStyle]; // TODO this should be setNeedsDisplay, but for some reason the tile highlight
+                        // will not be updated in the UI appropriately UNLESS you directly call reloadStyle.
+  }
 }
 
 #pragma mark UIView and UIResponder
@@ -122,7 +112,7 @@
 - (void)prepareForReuse
 {
   [self resetState];
-  [self reloadStyle];
+  [self setNeedsDisplay];
 }
 
 - (void)resetState
@@ -193,6 +183,7 @@
 - (void)setMode:(NSUInteger)mode
 {
   state = (state & ~KalTileStateMode) | mode;
+  [self setNeedsDisplay];
 }
 
 - (void)setDate:(NSDate *)aDate
@@ -205,7 +196,7 @@
     
     if ([date cc_isToday]) {
       [self setMode:kKalTileTypeToday];
-      [self reloadStyle];
+      [self setNeedsDisplay];
     }
   }
 }
@@ -226,7 +217,7 @@
       [self setMode:kKalTileTypeRegular];
   }
   
-  [self reloadStyle];
+  [self setNeedsDisplay];
 }
 
 - (BOOL)marked
@@ -244,7 +235,7 @@
   else
     state &= ~KalTileStateMarked;
   
-  [self reloadStyle];
+  [self setNeedsDisplay];
 }
 
 #pragma mark -
