@@ -10,6 +10,9 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		534581FC10E1374500451238 /* kal_header_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 534581FB10E1374500451238 /* kal_header_text_fill.png */; };
+		5345824010E1427B00451238 /* kal_tile_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 5345823F10E1427B00451238 /* kal_tile_text_fill.png */; };
+		5345824D10E1434500451238 /* kal_tile_disabled_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 5345824C10E1434500451238 /* kal_tile_disabled_text_fill.png */; };
 		53D9F86510DD9CC800759172 /* HolidayCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */; };
 		53D9F86810DD9CC800759172 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F86310DD9CC800759172 /* main.m */; };
 		53D9F86910DD9CC800759172 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F86410DD9CC800759172 /* MainWindow.xib */; };
@@ -21,7 +24,6 @@
 		53D9F89110DD9CEE00759172 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87710DD9CEE00759172 /* KalViewController.m */; };
 		53D9F89710DD9CEE00759172 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */; };
 		53D9F89810DD9CEE00759172 /* NSMutableArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */; };
-		53D9F89E10DD9CEE00759172 /* UIColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F88710DD9CEE00759172 /* UIColorAdditions.m */; };
 		53D9F89F10DD9CEE00759172 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F88910DD9CEE00759172 /* UIViewAdditions.m */; };
 		53D9F8AE10DD9D9D00759172 /* HolidayAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F8AC10DD9D9D00759172 /* HolidayAppDelegate.m */; };
 		53D9F95F10DFC21D00759172 /* kal_grid_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F95310DFC21D00759172 /* kal_grid_background.png */; };
@@ -43,6 +45,9 @@
 		1D6058910D05DD3D006BFB54 /* Holidays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holidays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		534581FB10E1374500451238 /* kal_header_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_header_text_fill.png; sourceTree = "<group>"; };
+		5345823F10E1427B00451238 /* kal_tile_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_tile_text_fill.png; sourceTree = "<group>"; };
+		5345824C10E1434500451238 /* kal_tile_disabled_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_tile_disabled_text_fill.png; sourceTree = "<group>"; };
 		53D9F85D10DD9CC800759172 /* HolidayCalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayCalendarDataSource.h; sourceTree = "<group>"; };
 		53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayCalendarDataSource.m; sourceTree = "<group>"; };
 		53D9F86310DD9CC800759172 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -63,8 +68,6 @@
 		53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
 		53D9F87F10DD9CEE00759172 /* NSMutableArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArrayAdditions.h; sourceTree = "<group>"; };
 		53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableArrayAdditions.m; sourceTree = "<group>"; };
-		53D9F88610DD9CEE00759172 /* UIColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorAdditions.h; sourceTree = "<group>"; };
-		53D9F88710DD9CEE00759172 /* UIColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorAdditions.m; sourceTree = "<group>"; };
 		53D9F88810DD9CEE00759172 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		53D9F88910DD9CEE00759172 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		53D9F8A910DD9D9D00759172 /* Holiday_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holiday_Prefix.pch; sourceTree = "<group>"; };
@@ -171,6 +174,9 @@
 				53D9F95C10DFC21D00759172 /* kal_tile.png */,
 				53D9F95D10DFC21D00759172 /* kal_tiletoday_selected.png */,
 				53D9F95E10DFC21D00759172 /* kal_tiletoday.png */,
+				534581FB10E1374500451238 /* kal_header_text_fill.png */,
+				5345823F10E1427B00451238 /* kal_tile_text_fill.png */,
+				5345824C10E1434500451238 /* kal_tile_disabled_text_fill.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -182,8 +188,6 @@
 				53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */,
 				53D9F87F10DD9CEE00759172 /* NSMutableArrayAdditions.h */,
 				53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */,
-				53D9F88610DD9CEE00759172 /* UIColorAdditions.h */,
-				53D9F88710DD9CEE00759172 /* UIColorAdditions.m */,
 				53D9F88810DD9CEE00759172 /* UIViewAdditions.h */,
 				53D9F88910DD9CEE00759172 /* UIViewAdditions.m */,
 			);
@@ -265,6 +269,9 @@
 				53D9F96810DFC21D00759172 /* kal_tile.png in Resources */,
 				53D9F96910DFC21D00759172 /* kal_tiletoday_selected.png in Resources */,
 				53D9F96A10DFC21D00759172 /* kal_tiletoday.png in Resources */,
+				534581FC10E1374500451238 /* kal_header_text_fill.png in Resources */,
+				5345824010E1427B00451238 /* kal_tile_text_fill.png in Resources */,
+				5345824D10E1434500451238 /* kal_tile_disabled_text_fill.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +292,6 @@
 				53D9F89110DD9CEE00759172 /* KalViewController.m in Sources */,
 				53D9F89710DD9CEE00759172 /* NSDateAdditions.m in Sources */,
 				53D9F89810DD9CEE00759172 /* NSMutableArrayAdditions.m in Sources */,
-				53D9F89E10DD9CEE00759172 /* UIColorAdditions.m in Sources */,
 				53D9F89F10DD9CEE00759172 /* UIViewAdditions.m in Sources */,
 				53D9F8AE10DD9D9D00759172 /* HolidayAppDelegate.m in Sources */,
 			);

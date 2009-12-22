@@ -15,7 +15,7 @@
 @end
 
 static const CGFloat kHeaderHeight = 44.f;
-static const CGFloat kMonthLabelHeight = 28.f;
+static const CGFloat kMonthLabelHeight = 17.f;
 
 @implementation KalView
 
@@ -95,7 +95,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
   headerTitleLabel.backgroundColor = [UIColor clearColor];
   headerTitleLabel.font = [UIFont boldSystemFontOfSize:22.f];
   headerTitleLabel.textAlignment = UITextAlignmentCenter;
-  headerTitleLabel.textColor = [UIColor calendarTextColor];
+  headerTitleLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_header_text_fill.png"]];
   headerTitleLabel.shadowColor = [UIColor whiteColor];
   headerTitleLabel.shadowOffset = CGSizeMake(0.f, 1.f);
   [self setHeaderTitleText:[logic selectedMonthNameAndYear]];
@@ -124,7 +124,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
     weekdayLabel.backgroundColor = [UIColor clearColor];
     weekdayLabel.font = [UIFont boldSystemFontOfSize:10.f];
     weekdayLabel.textAlignment = UITextAlignmentCenter;
-    weekdayLabel.textColor = RGBCOLOR(84, 84, 84);
+    weekdayLabel.textColor = [UIColor colorWithRed:0.3f green:0.3f blue:0.3f alpha:1.f];
     weekdayLabel.shadowColor = [UIColor whiteColor];
     weekdayLabel.shadowOffset = CGSizeMake(0.f, 1.f);
     weekdayLabel.text = [weekdayNames objectAtIndex:i];

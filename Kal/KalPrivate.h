@@ -6,5 +6,4 @@
 #import "UIViewAdditions.h"
 #import "NSDateAdditions.h"
 #import "NSMutableArrayAdditions.h"
-#import "UIColorAdditions.h"
 

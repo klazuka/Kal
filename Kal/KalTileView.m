@@ -144,11 +144,11 @@
     case kKalTileTypeRegular:
       if (self.selected) {
         dayLabel.textColor = [UIColor whiteColor];
-        dayLabel.shadowColor = [UIColor darkGrayColor];
+        dayLabel.shadowColor = [UIColor blackColor];
         backgroundView.image = [[UIImage imageNamed:@"kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1];
         markerImage = [UIImage imageNamed:@"kal_marker_selected.png"];
       } else {
-        dayLabel.textColor = [UIColor calendarTextColor];
+        dayLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_text_fill.png"]];
         dayLabel.shadowColor = [UIColor whiteColor];
         backgroundView.image = [UIImage imageNamed:@"kal_tile.png"];
         markerImage = [UIImage imageNamed:@"kal_marker.png"];
@@ -156,7 +156,7 @@
       break;
       
     case kKalTileTypeAdjacent:
-      dayLabel.textColor = [UIColor calendarTextLightColor];
+      dayLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_disabled_text_fill.png"]];
       dayLabel.shadowColor = nil;
       backgroundView.image = [UIImage imageNamed:@"kal_tile.png"];
       markerImage = [UIImage imageNamed:@"kal_marker_disabled.png"];
