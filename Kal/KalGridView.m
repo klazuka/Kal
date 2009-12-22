@@ -68,7 +68,7 @@ static const CGSize kTileSize = { 46.f, 44.f };
   [[UIImage imageNamed:@"kal_grid_background.png"] drawInRect:rect];
 }
 
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+- (void)receivedTouches:(NSSet *)touches withEvent:event
 {
   UITouch *touch = [touches anyObject];
   CGPoint location = [touch locationInView:self];
@@ -86,6 +86,16 @@ static const CGSize kTileSize = { 46.f, 44.f };
       self.selectedTile = tile;
     }
   }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  [self receivedTouches:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  [self receivedTouches:touches withEvent:event];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
