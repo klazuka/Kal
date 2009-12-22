@@ -8,13 +8,6 @@
 #import "KalDataSource.h"
 #import "KalPrivate.h"
 
-#define KAL_ROW_HEIGHT 44
-
-CGRect KalNavigationFrame() {
-  CGRect frame = [UIScreen mainScreen].applicationFrame;
-  return CGRectMake(0, 0, frame.size.width, frame.size.height - KAL_ROW_HEIGHT);
-}
-
 @interface KalViewController ()
 - (KalView*)calendarView;
 @end
@@ -69,7 +62,7 @@ CGRect KalNavigationFrame() {
 {
   self.title = @"Calendar";
   logic = [[KalLogic alloc] init];
-  self.view = [[[KalView alloc] initWithFrame:KalNavigationFrame() delegate:self logic:logic] autorelease];
+  self.view = [[[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] autorelease];
   tableView = [[[self calendarView] tableView] retain];
   tableView.dataSource = dataSource;
 }

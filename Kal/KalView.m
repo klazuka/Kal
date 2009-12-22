@@ -30,6 +30,9 @@ static const CGFloat kMonthLabelHeight = 28.f;
     logic = [theLogic retain];
     [logic addObserver:self forKeyPath:@"selectedMonthNameAndYear" options:NSKeyValueObservingOptionNew context:NULL];
     
+    self.autoresizesSubviews = YES;
+    self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+    
     // Header
     UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, kHeaderHeight)] autorelease];
     headerView.backgroundColor = [UIColor grayColor];
@@ -60,7 +63,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
 - (void)addSubviewsToHeaderView:(UIView *)headerView
 {
   const CGFloat kChangeMonthButtonWidth = 46.0f;
-  const CGFloat kChangeMonthButtonHeight = 42.0f;
+  const CGFloat kChangeMonthButtonHeight = 30.0f;
   const CGFloat kMonthLabelWidth = 200.0f;
   const CGFloat kHeaderVerticalAdjust = 3.f;
   
@@ -74,7 +77,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
   
   // Create the previous month button on the left side of the view
   CGRect previousMonthButtonFrame = CGRectMake(self.left,
-                                               self.top - kHeaderVerticalAdjust,
+                                               kHeaderVerticalAdjust,
                                                kChangeMonthButtonWidth,
                                                kChangeMonthButtonHeight);
   UIButton *previousMonthButton = [[UIButton alloc] initWithFrame:previousMonthButtonFrame];
@@ -87,7 +90,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
   
   // Draw the selected month name centered and at the top of the view
   CGRect monthLabelFrame = CGRectMake((self.width/2.0f) - (kMonthLabelWidth/2.0f),
-                                      3.f,
+                                      kHeaderVerticalAdjust,
                                       kMonthLabelWidth,
                                       kMonthLabelHeight);
   headerTitleLabel = [[UILabel alloc] initWithFrame:monthLabelFrame];
@@ -102,7 +105,7 @@ static const CGFloat kMonthLabelHeight = 28.f;
   
   // Create the next month button on the right side of the view
   CGRect nextMonthButtonFrame = CGRectMake(self.width - kChangeMonthButtonWidth,
-                                           self.top - kHeaderVerticalAdjust,
+                                           kHeaderVerticalAdjust,
                                            kChangeMonthButtonWidth,
                                            kChangeMonthButtonHeight);
   UIButton *nextMonthButton = [[UIButton alloc] initWithFrame:nextMonthButtonFrame];
