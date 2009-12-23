@@ -161,7 +161,7 @@ static const CGSize kTileSize = { 46.f, 44.f };
 {
   for (UIView *cell in self.subviews) {
     for (KalTileView *tile in cell.subviews) {
-      if ([tile.date cc_isToday] && !tile.belongsToAdjacentMonth) {
+      if ([tile isToday] && !tile.belongsToAdjacentMonth) {
         self.selectedTile = tile;
         return;
       }
@@ -225,7 +225,6 @@ static const CGSize kTileSize = { 46.f, 44.f };
   for (NSUInteger i = 0; i < 7; i++) {
     KalTileView *tile = [[KalTileView alloc] initWithFrame:kTileFrame];
     tile.left = i * kTileSize.width; // horizontal layout
-    tile.date = [NSDate distantPast];
     [cell addSubview:tile];
     [tile release];
   }

@@ -5,7 +5,15 @@
 
 #import "NSDateAdditions.h"
 
+// cache day number for each NSDate to reduce the number of calls to [NSCalendar components:fromDate:]
+static NSMutableDictionary *dayTable;
+
 @implementation NSDate (KalAdditions)
+
++ (void)initialize
+{
+  dayTable = [[NSMutableDictionary alloc] init];
+}
 
 + (NSDate *)cc_today { return [NSDate date]; }
 
@@ -15,19 +23,19 @@
   c.day = day;
   c.month = month;
   c.year = year;
-  return [[NSCalendar currentCalendar] dateFromComponents:c];
+  NSDate *d = [[NSCalendar currentCalendar] dateFromComponents:c];
+  [dayTable setObject:[NSNumber numberWithUnsignedInteger:day] forKey:d];
+  return d;
 }
 
 - (BOOL)cc_isToday
 {
-  // Performance optimization because [NSCalendar componentsFromDate:] is expensive.
+  // Performance optimization because [NSCalendar components:fromDate:] is expensive.
   // (I verified this with Shark)
   if (ABS([self timeIntervalSinceDate:[NSDate date]]) > 86400)
     return NO;
-  
-  NSDateComponents *c1 = [self cc_componentsForMonthDayAndYear];
-  NSDateComponents *c2 = [[NSDate cc_today] cc_componentsForMonthDayAndYear];
-  return c1.day == c2.day && c1.month == c2.month && c1.year == c2.year && c1.era == c2.era;
+ 
+  return [self cc_day] == [[NSDate cc_today] cc_day];
 }
 
 - (NSDate *)cc_dateByMovingToFirstDayOfTheMonth
@@ -59,7 +67,11 @@
 
 - (NSUInteger)cc_day
 {
-  return (NSUInteger)[[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
+  NSNumber *day = [dayTable objectForKey:self];
+  if (day)
+    return [day unsignedIntegerValue];
+  else
+    return (NSUInteger)[[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
 }
 
 - (NSUInteger)cc_weekday

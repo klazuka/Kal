@@ -46,4 +46,6 @@ typedef UIControlState KalTileState;
 
 - (void)prepareForReuse;                            // KalGridView manages a pool of reusable KalTileViews. This method behaves like the prepareForReuse method on the UITableViewCell class.
 
+- (BOOL)isToday;
+
 @end

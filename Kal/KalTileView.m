@@ -6,6 +6,13 @@
 #import "KalTileView.h"
 #import "KalPrivate.h"
 
+static NSString *dayNumbers[] = {
+  @"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9",
+  @"10", @"11", @"12", @"13", @"14", @"15", @"16", @"17", @"18", @"19",
+  @"20", @"21", @"22", @"23", @"24", @"25", @"26", @"27", @"28", @"29",
+  @"30", @"31"
+};
+  
 @interface KalTileView ()
 - (void)resetState;
 - (void)setMode:(NSUInteger)mode;
@@ -192,13 +199,17 @@
     [date release];
     date = [aDate retain];
     
-    [dayLabel setText:[NSString stringWithFormat:@"%u", [date cc_day]]];
+    [dayLabel setText:dayNumbers[[date cc_day]]];
     
     if ([date cc_isToday]) {
       [self setMode:kKalTileTypeToday];
-      [self setNeedsDisplay];
     }
   }
+}
+
+- (BOOL)isToday
+{
+  return (state & KalTileStateMode) == kKalTileTypeToday;
 }
 
 - (BOOL)belongsToAdjacentMonth
@@ -208,6 +219,9 @@
 
 - (void)setBelongsToAdjacentMonth:(BOOL)belongsToAdjacentMonth
 {
+  if ([self belongsToAdjacentMonth] == belongsToAdjacentMonth)
+    return;
+  
   if (belongsToAdjacentMonth) {
     [self setMode:kKalTileTypeAdjacent];
   } else {
@@ -216,8 +230,6 @@
     else
       [self setMode:kKalTileTypeRegular];
   }
-  
-  [self setNeedsDisplay];
 }
 
 - (BOOL)marked
