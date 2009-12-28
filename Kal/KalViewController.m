@@ -8,6 +8,25 @@
 #import "KalDataSource.h"
 #import "KalPrivate.h"
 
+#define PROFILER 1
+#if PROFILER
+#include <mach/mach_time.h>
+#include <time.h>
+#include <math.h>
+void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
+{
+    uint64_t difference = end - start;
+    static mach_timebase_info_data_t info = {0,0};
+
+    if (info.denom == 0)
+        mach_timebase_info(&info);
+    
+    uint64_t elapsednano = difference * (info.numer / info.denom);
+    tp->tv_sec = elapsednano * 1e-9;
+    tp->tv_nsec = elapsednano - (tp->tv_sec * 1e9);
+}
+#endif
+
 @interface KalViewController ()
 - (KalView*)calendarView;
 @end
@@ -61,9 +80,32 @@
 - (void)showAndSelectToday
 {
   [logic moveToTodaysMonth];
+  
+#if PROFILER
+  uint64_t start, end;
+  struct timespec tp;
+  start = mach_absolute_time();
+#endif
+  
+  [[self calendarView] jumpToSelectedMonth];
+  
+#if PROFILER
+  end = mach_absolute_time();
+  mach_absolute_difference(end, start, &tp);
+  printf("[[self calendarView] jumpToSelectedMonth]: %.1f ms\n", tp.tv_nsec / 1e6);
+#endif
+  
+  [[self calendarView] selectTodayIfVisible];
+}
+
+/*
+- (void)showAndSelectToday
+{
+  [logic moveToTodaysMonth];
   [[self calendarView] jumpToSelectedMonth];
   [[self calendarView] selectTodayIfVisible];
 }
+ */
 
 // -----------------------------------------------------------------------------------
 #pragma mark UIViewController
