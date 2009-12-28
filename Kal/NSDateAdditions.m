@@ -5,15 +5,7 @@
 
 #import "NSDateAdditions.h"
 
-// cache day number for each NSDate to reduce the number of calls to [NSCalendar components:fromDate:]
-static NSMutableDictionary *dayTable;
-
 @implementation NSDate (KalAdditions)
-
-+ (void)initialize
-{
-  dayTable = [[NSMutableDictionary alloc] init];
-}
 
 + (NSDate *)cc_today { return [NSDate date]; }
 
@@ -23,9 +15,7 @@ static NSMutableDictionary *dayTable;
   c.day = day;
   c.month = month;
   c.year = year;
-  NSDate *d = [[NSCalendar currentCalendar] dateFromComponents:c];
-  [dayTable setObject:[NSNumber numberWithUnsignedInteger:day] forKey:d];
-  return d;
+  return [[NSCalendar currentCalendar] dateFromComponents:c];
 }
 
 - (BOOL)cc_isToday
@@ -67,11 +57,7 @@ static NSMutableDictionary *dayTable;
 
 - (NSUInteger)cc_day
 {
-  NSNumber *day = [dayTable objectForKey:self];
-  if (day)
-    return [day unsignedIntegerValue];
-  else
-    return (NSUInteger)[[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
+  return (NSUInteger)[[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
 }
 
 - (NSUInteger)cc_weekday
