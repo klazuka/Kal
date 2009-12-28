@@ -58,6 +58,18 @@ static const CGFloat kMonthLabelHeight = 17.f;
 - (void)slideDown { [gridView slideDown]; }
 - (void)slideUp { [gridView slideUp]; }
 
+- (void)showPreviousMonth
+{
+  if (!gridView.transitioning)
+    [delegate showPreviousMonth];
+}
+
+- (void)showFollowingMonth
+{
+  if (!gridView.transitioning)
+    [delegate showFollowingMonth];
+}
+
 - (void)addSubviewsToHeaderView:(UIView *)headerView
 {
   const CGFloat kChangeMonthButtonWidth = 46.0f;
@@ -82,7 +94,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   [previousMonthButton setImage:[UIImage imageNamed:@"kal_left-arrow.png"] forState:UIControlStateNormal];
   previousMonthButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
   previousMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-  [previousMonthButton addTarget:delegate action:@selector(showPreviousMonth) forControlEvents:UIControlEventTouchUpInside];
+  [previousMonthButton addTarget:self action:@selector(showPreviousMonth) forControlEvents:UIControlEventTouchUpInside];
   [headerView addSubview:previousMonthButton];
   [previousMonthButton release];
   
@@ -110,7 +122,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   [nextMonthButton setImage:[UIImage imageNamed:@"kal_right-arrow.png"] forState:UIControlStateNormal];  
   nextMonthButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;
   nextMonthButton.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-  [nextMonthButton addTarget:delegate action:@selector(showFollowingMonth) forControlEvents:UIControlEventTouchUpInside];
+  [nextMonthButton addTarget:self action:@selector(showFollowingMonth) forControlEvents:UIControlEventTouchUpInside];
   [headerView addSubview:nextMonthButton];
   [nextMonthButton release];
   
@@ -154,10 +166,8 @@ static const CGFloat kMonthLabelHeight = 17.f;
   UIImageView *shadowView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"kal_grid_shadow.png"]] autorelease];
   shadowView.width = contentView.width;
   [tableView addSubview:shadowView];
-
-  // Adjust the size of the grid to fit the # of weeks
-  // which will also indirectly update the size and position of
-  // tableView via KVO.
+  
+  // Trigger the initial KVO update to finish the contentView layout
   [gridView sizeToFit];
 }
 
@@ -165,14 +175,14 @@ static const CGFloat kMonthLabelHeight = 17.f;
 {
   if (object == gridView && [keyPath isEqualToString:@"frame"]) {
     
-    /* Animate dayDetailsView filling the remaining space after the
+    /* Animate tableView filling the remaining space after the
      * gridView expanded or contracted to fit the # of weeks
      * for the month that is being displayed.
      *
      * This observer method will be called when gridView's height
      * changes, which we know to occur inside a Core Animation
      * transaction. Hence, when I set the "frame" property on
-     * dayDetailsView here, I do not need to wrap it in a
+     * tableView here, I do not need to wrap it in a
      * [UIView beginAnimations:context:].
      */
     CGFloat gridBottom = gridView.top + gridView.height;
