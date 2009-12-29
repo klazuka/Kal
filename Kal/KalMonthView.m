@@ -95,6 +95,32 @@ extern const CGSize kTileSize;
   return tile;
 }
 
+- (KalTileView *)firstTileOfMonth
+{
+  KalTileView *tile = nil;
+  for (KalTileView *t in self.subviews) {
+    if (!t.belongsToAdjacentMonth) {
+      tile = t;
+      break;
+    }
+  }
+  
+  return tile;
+}
+
+- (KalTileView *)tileForDate:(NSDate *)date
+{
+  KalTileView *tile = nil;
+  for (KalTileView *t in self.subviews) {
+    if ([t.date isEqualToDate:date]) {
+      tile = t;
+      break;
+    }
+  }
+  
+  return tile;
+}
+
 - (void)sizeToFit
 {
   self.height = kTileSize.height * numWeeks;

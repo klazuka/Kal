@@ -136,8 +136,10 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
       } else {
         [delegate showPreviousMonth];
       }
+      self.selectedTile = [frontMonthView tileForDate:tile.date];
+    } else {
+      self.selectedTile = tile;
     }
-    self.selectedTile = tile;
   }
   self.highlightedTile = nil;
 }
@@ -152,7 +154,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 #pragma mark -
 #pragma mark Slide Animation
 
-- (void)slide:(int)direction keepOneRow:(BOOL)keepOneRow
+- (void)swapMonthsAndSlide:(int)direction keepOneRow:(BOOL)keepOneRow
 {
   backMonthView.hidden = NO;
   
@@ -201,7 +203,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   BOOL keepOneRow = (direction == SLIDE_UP && [[logic daysInFinalWeekOfPreviousMonth] count] > 0)
                     || (direction == SLIDE_DOWN  && [[logic daysInFirstWeekOfFollowingMonth] count] > 0);
   
-  [self slide:direction keepOneRow:keepOneRow];
+  [self swapMonthsAndSlide:direction keepOneRow:keepOneRow];
+  
+  self.selectedTile = [frontMonthView firstTileOfMonth];
 }
 
 - (void)slideUp { [self slide:SLIDE_UP]; }

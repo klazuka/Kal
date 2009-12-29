@@ -18,5 +18,7 @@
 
 - (void)showDates:(NSArray *)mainDates beginShared:(NSArray *)firstWeekShared endShared:(NSArray *)finalWeekShared;
 - (KalTileView *)todaysTileIfVisible;
+- (KalTileView *)firstTileOfMonth;
+- (KalTileView *)tileForDate:(NSDate *)date;
 
 @end
