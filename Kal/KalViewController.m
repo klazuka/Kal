@@ -8,7 +8,7 @@
 #import "KalDataSource.h"
 #import "KalPrivate.h"
 
-#define PROFILER 1
+#define PROFILER 0
 #if PROFILER
 #include <mach/mach_time.h>
 #include <time.h>
