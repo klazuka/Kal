@@ -15,12 +15,14 @@ typedef NSUInteger KalTileType;
   NSDate *date;
   BOOL isHighlighted;
   BOOL isSelected;
+  BOOL isMarked;
   KalTileType type;
 }
 
 @property (nonatomic, retain) NSDate *date;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic, getter=isSelected) BOOL selected;
+@property (nonatomic, getter=isMarked) BOOL marked;
 @property (nonatomic) KalTileType type;
 
 - (void)resetState;

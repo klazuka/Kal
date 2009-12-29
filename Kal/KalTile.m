@@ -8,7 +8,7 @@
 
 @implementation KalTile
 
-@synthesize date, selected=isSelected, highlighted=isHighlighted, type;
+@synthesize date, selected=isSelected, highlighted=isHighlighted, marked=isMarked, type;
 
 - (void)resetState
 {
@@ -17,6 +17,7 @@
   type = KalTileTypeRegular;
   isHighlighted = NO;
   isSelected = NO;
+  isMarked = NO;
 }
 
 - (BOOL)isToday { return type == KalTileTypeToday; }

@@ -45,8 +45,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     delegate = theDelegate;
     
     CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
-    frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
-    backMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
+    frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:delegate];
+    backMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:delegate];
 //    frontMonthView.backgroundColor = [UIColor colorWithRed:0.f green:0.8f blue:0.8f alpha:0.2f];
 //    backMonthView.backgroundColor = [UIColor colorWithRed:0.5f green:0.8f blue:0.8f alpha:0.2f];
     backMonthView.hidden = YES;
