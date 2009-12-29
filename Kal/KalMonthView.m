@@ -99,14 +99,7 @@ extern const CGSize kTileSize;
       } else {
         [[UIColor blackColor] setFill];
       }
-      
-      NSUInteger n = [tile.date cc_day];
-      NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];
-      const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
-      CGSize textSize = [dayText sizeWithFont:font];
-      
-
-      
+            
       if (tile.marked) {
         CGContextSaveGState(ctx);
         UIColor *c = nil;
@@ -121,6 +114,10 @@ extern const CGSize kTileSize;
         CGContextRestoreGState(ctx);
       }
       
+      NSUInteger n = [tile.date cc_day];
+      NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];
+      const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
+      CGSize textSize = [dayText sizeWithFont:font];
       CGFloat textX, textY;
       textX = roundf(0.5f * (kTileSize.width - textSize.width));
       textY = 6.f + roundf(0.5f * (kTileSize.height - textSize.height));
