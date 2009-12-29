@@ -63,7 +63,7 @@ extern const CGSize kTileSize;
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile.png"] CGImage]);
   
-  [[UIColor blackColor] setFill];
+
   CGFloat fontSize = 24.f;
   UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
   CGContextSelectFont(ctx, [font.fontName cStringUsingEncoding:NSUTF8StringEncoding], fontSize, kCGEncodingMacRoman);
@@ -71,9 +71,24 @@ extern const CGSize kTileSize;
     for (int j=0; j<7; j++) {
       KalTile *tile = tiles[j+i*7];
       
-      if ([tile isToday]) {
+      if ([tile isToday] && tile.selected) {
+        [[[UIImage imageNamed:@"kal_tiletoday_selected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(j*kTileSize.width - 1, i*kTileSize.height, kTileSize.width + 1, kTileSize.height + 1)];
+        [[UIColor whiteColor] setFill];
+      } else if ([tile isToday] && !tile.selected) {
         [[[UIImage imageNamed:@"kal_tiletoday.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(j*kTileSize.width - 1, i*kTileSize.height, kTileSize.width + 1, kTileSize.height + 1)];
-      }      
+        [[UIColor whiteColor] setFill];
+      } else if (tile.selected) {
+        [[[UIImage imageNamed:@"kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(j*kTileSize.width - 1, i*kTileSize.height, kTileSize.width + 1, kTileSize.height + 1)];
+        [[UIColor whiteColor] setFill];
+      } else if (tile.highlighted) {
+        [[UIColor colorWithWhite:0.25f alpha:0.3f] setFill];
+        CGContextFillRect(ctx, CGRectMake(j*kTileSize.width, i*kTileSize.height, kTileSize.width, kTileSize.height));
+        [[UIColor darkGrayColor] setFill];
+      } else if (tile.belongsToAdjacentMonth) {
+        [[UIColor lightGrayColor] setFill];
+      } else {
+        [[UIColor blackColor] setFill];
+      }
       
       NSUInteger n = [tile.date cc_day];
       NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];
@@ -90,6 +105,26 @@ extern const CGSize kTileSize;
       CGContextRestoreGState(ctx);
     }
   }
+}
+
+- (KalTile *)hitTileTest:(CGPoint)location
+{
+  int row = (int)floorf(location.y / kTileSize.height);
+  int col = (int)floorf(location.x / kTileSize.width);
+  if (col < 0 || col >= 7 || row < 0 || row >= numWeeks)
+    return nil;
+  
+  return tiles[col + row * 7];
+}
+
+- (KalTile *)todaysTileIfVisible
+{
+  KalTile *tile = nil;
+  for (int i=0; i<MAX_NUM_TILES; i++)
+    if ([tiles[i] isToday])
+      tile = tiles[i];
+  
+  return tile;
 }
 
 - (void)sizeToFit

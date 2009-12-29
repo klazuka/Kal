@@ -69,12 +69,16 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   self.height = frontMonthView.height;
 }
 
+#pragma mark -
+#pragma mark Touches
+
 - (void)setHighlightedTile:(KalTile *)tile
 {
   if (highlightedTile != tile) {
     highlightedTile.highlighted = NO;
     highlightedTile = [tile retain];
     tile.highlighted = YES;
+    [frontMonthView setNeedsDisplay];   // TODO only draw the tile (setNeedsDisplayInRect:)
   }
 }
 
@@ -84,13 +88,56 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     selectedTile.selected = NO;
     selectedTile = [tile retain];
     tile.selected = YES;
+    [frontMonthView setNeedsDisplay];   // TODO only draw the tile (setNeedsDisplayInRect:)
     [delegate didSelectDate:tile.date];
   }
 }
 
+- (void)receivedTouches:(NSSet *)touches withEvent:event
+{
+  UITouch *touch = [touches anyObject];
+  CGPoint location = [touch locationInView:self];
+  KalTile *hitTile = [frontMonthView hitTileTest:location];
+  
+  if (!hitTile)
+    return;
+  
+  if (hitTile.belongsToAdjacentMonth) {
+    self.highlightedTile = hitTile;
+  } else {
+    self.highlightedTile = nil;
+    self.selectedTile = hitTile;
+  }
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event { [self receivedTouches:touches withEvent:event]; }
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event { [self receivedTouches:touches withEvent:event]; }
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  UITouch *touch = [touches anyObject];
+  CGPoint location = [touch locationInView:self];
+  KalTile *hitTile = [frontMonthView hitTileTest:location];
+  
+  if (hitTile) {
+    if (hitTile.belongsToAdjacentMonth) {
+      if ([hitTile.date timeIntervalSinceDate:logic.baseDate] > 0) {
+        [delegate showFollowingMonth];
+      } else {
+        [delegate showPreviousMonth];
+      }
+    }
+    self.selectedTile = hitTile;
+  }
+  
+  self.highlightedTile = nil;
+}
+
 - (void)selectTodayIfVisible
 {
-  // TODO implement me
+  KalTile *todayTile = [frontMonthView todaysTileIfVisible];
+  if (todayTile)
+    self.selectedTile = todayTile;
 }
 
 #pragma mark -

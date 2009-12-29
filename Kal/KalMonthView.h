@@ -18,5 +18,7 @@
 @property (nonatomic) NSUInteger numWeeks;
 
 - (void)showDates:(NSArray *)mainDates beginShared:(NSArray *)firstWeekShared endShared:(NSArray *)finalWeekShared;
+- (KalTile *)hitTileTest:(CGPoint)location;
+- (KalTile *)todaysTileIfVisible;
 
 @end

@@ -36,6 +36,7 @@ NSDate *DateForDayMonthYear(NSUInteger day, NSUInteger month, NSUInteger year)
   [holidays setObject:@"Veteran's Day" forKey:DateForDayMonthYear(11, 11, 2009)];
   [holidays setObject:@"Thanksgiving Day" forKey:DateForDayMonthYear(26, 11, 2009)];
   [holidays setObject:@"Christmas Day" forKey:DateForDayMonthYear(25, 12, 2009)];
+    [holidays setObject:@"Today TEST" forKey:DateForDayMonthYear(29, 12, 2009)];
   [holidays setObject:@"New Years Day" forKey:DateForDayMonthYear(1, 1, 2010)];
   [holidays setObject:@"Martin Luther King Day" forKey:DateForDayMonthYear(18, 1, 2010)];
   [holidays setObject:@"Washington's Birthday" forKey:DateForDayMonthYear(15, 2, 2010)];
