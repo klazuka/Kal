@@ -60,18 +60,13 @@ extern const CGSize kTileSize;
 
 - (void)drawRect:(CGRect)rect
 {
-  // TODO
-  //  - draw selected tile
-  //  - draw hover adjacent tile 
-  //  - draw marker
-  
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile.png"] CGImage]);
   
   [[UIColor blackColor] setFill];
-  CGFloat fontSize = 21.f;
-  CGContextSelectFont(ctx, [[[UIFont boldSystemFontOfSize:fontSize] fontName] cStringUsingEncoding:NSUTF8StringEncoding], fontSize, kCGEncodingMacRoman);
-  char day[3];
+  CGFloat fontSize = 24.f;
+  UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
+  CGContextSelectFont(ctx, [font.fontName cStringUsingEncoding:NSUTF8StringEncoding], fontSize, kCGEncodingMacRoman);
   for (int i=0; i<numWeeks; i++) {
     for (int j=0; j<7; j++) {
       KalTile *tile = tiles[j+i*7];
@@ -81,11 +76,17 @@ extern const CGSize kTileSize;
       }      
       
       NSUInteger n = [tile.date cc_day];
-      sprintf(day, "%lu", (unsigned long)n);
+      NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];
+      const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
+      CGSize textSize = [dayText sizeWithFont:font];
+      
       CGContextSaveGState(ctx);
       CGContextTranslateCTM(ctx, j*kTileSize.width, (i+1)*kTileSize.height);
       CGContextScaleCTM(ctx, 1, -1);
-      CGContextShowTextAtPoint(ctx, 0, 0, day, n >= 10 ? 2 : 1);
+      CGFloat textX, textY;
+      textX = roundf(0.5f * (kTileSize.width - textSize.width));
+      textY = 6.f + roundf(0.5f * (kTileSize.height - textSize.height));
+      CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
       CGContextRestoreGState(ctx);
     }
   }
