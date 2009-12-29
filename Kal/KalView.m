@@ -210,6 +210,8 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (void)selectTodayIfVisible { [gridView selectTodayIfVisible]; }
 
+- (BOOL)isSliding { return gridView.transitioning; }
+
 - (void)dealloc
 {
   [logic removeObserver:self forKeyPath:@"selectedMonthNameAndYear"];

@@ -8,7 +8,7 @@ enum {
   KalTileTypeAdjacent  = 1 << 0,
   KalTileTypeToday     = 1 << 1,
 };
-typedef NSUInteger KalTileType;
+typedef char KalTileType;
 
 @interface KalTileView : UIView
 {
@@ -20,6 +20,7 @@ typedef NSUInteger KalTileType;
   BOOL isSelected;
   BOOL isMarked;
   KalTileType type;
+  CGPoint origin;
 }
 
 @property (nonatomic, retain) NSDate *date;

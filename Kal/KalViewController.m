@@ -79,6 +79,9 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 - (void)showAndSelectToday
 {
+  if ([[self calendarView] isSliding])
+    return;
+  
   [logic moveToTodaysMonth];
   
 #if PROFILER
@@ -101,6 +104,9 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 /*
 - (void)showAndSelectToday
 {
+  if ([[self calendarView] isSliding])
+    return;
+  
   [logic moveToTodaysMonth];
   [[self calendarView] jumpToSelectedMonth];
   [[self calendarView] selectTodayIfVisible];

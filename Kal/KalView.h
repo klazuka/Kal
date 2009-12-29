@@ -55,6 +55,7 @@
 - (void)slideUp;
 - (void)jumpToSelectedMonth;    // change months without animation (i.e. when directly switching to "Today")
 
+- (BOOL)isSliding;
 - (void)selectTodayIfVisible;
 
 @end

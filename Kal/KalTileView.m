@@ -8,13 +8,6 @@
 
 extern const CGSize kTileSize;
 
-@interface KalTileView ()
-- (void)reloadStyle;
-- (void)addBackground;
-- (void)addDayLabel;
-- (void)addMarkerView;
-@end
-
 @implementation KalTileView
 
 @synthesize date, selected=isSelected, highlighted=isHighlighted, marked=isMarked, type;
@@ -25,106 +18,82 @@ extern const CGSize kTileSize;
     self.opaque = NO;
     self.backgroundColor = [UIColor clearColor];
     self.clipsToBounds = NO;
+    origin = frame.origin;
     [self resetState];
-    [self addBackground];
-    [self addDayLabel];
-    [self addMarkerView];
   }
   return self;
 }
 
 - (void)drawRect:(CGRect)rect
 {
-  [self reloadStyle];
-  [super drawRect:rect];
-}
-
-- (void)addMarkerView
-{
-  CGRect frame = self.frame;
-  frame.origin = CGPointMake(21.f, 35.f);
-  frame.size = CGSizeMake(4.f, 5.f);
-  
-  markerView = [[UIImageView alloc] initWithFrame:frame];
-  markerView.contentMode = UIViewContentModeCenter;
-  [self addSubview:markerView];
-}
-
-- (void)addBackground
-{
-  CGRect frame = CGRectMake(-1.f, 0.f, kTileSize.width + 1, kTileSize.height + 1);
-  backgroundView = [[UIImageView alloc] initWithFrame:frame];
-  [self addSubview:backgroundView];
-}
-
-- (void)addDayLabel
-{
-  dayLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.width, self.height)];
-  dayLabel.textAlignment = UITextAlignmentCenter;
-  dayLabel.font = [UIFont boldSystemFontOfSize:24.f];
-  dayLabel.backgroundColor = [UIColor clearColor];
-  [self addSubview:dayLabel];
-}
-
-- (void)reloadStyle
-{
+  CGContextRef ctx = UIGraphicsGetCurrentContext();
+  CGFloat fontSize = 24.f;
+  UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
+  UIColor *shadowColor = nil;
+  UIColor *textColor = nil;
   UIImage *markerImage = nil;
+  CGContextSelectFont(ctx, [font.fontName cStringUsingEncoding:NSUTF8StringEncoding], fontSize, kCGEncodingMacRoman);
+      
+  CGContextTranslateCTM(ctx, 0, kTileSize.height);
+  CGContextScaleCTM(ctx, 1, -1);
   
-  self.backgroundColor = [UIColor clearColor];
-  
-  switch (type) {
-      
-    case KalTileTypeRegular:
-      if (self.selected) {
-        dayLabel.textColor = [UIColor whiteColor];
-        dayLabel.shadowColor = [UIColor blackColor];
-        backgroundView.image = [[UIImage imageNamed:@"kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:1];
-        markerImage = [UIImage imageNamed:@"kal_marker_selected.png"];
-      } else {
-        dayLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_text_fill.png"]];
-        dayLabel.shadowColor = [UIColor whiteColor];
-        backgroundView.image = nil;
-        markerImage = [UIImage imageNamed:@"kal_marker.png"];
-      }
-      break;
-      
-    case KalTileTypeAdjacent:
-      dayLabel.textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_disabled_text_fill.png"]];
-      dayLabel.shadowColor = nil;
-      backgroundView.image = nil;
-      markerImage = [UIImage imageNamed:@"kal_marker_disabled.png"];
-      if (self.highlighted) {
-        self.backgroundColor = [UIColor lightGrayColor];
-      }
-      break;
-      
-    case KalTileTypeToday:
-      markerImage = [UIImage imageNamed:@"kal_markertoday.png"];
-      dayLabel.textColor = [UIColor whiteColor];
-      dayLabel.shadowColor = [UIColor darkGrayColor];
-      UIImage *image = self.selected 
-                        ? [UIImage imageNamed:@"kal_tiletoday_selected.png"]
-                        : [UIImage imageNamed:@"kal_tiletoday.png"];
-      backgroundView.image = [image stretchableImageWithLeftCapWidth:6 topCapHeight:0];
-      break;
-      
-    default:
-      [NSException raise:@"Cannot find calendar tile style" format:@"unknown error"];
-      break;
+  if ([self isToday] && self.selected) {
+    [[[UIImage imageNamed:@"kal_tiletoday_selected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    textColor = [UIColor whiteColor];
+    shadowColor = [UIColor blackColor];
+    markerImage = [UIImage imageNamed:@"kal_markertoday.png"];
+  } else if ([self isToday] && !self.selected) {
+    [[[UIImage imageNamed:@"kal_tiletoday.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    textColor = [UIColor whiteColor];
+    shadowColor = [UIColor blackColor];
+    markerImage = [UIImage imageNamed:@"kal_markertoday.png"];
+  } else if (self.selected) {
+    [[[UIImage imageNamed:@"kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    textColor = [UIColor whiteColor];
+    shadowColor = [UIColor blackColor];
+    markerImage = [UIImage imageNamed:@"kal_marker_selected.png"];
+  } else if (self.belongsToAdjacentMonth) {
+    textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_disabled_text_fill.png"]];
+    shadowColor = nil;
+    markerImage = [UIImage imageNamed:@"kal_marker_disabled.png"];
+  } else {
+    textColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"kal_tile_text_fill.png"]];
+    shadowColor = [UIColor whiteColor];
+    markerImage = [UIImage imageNamed:@"kal_marker.png"];
   }
   
-  dayLabel.shadowOffset = self.selected ? CGSizeMake(0.f, -1.f) : CGSizeMake(0.f, 1.f);
+  if (self.marked)
+    [markerImage drawInRect:CGRectMake(21.f, 5.f, 4.f, 5.f)];
   
-  if (isMarked) {
-    markerView.image = markerImage;
-    markerView.hidden = NO;
-  } else {
-    markerView.hidden = YES;
+  NSUInteger n = [self.date cc_day];
+  NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];
+  const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
+  CGSize textSize = [dayText sizeWithFont:font];
+  CGFloat textX, textY;
+  textX = roundf(0.5f * (kTileSize.width - textSize.width));
+  textY = 6.f + roundf(0.5f * (kTileSize.height - textSize.height));
+  if (shadowColor) {
+    [shadowColor setFill];
+    CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
+    textY += 1.f;
+  }
+  [textColor setFill];
+  CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
+  
+  if (self.highlighted) {
+    [[UIColor colorWithWhite:0.25f alpha:0.3f] setFill];
+    CGContextFillRect(ctx, CGRectMake(0.f, 0.f, kTileSize.width, kTileSize.height));
   }
 }
 
 - (void)resetState
 {
+  // realign to the grid
+  CGRect frame = self.frame;
+  frame.origin = origin;
+  frame.size = kTileSize;
+  self.frame = frame;
+  
   [date release];
   date = nil;
   type = KalTileTypeRegular;
@@ -141,7 +110,6 @@ extern const CGSize kTileSize;
   [date release];
   date = [aDate retain];
 
-  [dayLabel setText:[NSString stringWithFormat:@"%lu", (unsigned long)[date cc_day]]];
   [self setNeedsDisplay];
 }
 
@@ -149,6 +117,21 @@ extern const CGSize kTileSize;
 {
   if (isSelected == selected)
     return;
+
+  // workaround since I cannot draw outside of the frame in drawRect:
+  if (![self isToday]) {
+    CGRect rect = self.frame;
+    if (selected) {
+      rect.origin.x--;
+      rect.size.width++;
+      rect.size.height++;
+    } else {
+      rect.origin.x++;
+      rect.size.width--;
+      rect.size.height--;
+    }
+    self.frame = rect;
+  }
   
   isSelected = selected;
   [self setNeedsDisplay];
@@ -160,14 +143,26 @@ extern const CGSize kTileSize;
     return;
   
   isHighlighted = highlighted;
-  [self reloadStyle];   // TODO this should be setNeedsDisplay, but for some reason the tile highlight
-                        // will not be updated in the UI appropriately UNLESS you directly call reloadStyle.
+  [self setNeedsDisplay];
 }
 
 - (void)setType:(KalTileType)tileType
 {
   if (type == tileType)
     return;
+  
+  // workaround since I cannot draw outside of the frame in drawRect:
+  CGRect rect = self.frame;
+  if (tileType == KalTileTypeToday) {
+    rect.origin.x--;
+    rect.size.width++;
+    rect.size.height++;
+  } else {
+    rect.origin.x++;
+    rect.size.width--;
+    rect.size.height--;
+  }
+  self.frame = rect;
   
   type = tileType;
   [self setNeedsDisplay];
