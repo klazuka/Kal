@@ -5,7 +5,7 @@
 
 #import <CoreGraphics/CoreGraphics.h>
 #import "KalMonthView.h"
-#import "KalTile.h"
+#import "KalTileView.h"
 #import "KalView.h"
 #import "KalPrivate.h"
 
@@ -20,8 +20,13 @@ extern const CGSize kTileSize;
   if ((self = [super initWithFrame:frame])) {
     delegate = theDelegate;
     self.opaque = NO;
-    for (int i=0; i<MAX_NUM_TILES; i++)
-      tiles[i] = [[KalTile alloc] init];
+    self.clipsToBounds = YES;
+    for (int i=0; i<6; i++) {
+      for (int j=0; j<7; j++) {
+        CGRect r = CGRectMake(j*kTileSize.width, i*kTileSize.height, kTileSize.width, kTileSize.height);
+        [self addSubview:[[[KalTileView alloc] initWithFrame:r] autorelease]];
+      }
+    }
   }
   return self;
 }
@@ -37,29 +42,32 @@ extern const CGSize kTileSize;
   int i = 0;
   
   for (NSDate *d in firstWeekShared) {
-    KalTile *tile = tiles[i];
+    KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = KalTileTypeAdjacent;
     tile.date = d;
     tile.marked = [delegate shouldMarkTileForDate:d];
+    [tile setNeedsDisplay];
     i++;
   }
   
   for (NSDate *d in mainDates) {
-    KalTile *tile = tiles[i];
+    KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = [d cc_isToday] ? KalTileTypeToday : KalTileTypeRegular;
     tile.date = d;
     tile.marked = [delegate shouldMarkTileForDate:d];
+    [tile setNeedsDisplay];
     i++;
   }
   
   for (NSDate *d in finalWeekShared) {
-    KalTile *tile = tiles[i];
+    KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = KalTileTypeAdjacent;
     tile.date = d;
     tile.marked = [delegate shouldMarkTileForDate:d];
+    [tile setNeedsDisplay];
     i++;
   }
   
@@ -72,83 +80,17 @@ extern const CGSize kTileSize;
 {
   CGContextRef ctx = UIGraphicsGetCurrentContext();
   CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile.png"] CGImage]);
-  
+}
 
-  CGFloat fontSize = 24.f;
-  UIFont *font = [UIFont boldSystemFontOfSize:fontSize];
-  CGContextSelectFont(ctx, [font.fontName cStringUsingEncoding:NSUTF8StringEncoding], fontSize, kCGEncodingMacRoman);
-  for (int i=0; i<numWeeks; i++) {
-    for (int j=0; j<7; j++) {
-      KalTile *tile = tiles[j+i*7];
-      
-      CGContextSaveGState(ctx);
-      CGContextTranslateCTM(ctx, j*kTileSize.width, (i+1)*kTileSize.height);
-      CGContextScaleCTM(ctx, 1, -1);
-      
-      if ([tile isToday] && tile.selected) {
-        [[[UIImage imageNamed:@"kal_tiletoday_selected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(-1, -1, kTileSize.width + 1, kTileSize.height + 1)];
-        [[UIColor whiteColor] setFill];
-      } else if ([tile isToday] && !tile.selected) {
-        [[[UIImage imageNamed:@"kal_tiletoday.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(-1, -1, kTileSize.width + 1, kTileSize.height + 1)];
-        [[UIColor whiteColor] setFill];
-      } else if (tile.selected) {
-        [[[UIImage imageNamed:@"kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(-1, -1, kTileSize.width + 1, kTileSize.height + 1)];
-        [[UIColor whiteColor] setFill];
-      } else if (tile.belongsToAdjacentMonth) {
-        [[UIColor lightGrayColor] setFill];
-      } else {
-        [[UIColor blackColor] setFill];
-      }
-            
-      if (tile.marked) {
-        CGContextSaveGState(ctx);
-        UIColor *c = nil;
-        if (tile.selected || [tile isToday])
-          c = [UIColor whiteColor];
-        else if (tile.belongsToAdjacentMonth)
-          c = [UIColor lightGrayColor];
-        else
-          c = [UIColor blackColor];
-        [c setFill];
-        CGContextFillEllipseInRect(ctx, CGRectMake(21.f, 5.f, 4.f, 5.f));
-        CGContextRestoreGState(ctx);
-      }
-      
-      NSUInteger n = [tile.date cc_day];
-      NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];
-      const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
-      CGSize textSize = [dayText sizeWithFont:font];
-      CGFloat textX, textY;
-      textX = roundf(0.5f * (kTileSize.width - textSize.width));
-      textY = 6.f + roundf(0.5f * (kTileSize.height - textSize.height));
-      CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
-      
-      if (tile.highlighted) {
-        [[UIColor colorWithWhite:0.25f alpha:0.3f] setFill];
-        CGContextFillRect(ctx, CGRectMake(0.f, 0.f, kTileSize.width, kTileSize.height));
-      }
-      
-      CGContextRestoreGState(ctx);
+- (KalTileView *)todaysTileIfVisible
+{
+  KalTileView *tile = nil;
+  for (KalTileView *t in self.subviews) {
+    if ([t isToday]) {
+      tile = t;
+      break;
     }
   }
-}
-
-- (KalTile *)hitTileTest:(CGPoint)location
-{
-  int row = (int)floorf(location.y / kTileSize.height);
-  int col = (int)floorf(location.x / kTileSize.width);
-  if (col < 0 || col >= 7 || row < 0 || row >= numWeeks)
-    return nil;
-  
-  return tiles[col + row * 7];
-}
-
-- (KalTile *)todaysTileIfVisible
-{
-  KalTile *tile = nil;
-  for (int i=0; i<MAX_NUM_TILES; i++)
-    if ([tiles[i] isToday])
-      tile = tiles[i];
   
   return tile;
 }
@@ -157,14 +99,5 @@ extern const CGSize kTileSize;
 {
   self.height = kTileSize.height * numWeeks;
 }
-
-- (void)dealloc
-{
-  for (int i=0; i<MAX_NUM_TILES; i++)
-    [tiles[i] release];
-  
-  [super dealloc];
-}
-
 
 @end

@@ -6,7 +6,7 @@
 #import "KalGridView.h"
 #import "KalView.h"
 #import "KalMonthView.h"
-#import "KalTile.h"
+#import "KalTileView.h"
 #import "KalLogic.h"
 #import "KalPrivate.h"
 
@@ -47,8 +47,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
     frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:delegate];
     backMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:delegate];
-//    frontMonthView.backgroundColor = [UIColor colorWithRed:0.f green:0.8f blue:0.8f alpha:0.2f];
-//    backMonthView.backgroundColor = [UIColor colorWithRed:0.5f green:0.8f blue:0.8f alpha:0.2f];
+//    frontMonthView.backgroundColor = [UIColor colorWithRed:1.f green:0.0f blue:0.0f alpha:0.3f];
+//    backMonthView.backgroundColor = [UIColor colorWithRed:0.f green:0.0f blue:1.f alpha:0.3f];
     backMonthView.hidden = YES;
     [self addSubview:backMonthView];
     [self addSubview:frontMonthView];
@@ -72,23 +72,22 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 #pragma mark -
 #pragma mark Touches
 
-- (void)setHighlightedTile:(KalTile *)tile
+- (void)setHighlightedTile:(KalTileView *)tile
 {
   if (highlightedTile != tile) {
     highlightedTile.highlighted = NO;
     highlightedTile = [tile retain];
     tile.highlighted = YES;
-    [frontMonthView setNeedsDisplay];   // TODO only draw the tile (setNeedsDisplayInRect:)
+    [tile setNeedsDisplay];
   }
 }
 
-- (void)setSelectedTile:(KalTile *)tile
+- (void)setSelectedTile:(KalTileView *)tile
 {
   if (selectedTile != tile) {
     selectedTile.selected = NO;
     selectedTile = [tile retain];
     tile.selected = YES;
-    [frontMonthView setNeedsDisplay];   // TODO only draw the tile (setNeedsDisplayInRect:)
     [delegate didSelectDate:tile.date];
   }
 }
@@ -97,45 +96,55 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 {
   UITouch *touch = [touches anyObject];
   CGPoint location = [touch locationInView:self];
-  KalTile *hitTile = [frontMonthView hitTileTest:location];
+  UIView *hitView = [self hitTest:location withEvent:event];
   
-  if (!hitTile)
+  if (!hitView)
     return;
   
-  if (hitTile.belongsToAdjacentMonth) {
-    self.highlightedTile = hitTile;
-  } else {
-    self.highlightedTile = nil;
-    self.selectedTile = hitTile;
+  if ([hitView isKindOfClass:[KalTileView class]]) {
+    KalTileView *tile = (KalTileView*)hitView;
+    if (tile.belongsToAdjacentMonth) {
+      self.highlightedTile = tile;
+    } else {
+      self.highlightedTile = nil;
+      self.selectedTile = tile;
+    }
   }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event { [self receivedTouches:touches withEvent:event]; }
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event { [self receivedTouches:touches withEvent:event]; }
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  [self receivedTouches:touches withEvent:event];
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+  [self receivedTouches:touches withEvent:event];
+}
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
   UITouch *touch = [touches anyObject];
   CGPoint location = [touch locationInView:self];
-  KalTile *hitTile = [frontMonthView hitTileTest:location];
+  UIView *hitView = [self hitTest:location withEvent:event];
   
-  if (hitTile) {
-    if (hitTile.belongsToAdjacentMonth) {
-      if ([hitTile.date timeIntervalSinceDate:logic.baseDate] > 0) {
+  if ([hitView isKindOfClass:[KalTileView class]]) {
+    KalTileView *tile = (KalTileView*)hitView;
+    if (tile.belongsToAdjacentMonth) {
+      if ([tile.date timeIntervalSinceDate:logic.baseDate] > 0) {
         [delegate showFollowingMonth];
       } else {
         [delegate showPreviousMonth];
       }
     }
-    self.selectedTile = hitTile;
+    self.selectedTile = tile;
   }
-  
   self.highlightedTile = nil;
 }
 
 - (void)selectTodayIfVisible
 {
-  KalTile *todayTile = [frontMonthView todaysTileIfVisible];
+  KalTileView *todayTile = [frontMonthView todaysTileIfVisible];
   if (todayTile)
     self.selectedTile = todayTile;
 }
@@ -163,7 +172,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   // trigger the slide animation
   [UIView beginAnimations:kSlideAnimationId context:NULL]; {
     [UIView setAnimationsEnabled:direction!=SLIDE_NONE];
-    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationDuration:0.5];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(animationDidStop:finished:context:)];
     

@@ -3,7 +3,7 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-@class KalTile, KalMonthView, KalLogic;
+@class KalTileView, KalMonthView, KalLogic;
 @protocol KalViewDelegate;
 
 /*
@@ -22,13 +22,13 @@
   KalLogic *logic;
   KalMonthView *frontMonthView;
   KalMonthView *backMonthView;
-  KalTile *selectedTile;
-  KalTile *highlightedTile;
+  KalTileView *selectedTile;
+  KalTileView *highlightedTile;
   BOOL transitioning;
 }
 
-@property (nonatomic, retain) KalTile *selectedTile;
-@property (nonatomic, retain) KalTile *highlightedTile;
+@property (nonatomic, retain) KalTileView *selectedTile;
+@property (nonatomic, retain) KalTileView *highlightedTile;
 @property (nonatomic, readonly) BOOL transitioning;
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)logic delegate:(id<KalViewDelegate>)delegate;

@@ -10,9 +10,12 @@ enum {
 };
 typedef NSUInteger KalTileType;
 
-@interface KalTile : NSObject
+@interface KalTileView : UIView
 {
   NSDate *date;
+  UILabel *dayLabel;
+  UIImageView *backgroundView;
+  UIImageView *markerView;
   BOOL isHighlighted;
   BOOL isSelected;
   BOOL isMarked;

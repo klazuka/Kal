@@ -13,8 +13,8 @@
 		534581FC10E1374500451238 /* kal_header_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 534581FB10E1374500451238 /* kal_header_text_fill.png */; };
 		5345824010E1427B00451238 /* kal_tile_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 5345823F10E1427B00451238 /* kal_tile_text_fill.png */; };
 		5345824D10E1434500451238 /* kal_tile_disabled_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 5345824C10E1434500451238 /* kal_tile_disabled_text_fill.png */; };
-		5387B45E10E8FA630011C4BA /* KalTile.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387B45D10E8FA630011C4BA /* KalTile.m */; };
 		5387B4A310E902EF0011C4BA /* KalMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387B4A210E902EF0011C4BA /* KalMonthView.m */; };
+		5387B8B610EA5FA10011C4BA /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387B8B510EA5FA10011C4BA /* KalTileView.m */; };
 		53D9F86510DD9CC800759172 /* HolidayCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */; };
 		53D9F86810DD9CC800759172 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F86310DD9CC800759172 /* main.m */; };
 		53D9F86910DD9CC800759172 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F86410DD9CC800759172 /* MainWindow.xib */; };
@@ -49,10 +49,10 @@
 		534581FB10E1374500451238 /* kal_header_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_header_text_fill.png; sourceTree = "<group>"; };
 		5345823F10E1427B00451238 /* kal_tile_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_tile_text_fill.png; sourceTree = "<group>"; };
 		5345824C10E1434500451238 /* kal_tile_disabled_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_tile_disabled_text_fill.png; sourceTree = "<group>"; };
-		5387B45C10E8FA630011C4BA /* KalTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalTile.h; sourceTree = "<group>"; };
-		5387B45D10E8FA630011C4BA /* KalTile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTile.m; sourceTree = "<group>"; };
 		5387B4A110E902EF0011C4BA /* KalMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalMonthView.h; sourceTree = "<group>"; };
 		5387B4A210E902EF0011C4BA /* KalMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalMonthView.m; sourceTree = "<group>"; };
+		5387B8B410EA5FA10011C4BA /* KalTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalTileView.h; sourceTree = "<group>"; };
+		5387B8B510EA5FA10011C4BA /* KalTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = "<group>"; };
 		53D9F85D10DD9CC800759172 /* HolidayCalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayCalendarDataSource.h; sourceTree = "<group>"; };
 		53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayCalendarDataSource.m; sourceTree = "<group>"; };
 		53D9F86310DD9CC800759172 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -212,8 +212,8 @@
 				53D9F86F10DD9CEE00759172 /* KalGridView.m */,
 				5387B4A110E902EF0011C4BA /* KalMonthView.h */,
 				5387B4A210E902EF0011C4BA /* KalMonthView.m */,
-				5387B45C10E8FA630011C4BA /* KalTile.h */,
-				5387B45D10E8FA630011C4BA /* KalTile.m */,
+				5387B8B410EA5FA10011C4BA /* KalTileView.h */,
+				5387B8B510EA5FA10011C4BA /* KalTileView.m */,
 				53D9F8B610DD9E4400759172 /* KalPrivate.h */,
 			);
 			name = Implementation;
@@ -298,8 +298,8 @@
 				53D9F89810DD9CEE00759172 /* NSMutableArrayAdditions.m in Sources */,
 				53D9F89F10DD9CEE00759172 /* UIViewAdditions.m in Sources */,
 				53D9F8AE10DD9D9D00759172 /* HolidayAppDelegate.m in Sources */,
-				5387B45E10E8FA630011C4BA /* KalTile.m in Sources */,
 				5387B4A310E902EF0011C4BA /* KalMonthView.m in Sources */,
+				5387B8B610EA5FA10011C4BA /* KalTileView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
