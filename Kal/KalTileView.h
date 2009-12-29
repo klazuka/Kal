@@ -13,14 +13,13 @@ typedef char KalTileType;
 @interface KalTileView : UIView
 {
   NSDate *date;
-  UILabel *dayLabel;
-  UIImageView *backgroundView;
-  UIImageView *markerView;
-  BOOL isHighlighted;
-  BOOL isSelected;
-  BOOL isMarked;
-  KalTileType type;
   CGPoint origin;
+  struct {
+    unsigned int selected : 1;
+    unsigned int highlighted : 1;
+    unsigned int marked : 1;
+    unsigned int type : 2;
+  } flags;
 }
 
 @property (nonatomic, retain) NSDate *date;

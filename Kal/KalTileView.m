@@ -10,7 +10,7 @@ extern const CGSize kTileSize;
 
 @implementation KalTileView
 
-@synthesize date, selected=isSelected, highlighted=isHighlighted, marked=isMarked, type;
+@synthesize date;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -62,7 +62,7 @@ extern const CGSize kTileSize;
     markerImage = [UIImage imageNamed:@"kal_marker.png"];
   }
   
-  if (self.marked)
+  if (flags.marked)
     [markerImage drawInRect:CGRectMake(21.f, 5.f, 4.f, 5.f)];
   
   NSUInteger n = [self.date cc_day];
@@ -96,10 +96,10 @@ extern const CGSize kTileSize;
   
   [date release];
   date = nil;
-  type = KalTileTypeRegular;
-  isHighlighted = NO;
-  isSelected = NO;
-  isMarked = NO;
+  flags.type = KalTileTypeRegular;
+  flags.highlighted = NO;
+  flags.selected = NO;
+  flags.marked = NO;
 }
 
 - (void)setDate:(NSDate *)aDate
@@ -113,9 +113,11 @@ extern const CGSize kTileSize;
   [self setNeedsDisplay];
 }
 
+- (BOOL)isSelected { return flags.selected; }
+
 - (void)setSelected:(BOOL)selected
 {
-  if (isSelected == selected)
+  if (flags.selected == selected)
     return;
 
   // workaround since I cannot draw outside of the frame in drawRect:
@@ -133,22 +135,37 @@ extern const CGSize kTileSize;
     self.frame = rect;
   }
   
-  isSelected = selected;
+  flags.selected = selected;
   [self setNeedsDisplay];
 }
+
+- (BOOL)isHighlighted { return flags.highlighted; }
 
 - (void)setHighlighted:(BOOL)highlighted
 {
-  if (isHighlighted == highlighted)
+  if (flags.highlighted == highlighted)
     return;
   
-  isHighlighted = highlighted;
+  flags.highlighted = highlighted;
   [self setNeedsDisplay];
 }
 
+- (BOOL)isMarked { return flags.marked; }
+
+- (void)setMarked:(BOOL)marked
+{
+  if (flags.marked == marked)
+    return;
+  
+  flags.marked = marked;
+  [self setNeedsDisplay];
+}
+
+- (KalTileType)type { return flags.type; }
+
 - (void)setType:(KalTileType)tileType
 {
-  if (type == tileType)
+  if (flags.type == tileType)
     return;
   
   // workaround since I cannot draw outside of the frame in drawRect:
@@ -164,29 +181,17 @@ extern const CGSize kTileSize;
   }
   self.frame = rect;
   
-  type = tileType;
+  flags.type = tileType;
   [self setNeedsDisplay];
 }
 
-- (void)setMarked:(BOOL)marked
-{
-  if (isMarked == marked)
-    return;
-  
-  isMarked = marked;
-  [self setNeedsDisplay];
-}
+- (BOOL)isToday { return flags.type == KalTileTypeToday; }
 
-- (BOOL)isToday { return type == KalTileTypeToday; }
-
-- (BOOL)belongsToAdjacentMonth { return type == KalTileTypeAdjacent; }
+- (BOOL)belongsToAdjacentMonth { return flags.type == KalTileTypeAdjacent; }
 
 - (void)dealloc
 {
   [date release];
-  [dayLabel release];
-  [backgroundView release];
-  [markerView release];
   [super dealloc];
 }
 

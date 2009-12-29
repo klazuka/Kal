@@ -29,6 +29,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)theLogic delegate:(id<KalViewDelegate>)theDelegate
 {
+  
+  NSLog(@"sizeof(KalTileView) = %zu", sizeof(KalTileView));
+  
   // MobileCal uses 46px wide tiles, with a 2px inner stroke 
   // along the top and right edges. Since there are 7 columns,
   // the width needs to be 46*7 (322px). But the iPhone's screen
