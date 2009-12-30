@@ -4,7 +4,7 @@
  */
 
 @protocol KalViewDelegate;
-@class KalTileView;
+@class KalTileView, KalDate;
 
 @interface KalMonthView : UIView
 {
@@ -19,6 +19,6 @@
 - (void)showDates:(NSArray *)mainDates beginShared:(NSArray *)firstWeekShared endShared:(NSArray *)finalWeekShared;
 - (KalTileView *)todaysTileIfVisible;
 - (KalTileView *)firstTileOfMonth;
-- (KalTileView *)tileForDate:(NSDate *)date;
+- (KalTileView *)tileForDate:(KalDate *)date;
 
 @end

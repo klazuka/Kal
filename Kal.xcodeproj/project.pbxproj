@@ -15,6 +15,8 @@
 		5345824D10E1434500451238 /* kal_tile_disabled_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 5345824C10E1434500451238 /* kal_tile_disabled_text_fill.png */; };
 		5387B4A310E902EF0011C4BA /* KalMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387B4A210E902EF0011C4BA /* KalMonthView.m */; };
 		5387B8B610EA5FA10011C4BA /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387B8B510EA5FA10011C4BA /* KalTileView.m */; };
+		5387BC8D10EB9B6A0011C4BA /* KalDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387BC8C10EB9B6A0011C4BA /* KalDate.m */; };
+		5387BCFD10EBB1960011C4BA /* Holiday.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387BCFC10EBB1960011C4BA /* Holiday.m */; };
 		53D9F86510DD9CC800759172 /* HolidayCalendarDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */; };
 		53D9F86810DD9CC800759172 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F86310DD9CC800759172 /* main.m */; };
 		53D9F86910DD9CC800759172 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F86410DD9CC800759172 /* MainWindow.xib */; };
@@ -53,6 +55,10 @@
 		5387B4A210E902EF0011C4BA /* KalMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalMonthView.m; sourceTree = "<group>"; };
 		5387B8B410EA5FA10011C4BA /* KalTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalTileView.h; sourceTree = "<group>"; };
 		5387B8B510EA5FA10011C4BA /* KalTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = "<group>"; };
+		5387BC8B10EB9B6A0011C4BA /* KalDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalDate.h; sourceTree = "<group>"; };
+		5387BC8C10EB9B6A0011C4BA /* KalDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalDate.m; sourceTree = "<group>"; };
+		5387BCFB10EBB1960011C4BA /* Holiday.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holiday.h; sourceTree = "<group>"; };
+		5387BCFC10EBB1960011C4BA /* Holiday.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Holiday.m; sourceTree = "<group>"; };
 		53D9F85D10DD9CC800759172 /* HolidayCalendarDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidayCalendarDataSource.h; sourceTree = "<group>"; };
 		53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidayCalendarDataSource.m; sourceTree = "<group>"; };
 		53D9F86310DD9CC800759172 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -141,6 +147,8 @@
 			children = (
 				53D9F8AB10DD9D9D00759172 /* HolidayAppDelegate.h */,
 				53D9F8AC10DD9D9D00759172 /* HolidayAppDelegate.m */,
+				5387BCFB10EBB1960011C4BA /* Holiday.h */,
+				5387BCFC10EBB1960011C4BA /* Holiday.m */,
 				53D9F85D10DD9CC800759172 /* HolidayCalendarDataSource.h */,
 				53D9F85E10DD9CC800759172 /* HolidayCalendarDataSource.m */,
 				53D9F86310DD9CC800759172 /* main.m */,
@@ -214,6 +222,8 @@
 				5387B4A210E902EF0011C4BA /* KalMonthView.m */,
 				5387B8B410EA5FA10011C4BA /* KalTileView.h */,
 				5387B8B510EA5FA10011C4BA /* KalTileView.m */,
+				5387BC8B10EB9B6A0011C4BA /* KalDate.h */,
+				5387BC8C10EB9B6A0011C4BA /* KalDate.m */,
 				53D9F8B610DD9E4400759172 /* KalPrivate.h */,
 			);
 			name = Implementation;
@@ -300,6 +310,8 @@
 				53D9F8AE10DD9D9D00759172 /* HolidayAppDelegate.m in Sources */,
 				5387B4A310E902EF0011C4BA /* KalMonthView.m in Sources */,
 				5387B8B610EA5FA10011C4BA /* KalTileView.m in Sources */,
+				5387BC8D10EB9B6A0011C4BA /* KalDate.m in Sources */,
+				5387BCFD10EBB1960011C4BA /* Holiday.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

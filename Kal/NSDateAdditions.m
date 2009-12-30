@@ -28,6 +28,26 @@
   return [self cc_day] == [[NSDate cc_today] cc_day];
 }
 
+- (NSDate *)cc_dateByMovingToBeginningOfDay
+{
+  unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+  NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
+  [parts setHour:0];
+  [parts setMinute:0];
+  [parts setSecond:0];
+  return [[NSCalendar currentCalendar] dateFromComponents:parts];
+}
+
+- (NSDate *)cc_dateByMovingToEndOfDay
+{
+  unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+  NSDateComponents* parts = [[NSCalendar currentCalendar] components:flags fromDate:self];
+  [parts setHour:23];
+  [parts setMinute:59];
+  [parts setSecond:59];
+  return [[NSCalendar currentCalendar] dateFromComponents:parts];
+}
+
 - (NSDate *)cc_dateByMovingToFirstDayOfTheMonth
 {
   NSDate *d = nil;

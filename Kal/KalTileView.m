@@ -4,6 +4,7 @@
  */
 
 #import "KalTileView.h"
+#import "KalDate.h"
 #import "KalPrivate.h"
 
 extern const CGSize kTileSize;
@@ -65,7 +66,7 @@ extern const CGSize kTileSize;
   if (flags.marked)
     [markerImage drawInRect:CGRectMake(21.f, 5.f, 4.f, 5.f)];
   
-  NSUInteger n = [self.date cc_day];
+  NSUInteger n = [self.date day];
   NSString *dayText = [NSString stringWithFormat:@"%lu", (unsigned long)n];
   const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
   CGSize textSize = [dayText sizeWithFont:font];
@@ -102,7 +103,7 @@ extern const CGSize kTileSize;
   flags.marked = NO;
 }
 
-- (void)setDate:(NSDate *)aDate
+- (void)setDate:(KalDate *)aDate
 {
   if (date == aDate)
     return;

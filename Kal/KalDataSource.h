@@ -16,8 +16,8 @@
 
 @protocol KalDataSource <NSObject, UITableViewDataSource>
 
-- (BOOL)hasDetailsForDate:(NSDate *)date;   // Return YES if there are details associated with |date|.
-- (void)loadDate:(NSDate *)date;            // Load the details associated with |date|.
+- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate;
+- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 
 @end
 

@@ -4,17 +4,27 @@
  */
 
 #import "HolidayCalendarDataSource.h"
+#import "Holiday.h"
 
-static NSMutableDictionary *holidays;
+static NSMutableArray *holidays;
 
-NSDate *DateForDayMonthYear(NSUInteger day, NSUInteger month, NSUInteger year)
+NSDate *DateForMonthDayYear(NSUInteger month, NSUInteger day, NSUInteger year)
 {
   NSDateComponents *c = [[[NSDateComponents alloc] init] autorelease];
-  c.day = day;
   c.month = month;
+  c.day = day;
   c.year = year;
   return [[NSCalendar currentCalendar] dateFromComponents:c];
 }
+
+BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
+{
+  return [date compare:begin] != NSOrderedAscending && [date compare:end] != NSOrderedDescending;
+}
+
+@interface HolidayCalendarDataSource ()
+- (NSArray *)holidaysFrom:(NSDate *)fromDate to:(NSDate *)toDate;
+@end
 
 @implementation HolidayCalendarDataSource
 
@@ -25,28 +35,33 @@ NSDate *DateForDayMonthYear(NSUInteger day, NSUInteger month, NSUInteger year)
 
 + (void)initialize
 {
-  holidays = [[NSMutableDictionary alloc] init];
-  [holidays setObject:@"New Years Day" forKey:DateForDayMonthYear(1, 1, 2009)];
-  [holidays setObject:@"Martin Luther King Day" forKey:DateForDayMonthYear(19, 1, 2009)];
-  [holidays setObject:@"Washington's Birthday" forKey:DateForDayMonthYear(16, 2, 2009)];
-  [holidays setObject:@"Memorial Day" forKey:DateForDayMonthYear(25, 5, 2009)];
-  [holidays setObject:@"Independence Day" forKey:DateForDayMonthYear(4, 7, 2009)];
-  [holidays setObject:@"Labor Day" forKey:DateForDayMonthYear(7, 9, 2009)];
-  [holidays setObject:@"Columbus Day" forKey:DateForDayMonthYear(12, 10, 2009)];
-  [holidays setObject:@"Veteran's Day" forKey:DateForDayMonthYear(11, 11, 2009)];
-  [holidays setObject:@"Thanksgiving Day" forKey:DateForDayMonthYear(26, 11, 2009)];
-  [holidays setObject:@"Christmas Day" forKey:DateForDayMonthYear(25, 12, 2009)];
-  [holidays setObject:[NSArray arrayWithObjects:@"New Year's Eve", @"Last day of the decade", nil] forKey:DateForDayMonthYear(31, 12, 2009)];
-  [holidays setObject:@"New Years Day" forKey:DateForDayMonthYear(1, 1, 2010)];
-  [holidays setObject:@"Martin Luther King Day" forKey:DateForDayMonthYear(18, 1, 2010)];
-  [holidays setObject:@"Washington's Birthday" forKey:DateForDayMonthYear(15, 2, 2010)];
-  [holidays setObject:@"Memorial Day" forKey:DateForDayMonthYear(31, 5, 2010)];
-  [holidays setObject:@"Independence Day" forKey:DateForDayMonthYear(4, 7, 2010)];
-  [holidays setObject:@"Labor Day" forKey:DateForDayMonthYear(6, 9, 2010)];
-  [holidays setObject:@"Columbus Day" forKey:DateForDayMonthYear(11, 10, 2010)];
-  [holidays setObject:@"Veteran's Day" forKey:DateForDayMonthYear(11, 11, 2010)];
-  [holidays setObject:@"Thanksgiving Day" forKey:DateForDayMonthYear(25, 11, 2010)];
-  [holidays setObject:@"Christmas Day" forKey:DateForDayMonthYear(25, 12, 2010)];
+  holidays = [[NSMutableArray alloc] init];
+  [holidays addObject:[Holiday holidayNamed:@"TODAY!" onDate:[NSDate date]]];
+  // 2009 US Holidays
+  [holidays addObject:[Holiday holidayNamed:@"New Year's Day" onDate:DateForMonthDayYear(1, 1, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Martin Luther King Day" onDate:DateForMonthDayYear(1, 19, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Washington's Birthday" onDate:DateForMonthDayYear(2, 16, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Memorial Day" onDate:DateForMonthDayYear(5, 25, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Independence Day" onDate:DateForMonthDayYear(7, 4, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Labor Day" onDate:DateForMonthDayYear(9, 7, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Columbus Day" onDate:DateForMonthDayYear(10, 12, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Veterans Day" onDate:DateForMonthDayYear(11, 11, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Thanksgiving" onDate:DateForMonthDayYear(11, 26, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Christmas" onDate:DateForMonthDayYear(12, 25, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"New Years Eve" onDate:DateForMonthDayYear(12, 31, 2009)]];
+  [holidays addObject:[Holiday holidayNamed:@"Last Day of the Decade" onDate:DateForMonthDayYear(12, 31, 2009)]];
+  // 2010 US Holidays
+  [holidays addObject:[Holiday holidayNamed:@"New Years Day" onDate:DateForMonthDayYear(1, 1, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Martin Luther King Day" onDate:DateForMonthDayYear(1, 18, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Washington's Birthday" onDate:DateForMonthDayYear(2, 15, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Memorial Day" onDate:DateForMonthDayYear(5, 31, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Independence Day" onDate:DateForMonthDayYear(7, 4, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Labor Day" onDate:DateForMonthDayYear(9, 6, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Columbus Day" onDate:DateForMonthDayYear(10, 11, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Veterans Day" onDate:DateForMonthDayYear(11, 11, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Thanksgiving" onDate:DateForMonthDayYear(11, 25, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"Christmas" onDate:DateForMonthDayYear(12, 25, 2010)]];
+  [holidays addObject:[Holiday holidayNamed:@"New Years Eve" onDate:DateForMonthDayYear(12, 31, 2010)]];
 }
 
 - (id)init
@@ -79,23 +94,32 @@ NSDate *DateForDayMonthYear(NSUInteger day, NSUInteger month, NSUInteger year)
 
 #pragma mark KalDataSource protocol conformance
 
-- (void)loadDate:(NSDate *)date;
-{   
-  [items removeAllObjects];
-  
-  id obj = [holidays objectForKey:date];
-  if (!obj)
-    return;
-  
-  if ([obj isKindOfClass:[NSArray class]])
-    [items addObjectsFromArray:obj];
-  else
-    [items addObject:obj];
+- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
+{
+  NSMutableArray *dates = [NSMutableArray array];
+  for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
+    [dates addObject:holiday.date];
+    
+  return dates;
 }
 
-- (BOOL)hasDetailsForDate:(NSDate *)date
+- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
-  return [holidays objectForKey:date] != nil;
+  [items removeAllObjects];
+  for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
+    [items addObject:holiday.name];
+}
+
+#pragma mark -
+
+- (NSArray *)holidaysFrom:(NSDate *)fromDate to:(NSDate *)toDate
+{
+  NSMutableArray *matches = [NSMutableArray array];
+  for (Holiday *holiday in holidays)
+    if (IsDateBetweenInclusive(holiday.date, fromDate, toDate))
+      [matches addObject:holiday];
+  
+  return matches;
 }
 
 - (void)dealloc

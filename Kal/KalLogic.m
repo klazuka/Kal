@@ -4,6 +4,7 @@
  */
 
 #import "KalLogic.h"
+#import "KalDate.h"
 #import "KalPrivate.h"
 
 @interface KalLogic ()
@@ -54,7 +55,7 @@
   int numPartialDays = [self numberOfDaysInPreviousPartialWeek];
   NSDateComponents *c = [beginningOfPreviousMonth cc_componentsForMonthDayAndYear];
   for (int i = n - (numPartialDays - 1); i < n + 1; i++)
-    [days addObject:[NSDate cc_dateForDay:i month:c.month year:c.year]];
+    [days addObject:[KalDate dateForDay:i month:c.month year:c.year]];
   
   return days;
 }
@@ -66,7 +67,7 @@
   NSUInteger numDays = [self.baseDate cc_numberOfDaysInMonth];
   NSDateComponents *c = [self.baseDate cc_componentsForMonthDayAndYear];
   for (int i = 1; i < numDays + 1; i++)
-    [days addObject:[NSDate cc_dateForDay:i month:c.month year:c.year]];
+    [days addObject:[KalDate dateForDay:i month:c.month year:c.year]];
   
   return days;
 }
@@ -79,7 +80,7 @@
   NSUInteger numPartialDays = [self numberOfDaysInFollowingPartialWeek];
   
   for (int i = 1; i < numPartialDays + 1; i++)
-    [days addObject:[NSDate cc_dateForDay:i month:c.month year:c.year]];
+    [days addObject:[KalDate dateForDay:i month:c.month year:c.year]];
   
   return days;
 }

@@ -8,6 +8,7 @@
 #import "KalMonthView.h"
 #import "KalTileView.h"
 #import "KalLogic.h"
+#import "KalDate.h"
 #import "KalPrivate.h"
 
 #define SLIDE_NONE 0
@@ -131,7 +132,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   if ([hitView isKindOfClass:[KalTileView class]]) {
     KalTileView *tile = (KalTileView*)hitView;
     if (tile.belongsToAdjacentMonth) {
-      if ([tile.date timeIntervalSinceDate:logic.baseDate] > 0) {
+      if ([tile.date compare:[KalDate dateFromNSDate:logic.baseDate]] == NSOrderedDescending) {
         [delegate showFollowingMonth];
       } else {
         [delegate showPreviousMonth];

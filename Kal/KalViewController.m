@@ -6,9 +6,10 @@
 #import "KalViewController.h"
 #import "KalLogic.h"
 #import "KalDataSource.h"
+#import "KalDate.h"
 #import "KalPrivate.h"
 
-#define PROFILER 0
+#define PROFILER 1
 #if PROFILER
 #include <mach/mach_time.h>
 #include <time.h>
@@ -51,15 +52,24 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 // -----------------------------------------
 #pragma mark KalViewDelegate protocol
 
-- (void)didSelectDate:(NSDate *)date
+- (void)didSelectDate:(KalDate *)date
 {
-  [dataSource loadDate:date];
+  NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
+  NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
+  [dataSource loadItemsFromDate:from toDate:to];
   [tableView reloadData];
 }
 
-- (BOOL)shouldMarkTileForDate:(NSDate *)date
+- (NSArray *)markedDatesFrom:(KalDate *)fromDate to:(KalDate *)toDate
 {
-  return [dataSource hasDetailsForDate:date];
+  // barrier between internal usage of KalDate and external usage of NSDate
+  NSDate *from = [[fromDate NSDate] cc_dateByMovingToBeginningOfDay];
+  NSDate *to = [[toDate NSDate] cc_dateByMovingToEndOfDay];
+  NSArray *markedDates = [dataSource markedDatesFrom:from to:to];
+  NSMutableArray *dates = [markedDates mutableCopy];
+  for (int i=0; i<[dates count]; i++)
+    [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
+  return dates;
 }
 
 - (void)showPreviousMonth

@@ -12,6 +12,8 @@
 + (NSDate *)cc_dateForDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year;
 
 - (BOOL)cc_isToday;
+- (NSDate *)cc_dateByMovingToBeginningOfDay;
+- (NSDate *)cc_dateByMovingToEndOfDay;
 - (NSDate *)cc_dateByMovingToFirstDayOfTheMonth;
 - (NSDate *)cc_dateByMovingToFirstDayOfThePreviousMonth;
 - (NSDate *)cc_dateByMovingToFirstDayOfTheFollowingMonth;

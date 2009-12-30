@@ -7,6 +7,7 @@
 #import "KalMonthView.h"
 #import "KalTileView.h"
 #import "KalView.h"
+#import "KalDate.h"
 #import "KalPrivate.h"
 
 extern const CGSize kTileSize;
@@ -41,32 +42,36 @@ extern const CGSize kTileSize;
 {
   int i = 0;
   
-  for (NSDate *d in firstWeekShared) {
+  KalDate *fromDate = [firstWeekShared count] > 0 ? [firstWeekShared objectAtIndex:0] : [mainDates objectAtIndex:0];
+  KalDate *toDate = [finalWeekShared count] > 0 ? [finalWeekShared lastObject] : [mainDates lastObject];
+  NSArray *markedDates = [delegate markedDatesFrom:fromDate to:toDate];
+  
+  for (KalDate *d in firstWeekShared) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = KalTileTypeAdjacent;
     tile.date = d;
-    tile.marked = [delegate shouldMarkTileForDate:d];
+    tile.marked = [markedDates containsObject:d];
     [tile setNeedsDisplay];
     i++;
   }
   
-  for (NSDate *d in mainDates) {
+  for (KalDate *d in mainDates) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
-    tile.type = [d cc_isToday] ? KalTileTypeToday : KalTileTypeRegular;
+    tile.type = [d isToday] ? KalTileTypeToday : KalTileTypeRegular;
     tile.date = d;
-    tile.marked = [delegate shouldMarkTileForDate:d];
+    tile.marked = [markedDates containsObject:d];
     [tile setNeedsDisplay];
     i++;
   }
   
-  for (NSDate *d in finalWeekShared) {
+  for (KalDate *d in finalWeekShared) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = KalTileTypeAdjacent;
     tile.date = d;
-    tile.marked = [delegate shouldMarkTileForDate:d];
+    tile.marked = [markedDates containsObject:d];
     [tile setNeedsDisplay];
     i++;
   }
@@ -108,11 +113,11 @@ extern const CGSize kTileSize;
   return tile;
 }
 
-- (KalTileView *)tileForDate:(NSDate *)date
+- (KalTileView *)tileForDate:(KalDate *)date
 {
   KalTileView *tile = nil;
   for (KalTileView *t in self.subviews) {
-    if ([t.date isEqualToDate:date]) {
+    if ([t.date isEqual:date]) {
       tile = t;
       break;
     }

@@ -62,11 +62,13 @@
 
 #pragma mark -
 
+@class KalDate;
+
 @protocol KalViewDelegate
 
 - (void)showPreviousMonth;
 - (void)showFollowingMonth;
-- (BOOL)shouldMarkTileForDate:(NSDate *)date;
-- (void)didSelectDate:(NSDate *)date;
+- (NSArray *)markedDatesFrom:(KalDate *)fromDate to:(KalDate *)toDate;  // returns an array of KalDate objects
+- (void)didSelectDate:(KalDate *)date;
 
 @end
