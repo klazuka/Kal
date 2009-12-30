@@ -40,6 +40,7 @@
   UILabel *headerTitleLabel;
   KalGridView *gridView;
   UITableView *tableView;
+  UIImageView *shadowView;
   id<KalViewDelegate> delegate;
   KalLogic *logic;
 }
