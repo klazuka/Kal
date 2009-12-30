@@ -36,6 +36,7 @@ NSDate *DateForDayMonthYear(NSUInteger day, NSUInteger month, NSUInteger year)
   [holidays setObject:@"Veteran's Day" forKey:DateForDayMonthYear(11, 11, 2009)];
   [holidays setObject:@"Thanksgiving Day" forKey:DateForDayMonthYear(26, 11, 2009)];
   [holidays setObject:@"Christmas Day" forKey:DateForDayMonthYear(25, 12, 2009)];
+  [holidays setObject:[NSArray arrayWithObjects:@"New Year's Eve", @"Last day of the decade", nil] forKey:DateForDayMonthYear(31, 12, 2009)];
   [holidays setObject:@"New Years Day" forKey:DateForDayMonthYear(1, 1, 2010)];
   [holidays setObject:@"Martin Luther King Day" forKey:DateForDayMonthYear(18, 1, 2010)];
   [holidays setObject:@"Washington's Birthday" forKey:DateForDayMonthYear(15, 2, 2010)];
@@ -79,11 +80,17 @@ NSDate *DateForDayMonthYear(NSUInteger day, NSUInteger month, NSUInteger year)
 #pragma mark KalDataSource protocol conformance
 
 - (void)loadDate:(NSDate *)date;
-{
+{   
   [items removeAllObjects];
-  NSString *item = [holidays objectForKey:date];
-  if (item)
-    [items addObject:item];
+  
+  id obj = [holidays objectForKey:date];
+  if (!obj)
+    return;
+  
+  if ([obj isKindOfClass:[NSArray class]])
+    [items addObjectsFromArray:obj];
+  else
+    [items addObject:obj];
 }
 
 - (BOOL)hasDetailsForDate:(NSDate *)date
