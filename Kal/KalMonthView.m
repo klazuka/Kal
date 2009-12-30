@@ -128,7 +128,7 @@ extern const CGSize kTileSize;
 
 - (void)sizeToFit
 {
-  self.height = kTileSize.height * numWeeks;
+  self.height = 1.f + kTileSize.height * numWeeks;
 }
 
 @end
