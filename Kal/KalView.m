@@ -218,6 +218,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (KalDate *)fromDate { return gridView.fromDate; }
 - (KalDate *)toDate { return gridView.toDate; }
+- (KalDate *)selectedDate { return gridView.selectedDate; }
 
 - (void)dealloc
 {

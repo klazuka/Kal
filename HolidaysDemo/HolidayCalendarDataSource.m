@@ -96,28 +96,25 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 #define FAKE_LOAD_TIME 1.05f
 
-- (void)fetchMarkedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate;
+- (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
+  // Create a fake asynchronous load (i.e. querying the database in a separate thread)
+  dataReady = NO;
   NSMutableArray *dates = [NSMutableArray array];
   for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
     [dates addObject:holiday.date];
-    
-  // Simulate an asynchronous load (i.e. querying the database in a separate thread)
-  // (note: the NSObject* cast is required here because the performSelector:withObject:afterDelay: selector
-  // is only defined in the NSObject class interface, but not the NSObject protocol. This is just a hack
-  // to simulate an asynchronous load, so we can play fast and loose here. Real world code would not do this.)
-  [(NSObject*)delegate performSelector:@selector(finishedFetchingMarkedDates:) withObject:dates afterDelay:FAKE_LOAD_TIME];
+  
+  [self performSelector:@selector(fakeAsyncTaskFinished) withObject:nil afterDelay:FAKE_LOAD_TIME-0.01];
+  [(NSObject*)delegate performSelector:@selector(loadedMarkedDates:) withObject:dates afterDelay:FAKE_LOAD_TIME];
 }
 
-- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate;
+- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
+  if (!dataReady)
+    return;
+  
   for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
     [items addObject:holiday.name];
-
-  // In most cases, I would expect that you would cache the data that you load in fetchMarkedDatesFrom:to:delegate:
-  // thereby enabling you to implement this method so that it returns synchronously.
-  // TODO revisit these comments once I implement my sqlite and HTTP datasources.
-  [delegate finishedLoadingItems];
 }
 
 - (void)removeAllItems
@@ -135,6 +132,11 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
       [matches addObject:holiday];
   
   return matches;
+}
+
+- (void)fakeAsyncTaskFinished
+{
+  dataReady = YES;
 }
 
 - (void)dealloc

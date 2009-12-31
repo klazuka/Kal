@@ -8,6 +8,7 @@
 @interface HolidayCalendarDataSource : NSObject <KalDataSource>
 {
   NSMutableArray *items;
+  BOOL dataReady;
 }
 
 + (HolidayCalendarDataSource *)dataSource;

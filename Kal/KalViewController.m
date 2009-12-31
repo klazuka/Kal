@@ -55,11 +55,11 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [tableView reloadData];
 }
 
-- (void)fetchMarkedDatesForCurrentMonth
+- (void)fetchDataForCurrentMonth
 {
   NSDate *from = [[self.calendarView.fromDate NSDate] cc_dateByMovingToBeginningOfDay];
   NSDate *to = [[self.calendarView.toDate NSDate] cc_dateByMovingToEndOfDay];
-  [dataSource fetchMarkedDatesFrom:from to:to delegate:self];
+  [dataSource presentingDatesFrom:from to:to delegate:self];
 }
 
 // -----------------------------------------
@@ -70,7 +70,8 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
   NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
   [self clearTable];
-  [dataSource loadItemsFromDate:from toDate:to delegate:self];
+  [dataSource loadItemsFromDate:from toDate:to];
+  [tableView reloadData];
 }
 
 - (void)showPreviousMonth
@@ -78,7 +79,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [self clearTable];
   [logic retreatToPreviousMonth];
   [[self calendarView] slideDown];
-  [self fetchMarkedDatesForCurrentMonth];
+  [self fetchDataForCurrentMonth];
 }
 
 - (void)showFollowingMonth
@@ -86,24 +87,20 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [self clearTable];
   [logic advanceToFollowingMonth];
   [[self calendarView] slideUp];
-  [self fetchMarkedDatesForCurrentMonth];
+  [self fetchDataForCurrentMonth];
 }
 
 // ----------------------------------------
 #pragma mark KalDataSourceCallbacks protocol
 
-- (void)finishedFetchingMarkedDates:(NSArray *)markedDates
+- (void)loadedMarkedDates:(NSArray *)markedDates
 {
   NSMutableArray *dates = [markedDates mutableCopy];
   for (int i=0; i<[dates count]; i++)
     [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
   
   [[self calendarView] markTilesForDates:dates];
-}
-
-- (void)finishedLoadingItems
-{
-  [tableView reloadData];
+  [self didSelectDate:self.calendarView.selectedDate];
 }
 
 // ---------------------------------------
@@ -131,7 +128,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 #endif
   
   [[self calendarView] selectTodayIfVisible];
-  [self fetchMarkedDatesForCurrentMonth];
+  [self fetchDataForCurrentMonth];
 }
 
 /*
@@ -143,7 +140,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [logic moveToTodaysMonth];
   [[self calendarView] jumpToSelectedMonth];
   [[self calendarView] selectTodayIfVisible];
-  [self fetchMarkedDatesForCurrentMonth];
+  [self fetchDataForCurrentMonth];
 }
  */
 
@@ -157,7 +154,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   self.view = [[[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] autorelease];
   tableView = [[[self calendarView] tableView] retain];
   tableView.dataSource = dataSource;
-  [self fetchMarkedDatesForCurrentMonth];
+  [self fetchDataForCurrentMonth];
 }
 
 - (void)viewWillAppear:(BOOL)animated

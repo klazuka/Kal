@@ -244,6 +244,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (KalDate *)fromDate { return frontMonthView.fromDate; }
 - (KalDate *)toDate { return frontMonthView.toDate; }
+- (KalDate *)selectedDate { return selectedTile.date; }
 
 #pragma mark -
 

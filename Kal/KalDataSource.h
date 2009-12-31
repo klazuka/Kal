@@ -34,14 +34,13 @@
 @protocol KalDataSourceCallbacks;
 
 @protocol KalDataSource <NSObject, UITableViewDataSource>
-- (void)fetchMarkedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate;
-- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate;
-- (void)removeAllItems;
+- (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate; // non-blocking (must call loadedMarkedDates: when completed)
+- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate; // blocking
+- (void)removeAllItems; // blocking
 @end
 
 @protocol KalDataSourceCallbacks <NSObject>
-- (void)finishedFetchingMarkedDates:(NSArray *)dates;
-- (void)finishedLoadingItems;
+- (void)loadedMarkedDates:(NSArray *)markedDates;
 @end
 
 #pragma mark -
