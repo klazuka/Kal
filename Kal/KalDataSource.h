@@ -15,6 +15,8 @@
  *  The protocol is asynchronous to allow implementations to retrieve data
  *  from the network or disk without causing a delay when the user slides
  *  between months.
+ *
+ *    TODO update this comment block once the KalDataSource API is finalized!
  *  
  *  When your implementation receives the fetchMarkedDatesFrom:to:delegate:
  *  message, you should load all dates into memory within the provided range
@@ -34,13 +36,14 @@
 @protocol KalDataSourceCallbacks;
 
 @protocol KalDataSource <NSObject, UITableViewDataSource>
-- (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate; // non-blocking (must call loadedMarkedDates: when completed)
+- (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate; // non-blocking (must call loadedDataSource: when async request is completed)
+- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate; // blocking
 - (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate; // blocking
 - (void)removeAllItems; // blocking
 @end
 
 @protocol KalDataSourceCallbacks <NSObject>
-- (void)loadedMarkedDates:(NSArray *)markedDates;
+- (void)loadedDataSource:(id<KalDataSource>)dataSource;
 @end
 
 #pragma mark -

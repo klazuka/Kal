@@ -37,7 +37,12 @@
 
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
-  [delegate loadedMarkedDates:[NSArray array]];
+  [delegate loadedDataSource:self];
+}
+
+- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
+{
+  return [NSArray array];
 }
 
 - (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate

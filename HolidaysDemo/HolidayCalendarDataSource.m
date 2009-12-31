@@ -3,10 +3,10 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#import "JSON/JSON.h"
+
 #import "HolidayCalendarDataSource.h"
 #import "Holiday.h"
-
-static NSMutableArray *holidays;
 
 NSDate *DateForMonthDayYear(NSUInteger month, NSUInteger day, NSUInteger year)
 {
@@ -24,6 +24,7 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 @interface HolidayCalendarDataSource ()
 - (NSArray *)holidaysFrom:(NSDate *)fromDate to:(NSDate *)toDate;
+- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate;
 @end
 
 @implementation HolidayCalendarDataSource
@@ -33,41 +34,12 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   return [[[[self class] alloc] init] autorelease];
 }
 
-+ (void)initialize
-{
-  holidays = [[NSMutableArray alloc] init];
-  [holidays addObject:[Holiday holidayNamed:@"TODAY!" onDate:[NSDate date]]];
-  // 2009 US Holidays
-  [holidays addObject:[Holiday holidayNamed:@"New Year's Day" onDate:DateForMonthDayYear(1, 1, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Martin Luther King Day" onDate:DateForMonthDayYear(1, 19, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Washington's Birthday" onDate:DateForMonthDayYear(2, 16, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Memorial Day" onDate:DateForMonthDayYear(5, 25, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Independence Day" onDate:DateForMonthDayYear(7, 4, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Labor Day" onDate:DateForMonthDayYear(9, 7, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Columbus Day" onDate:DateForMonthDayYear(10, 12, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Veterans Day" onDate:DateForMonthDayYear(11, 11, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Thanksgiving" onDate:DateForMonthDayYear(11, 26, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Christmas" onDate:DateForMonthDayYear(12, 25, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"New Years Eve" onDate:DateForMonthDayYear(12, 31, 2009)]];
-  [holidays addObject:[Holiday holidayNamed:@"Last Day of the Decade" onDate:DateForMonthDayYear(12, 31, 2009)]];
-  // 2010 US Holidays
-  [holidays addObject:[Holiday holidayNamed:@"New Years Day" onDate:DateForMonthDayYear(1, 1, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Martin Luther King Day" onDate:DateForMonthDayYear(1, 18, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Washington's Birthday" onDate:DateForMonthDayYear(2, 15, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Memorial Day" onDate:DateForMonthDayYear(5, 31, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Independence Day" onDate:DateForMonthDayYear(7, 4, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Labor Day" onDate:DateForMonthDayYear(9, 6, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Columbus Day" onDate:DateForMonthDayYear(10, 11, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Veterans Day" onDate:DateForMonthDayYear(11, 11, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Thanksgiving" onDate:DateForMonthDayYear(11, 25, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"Christmas" onDate:DateForMonthDayYear(12, 25, 2010)]];
-  [holidays addObject:[Holiday holidayNamed:@"New Years Eve" onDate:DateForMonthDayYear(12, 31, 2010)]];
-}
-
 - (id)init
 {
   if ((self = [super init])) {
     items = [[NSMutableArray alloc] init];
+    holidays = [[NSMutableArray alloc] init];
+    buffer = [[NSMutableData alloc] init];
   }
   return self;
 }
@@ -92,20 +64,80 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   return [items count];
 }
 
-#pragma mark KalDataSource protocol conformance
+#pragma mark Fetch from the internet
 
-#define FAKE_LOAD_TIME 1.05f
+- (void)fetchHolidays
+{
+  NSString *path = @"http://keith.lazuka.org/holidays.json";
+  NSLog(@"Fetching %@", path);
+  dataReady = NO;
+  [holidays removeAllObjects];
+  NSURLConnection *conn = [NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:path]] delegate:self];
+  [conn start];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+  [buffer setLength:0];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+  [buffer appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+  NSLog(@"Fetch completed.");
+  
+  NSString *str = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
+  NSArray *array = [str JSONValue];
+  if (!array)
+    return;
+  
+  NSDateFormatter *fmt = [[[NSDateFormatter alloc] init] autorelease];
+  [fmt setDateFormat:@"yyyy-MM-dd"];
+  for (NSDictionary *dict in array) {
+    NSDate *d = [fmt dateFromString:[dict objectForKey:@"date"]];
+    [holidays addObject:[Holiday holidayNamed:[dict objectForKey:@"name"] onDate:d]];
+  }
+  
+  dataReady = YES;
+  [callback loadedDataSource:self];
+}
+
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+  NSLog(@"HolidaysCalendarDataSource connection failure: %@", error);
+}
+
+#pragma mark KalDataSource protocol conformance
 
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
-  // Create a fake asynchronous load (i.e. querying the database in a separate thread)
-  dataReady = NO;
-  NSMutableArray *dates = [NSMutableArray array];
-  for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
-    [dates addObject:holiday.date];
+  NSLog(@"dataSource presenting from %@ to %@", fromDate, toDate);
+  /* 
+   * In this example, I load the entire dataset in one HTTP request, so the date range that is 
+   * being presented is irrelevant. So all I need to do is make sure that the data is loaded
+   * the first time and that I always issue the callback to complete the asynchronous request
+   * (even in the trivial case where we are responding synchronously).
+   */
   
-  [self performSelector:@selector(fakeAsyncTaskFinished) withObject:nil afterDelay:FAKE_LOAD_TIME-0.01];
-  [(NSObject*)delegate performSelector:@selector(loadedMarkedDates:) withObject:dates afterDelay:FAKE_LOAD_TIME];
+  if (dataReady) {
+    [callback loadedDataSource:self];
+    return;
+  }
+  
+  callback = delegate;
+  [self fetchHolidays];
+}
+
+- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
+{
+  if (!dataReady)
+    return [NSArray array];
+  
+  return [[self holidaysFrom:fromDate to:toDate] valueForKeyPath:@"date"];
 }
 
 - (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
@@ -134,14 +166,11 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   return matches;
 }
 
-- (void)fakeAsyncTaskFinished
-{
-  dataReady = YES;
-}
-
 - (void)dealloc
 {
   [items release];
+  [holidays release];
+  [buffer release];
   [super dealloc];
 }
 
