@@ -94,20 +94,35 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 #pragma mark KalDataSource protocol conformance
 
-- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
+#define FAKE_LOAD_TIME 1.05f
+
+- (void)fetchMarkedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate;
 {
   NSMutableArray *dates = [NSMutableArray array];
   for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
     [dates addObject:holiday.date];
     
-  return dates;
+  // Simulate an asynchronous load (i.e. querying the database in a separate thread)
+  // (note: the NSObject* cast is required here because the performSelector:withObject:afterDelay: selector
+  // is only defined in the NSObject class interface, but not the NSObject protocol. This is just a hack
+  // to simulate an asynchronous load, so we can play fast and loose here. Real world code would not do this.)
+  [(NSObject*)delegate performSelector:@selector(finishedFetchingMarkedDates:) withObject:dates afterDelay:FAKE_LOAD_TIME];
 }
 
-- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
+- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate;
 {
-  [items removeAllObjects];
   for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
     [items addObject:holiday.name];
+
+  // In most cases, I would expect that you would cache the data that you load in fetchMarkedDatesFrom:to:delegate:
+  // thereby enabling you to implement this method so that it returns synchronously.
+  // TODO revisit these comments once I implement my sqlite and HTTP datasources.
+  [delegate finishedLoadingItems];
+}
+
+- (void)removeAllItems
+{
+  [items removeAllObjects];
 }
 
 #pragma mark -

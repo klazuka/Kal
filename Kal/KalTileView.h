@@ -34,5 +34,4 @@ typedef char KalTileType;
 - (BOOL)isToday;
 - (BOOL)belongsToAdjacentMonth;
 
-
 @end

@@ -3,22 +3,24 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-@protocol KalViewDelegate;
 @class KalTileView, KalDate;
 
 @interface KalMonthView : UIView
 {
-  id<KalViewDelegate> delegate;
+  KalDate *fromDate;
+  KalDate *toDate;
   NSUInteger numWeeks;
 }
 
+@property (nonatomic, retain) KalDate *fromDate;
+@property (nonatomic, retain) KalDate *toDate;
 @property (nonatomic) NSUInteger numWeeks;
 
-- (id)initWithFrame:(CGRect)rect delegate:(id<KalViewDelegate>)delegate; // designated initializer
-
+- (id)initWithFrame:(CGRect)rect; // designated initializer
 - (void)showDates:(NSArray *)mainDates beginShared:(NSArray *)firstWeekShared endShared:(NSArray *)finalWeekShared;
 - (KalTileView *)todaysTileIfVisible;
 - (KalTileView *)firstTileOfMonth;
 - (KalTileView *)tileForDate:(KalDate *)date;
+- (void)markTilesForDates:(NSArray *)dates;
 
 @end

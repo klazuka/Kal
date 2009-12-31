@@ -3,8 +3,8 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-@class KalGridView, KalLogic;
-@protocol KalViewDelegate;
+@class KalGridView, KalLogic, KalDate;
+@protocol KalViewDelegate, KalDataSourceCallbacks;
 
 /*
  *    KalView
@@ -47,17 +47,19 @@
 
 @property (nonatomic, assign) id<KalViewDelegate> delegate;
 @property (nonatomic, readonly) UITableView *tableView;
+@property (nonatomic, readonly) KalDate *fromDate;
+@property (nonatomic, readonly) KalDate *toDate;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)delegate logic:(KalLogic *)logic;
+- (BOOL)isSliding;
+- (void)selectTodayIfVisible;
+- (void)markTilesForDates:(NSArray *)dates;
 
 // These 3 methods are exposed for the delegate. They should be called 
-// *after* the KalLogic has moved to the previous or following month.
+// *after* the KalLogic has moved to the month specified by the user.
 - (void)slideDown;
 - (void)slideUp;
 - (void)jumpToSelectedMonth;    // change months without animation (i.e. when directly switching to "Today")
-
-- (BOOL)isSliding;
-- (void)selectTodayIfVisible;
 
 @end
 
@@ -69,7 +71,6 @@
 
 - (void)showPreviousMonth;
 - (void)showFollowingMonth;
-- (NSArray *)markedDatesFrom:(KalDate *)fromDate to:(KalDate *)toDate;  // returns an array of KalDate objects
 - (void)didSelectDate:(KalDate *)date;
 
 @end

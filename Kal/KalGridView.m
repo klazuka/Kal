@@ -48,8 +48,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     delegate = theDelegate;
     
     CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
-    frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:delegate];
-    backMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:delegate];
+    frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
+    backMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
 //    frontMonthView.backgroundColor = [UIColor colorWithRed:1.f green:0.0f blue:0.0f alpha:0.3f];
 //    backMonthView.backgroundColor = [UIColor colorWithRed:0.f green:0.0f blue:1.f alpha:0.3f];
     backMonthView.hidden = YES;
@@ -239,6 +239,11 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 {
   [self slide:SLIDE_NONE];
 }
+
+- (void)markTilesForDates:(NSArray *)dates { [frontMonthView markTilesForDates:dates]; }
+
+- (KalDate *)fromDate { return frontMonthView.fromDate; }
+- (KalDate *)toDate { return frontMonthView.toDate; }
 
 #pragma mark -
 
