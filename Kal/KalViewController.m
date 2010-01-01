@@ -55,11 +55,12 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [tableView reloadData];
 }
 
+- (NSDate *)fromDate { return [[self.calendarView.fromDate NSDate] cc_dateByMovingToBeginningOfDay]; }
+- (NSDate *)toDate { return [[self.calendarView.toDate NSDate] cc_dateByMovingToEndOfDay]; }
+
 - (void)fetchDataForCurrentMonth
 {
-  NSDate *from = [[self.calendarView.fromDate NSDate] cc_dateByMovingToBeginningOfDay];
-  NSDate *to = [[self.calendarView.toDate NSDate] cc_dateByMovingToEndOfDay];
-  [dataSource presentingDatesFrom:from to:to delegate:self];
+  [dataSource presentingDatesFrom:[self fromDate] to:[self toDate] delegate:self];
 }
 
 // -----------------------------------------
@@ -93,8 +94,11 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 // ----------------------------------------
 #pragma mark KalDataSourceCallbacks protocol
 
-- (void)loadedMarkedDates:(NSArray *)markedDates
+- (void)loadedDataSource:(id<KalDataSource>)theDataSource;
 {
+  NSLog(@"loadedDataSource");
+  NSArray *markedDates = [theDataSource markedDatesFrom:[self fromDate] to:[self toDate]];
+  NSLog(@"received marked dates: %@", markedDates);
   NSMutableArray *dates = [markedDates mutableCopy];
   for (int i=0; i<[dates count]; i++)
     [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];

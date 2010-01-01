@@ -8,6 +8,9 @@
 @interface HolidayCalendarDataSource : NSObject <KalDataSource>
 {
   NSMutableArray *items;
+  NSMutableArray *holidays;
+  NSMutableData *buffer;
+  id<KalDataSourceCallbacks> callback;
   BOOL dataReady;
 }
 
