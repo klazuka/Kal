@@ -4,7 +4,8 @@
  */
 
 #import "HolidayAppDelegate.h"
-#import "HolidayCalendarDataSource.h"
+#import "HolidayJSONDataSource.h"
+#import "HolidaySqliteDataSource.h"
 #import "Kal.h"
 
 
@@ -15,7 +16,9 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {
-  KalViewController *kal = [[KalViewController alloc] initWithDataSource:[HolidayCalendarDataSource dataSource]];
+  // I provide several different dataSource examples. Pick one by commenting out the others.
+//  KalViewController *kal = [[KalViewController alloc] initWithDataSource:[HolidayJSONDataSource dataSource]];
+  KalViewController *kal = [[KalViewController alloc] initWithDataSource:[HolidaySqliteDataSource dataSource]];
   navController = [[UINavigationController alloc] initWithRootViewController:kal];
   kal.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Today" style:UIBarButtonItemStyleBordered target:kal action:@selector(showAndSelectToday)] autorelease];
   [kal release];

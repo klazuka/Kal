@@ -5,31 +5,22 @@
 
 #import "JSON/JSON.h"
 
-#import "HolidayCalendarDataSource.h"
+#import "HolidayJSONDataSource.h"
 #import "Holiday.h"
 
-NSDate *DateForMonthDayYear(NSUInteger month, NSUInteger day, NSUInteger year)
-{
-  NSDateComponents *c = [[[NSDateComponents alloc] init] autorelease];
-  c.month = month;
-  c.day = day;
-  c.year = year;
-  return [[NSCalendar currentCalendar] dateFromComponents:c];
-}
-
-BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
+static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 {
   return [date compare:begin] != NSOrderedAscending && [date compare:end] != NSOrderedDescending;
 }
 
-@interface HolidayCalendarDataSource ()
+@interface HolidayJSONDataSource ()
 - (NSArray *)holidaysFrom:(NSDate *)fromDate to:(NSDate *)toDate;
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate;
 @end
 
-@implementation HolidayCalendarDataSource
+@implementation HolidayJSONDataSource
 
-+ (HolidayCalendarDataSource *)dataSource
++ (HolidayJSONDataSource *)dataSource
 {
   return [[[[self class] alloc] init] autorelease];
 }
@@ -115,7 +106,7 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
-  NSLog(@"dataSource presenting from %@ to %@", fromDate, toDate);
+  NSLog(@"JSON dataSource presenting from %@ to %@", fromDate, toDate);
   /* 
    * In this example, I load the entire dataset in one HTTP request, so the date range that is 
    * being presented is irrelevant. So all I need to do is make sure that the data is loaded
