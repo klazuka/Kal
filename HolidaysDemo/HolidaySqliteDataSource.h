@@ -5,11 +5,12 @@
 
 #import "Kal.h"
 
-@interface HolidayCalendarDataSource : NSObject <KalDataSource>
+@interface HolidaySqliteDataSource : NSObject <KalDataSource>
 {
   NSMutableArray *items;
+  NSMutableArray *holidays;
 }
 
-+ (HolidayCalendarDataSource *)dataSource;
++ (HolidaySqliteDataSource *)dataSource;
 
 @end

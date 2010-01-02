@@ -10,9 +10,11 @@ enum {
 };
 typedef char KalTileType;
 
+@class KalDate;
+
 @interface KalTileView : UIView
 {
-  NSDate *date;
+  KalDate *date;
   CGPoint origin;
   struct {
     unsigned int selected : 1;
@@ -22,7 +24,7 @@ typedef char KalTileType;
   } flags;
 }
 
-@property (nonatomic, retain) NSDate *date;
+@property (nonatomic, retain) KalDate *date;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic, getter=isSelected) BOOL selected;
 @property (nonatomic, getter=isMarked) BOOL marked;
@@ -31,6 +33,5 @@ typedef char KalTileType;
 - (void)resetState;
 - (BOOL)isToday;
 - (BOOL)belongsToAdjacentMonth;
-
 
 @end

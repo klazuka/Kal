@@ -3,16 +3,15 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-#import "KalView.h" // for the KalViewDelegate protocol
+#import "KalView.h"       // for the KalViewDelegate protocol
+#import "KalDataSource.h" // for the KalDataSourceCallbacks protocol
 
-@class KalLogic;
-
-@protocol KalDataSource;
+@class KalLogic, KalDate;
 
 /*
  *    KalViewController
  *    ------------------------
-*
+ *
  *  KalViewController automatically creates both the calendar view
  *  and the events table view for you. The only thing you need to provide
  *  is a KalDataSource so that the calendar system knows which days to
@@ -20,15 +19,17 @@
  *  date is selected (just like in Apple's calendar app).
  *
  */
-@interface KalViewController : UIViewController <KalViewDelegate>
+@interface KalViewController : UIViewController <KalViewDelegate, KalDataSourceCallbacks>
 {
   KalLogic *logic;
   UITableView *tableView;
   id <KalDataSource> dataSource;
 }
 
-- (id)initWithDataSource:(id<KalDataSource>)source; // designated initializer
+@property (nonatomic, readonly) KalView *calendarView;
 
+- (id)initWithDataSource:(id<KalDataSource>)source; // designated initializer
 - (void)showAndSelectToday;
 
 @end
+

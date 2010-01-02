@@ -3,7 +3,7 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-@class KalTileView, KalMonthView, KalLogic;
+@class KalTileView, KalMonthView, KalLogic, KalDate;
 @protocol KalViewDelegate;
 
 /*
@@ -30,15 +30,18 @@
 @property (nonatomic, retain) KalTileView *selectedTile;
 @property (nonatomic, retain) KalTileView *highlightedTile;
 @property (nonatomic, readonly) BOOL transitioning;
+@property (nonatomic, readonly) KalDate *fromDate;
+@property (nonatomic, readonly) KalDate *toDate;
+@property (nonatomic, readonly) KalDate *selectedDate;
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)logic delegate:(id<KalViewDelegate>)delegate;
+- (void)selectTodayIfVisible;
+- (void)markTilesForDates:(NSArray *)dates;
 
 // These 3 methods should be called *after* the KalLogic
 // has moved to the previous or following month.
 - (void)slideUp;
 - (void)slideDown;
 - (void)jumpToSelectedMonth;    // see comment on KalView
-
-- (void)selectTodayIfVisible;
 
 @end

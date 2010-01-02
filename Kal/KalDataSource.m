@@ -35,13 +35,24 @@
 
 #pragma mark KalDataSource protocol conformance
 
-- (void)loadDate:(NSDate *)date
+- (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
+  [delegate loadedDataSource:self];
 }
 
-- (BOOL)hasDetailsForDate:(NSDate *)date
+- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
 {
-  return NO;
+  return [NSArray array];
+}
+
+- (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
+{
+  // do nothing
+}
+
+- (void)removeAllItems
+{
+  // do nothing
 }
 
 @end

@@ -3,11 +3,14 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#import <CoreGraphics/CoreGraphics.h>
+
 #import "KalGridView.h"
 #import "KalView.h"
 #import "KalMonthView.h"
 #import "KalTileView.h"
 #import "KalLogic.h"
+#import "KalDate.h"
 #import "KalPrivate.h"
 
 #define SLIDE_NONE 0
@@ -45,8 +48,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     delegate = theDelegate;
     
     CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
-    frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:delegate];
-    backMonthView = [[KalMonthView alloc] initWithFrame:monthRect delegate:delegate];
+    frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
+    backMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
 //    frontMonthView.backgroundColor = [UIColor colorWithRed:1.f green:0.0f blue:0.0f alpha:0.3f];
 //    backMonthView.backgroundColor = [UIColor colorWithRed:0.f green:0.0f blue:1.f alpha:0.3f];
     backMonthView.hidden = YES;
@@ -62,6 +65,11 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 - (void)drawRect:(CGRect)rect
 {
   [[UIImage imageNamed:@"kal_grid_background.png"] drawInRect:rect];
+  [[UIColor colorWithRed:0.63f green:0.65f blue:0.68f alpha:1.f] setFill];
+  CGRect line;
+  line.origin = CGPointMake(0.f, self.height - 1.f);
+  line.size = CGSizeMake(self.width, 1.f);
+  CGContextFillRect(UIGraphicsGetCurrentContext(), line);
 }
 
 - (void)sizeToFit
@@ -131,7 +139,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   if ([hitView isKindOfClass:[KalTileView class]]) {
     KalTileView *tile = (KalTileView*)hitView;
     if (tile.belongsToAdjacentMonth) {
-      if ([tile.date timeIntervalSinceDate:logic.baseDate] > 0) {
+      if ([tile.date compare:[KalDate dateFromNSDate:logic.baseDate]] == NSOrderedDescending) {
         [delegate showFollowingMonth];
       } else {
         [delegate showPreviousMonth];
@@ -231,6 +239,12 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 {
   [self slide:SLIDE_NONE];
 }
+
+- (void)markTilesForDates:(NSArray *)dates { [frontMonthView markTilesForDates:dates]; }
+
+- (KalDate *)fromDate { return frontMonthView.fromDate; }
+- (KalDate *)toDate { return frontMonthView.toDate; }
+- (KalDate *)selectedDate { return selectedTile.date; }
 
 #pragma mark -
 

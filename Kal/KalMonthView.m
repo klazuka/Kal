@@ -7,18 +7,18 @@
 #import "KalMonthView.h"
 #import "KalTileView.h"
 #import "KalView.h"
+#import "KalDate.h"
 #import "KalPrivate.h"
 
 extern const CGSize kTileSize;
 
 @implementation KalMonthView
 
-@synthesize numWeeks;
+@synthesize fromDate, toDate, numWeeks;
 
-- (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)theDelegate
+- (id)initWithFrame:(CGRect)frame
 {
   if ((self = [super initWithFrame:frame])) {
-    delegate = theDelegate;
     self.opaque = NO;
     self.clipsToBounds = YES;
     for (int i=0; i<6; i++) {
@@ -31,42 +31,36 @@ extern const CGSize kTileSize;
   return self;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-  [NSException raise:@"Invalid initializer" format:@"KalMonthView must be instantiated with a delegate"];
-  return nil;
-}
-
 - (void)showDates:(NSArray *)mainDates beginShared:(NSArray *)firstWeekShared endShared:(NSArray *)finalWeekShared
 {
   int i = 0;
   
-  for (NSDate *d in firstWeekShared) {
+  self.fromDate = [firstWeekShared count] > 0 ? [firstWeekShared objectAtIndex:0] : [mainDates objectAtIndex:0];
+  self.toDate = [finalWeekShared count] > 0 ? [finalWeekShared lastObject] : [mainDates lastObject];
+  
+  for (KalDate *d in firstWeekShared) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = KalTileTypeAdjacent;
     tile.date = d;
-    tile.marked = [delegate shouldMarkTileForDate:d];
     [tile setNeedsDisplay];
     i++;
   }
   
-  for (NSDate *d in mainDates) {
+  for (KalDate *d in mainDates) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
-    tile.type = [d cc_isToday] ? KalTileTypeToday : KalTileTypeRegular;
+    tile.type = [d isToday] ? KalTileTypeToday : KalTileTypeRegular;
     tile.date = d;
-    tile.marked = [delegate shouldMarkTileForDate:d];
     [tile setNeedsDisplay];
     i++;
   }
   
-  for (NSDate *d in finalWeekShared) {
+  for (KalDate *d in finalWeekShared) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = KalTileTypeAdjacent;
     tile.date = d;
-    tile.marked = [delegate shouldMarkTileForDate:d];
     [tile setNeedsDisplay];
     i++;
   }
@@ -108,11 +102,11 @@ extern const CGSize kTileSize;
   return tile;
 }
 
-- (KalTileView *)tileForDate:(NSDate *)date
+- (KalTileView *)tileForDate:(KalDate *)date
 {
   KalTileView *tile = nil;
   for (KalTileView *t in self.subviews) {
-    if ([t.date isEqualToDate:date]) {
+    if ([t.date isEqual:date]) {
       tile = t;
       break;
     }
@@ -123,7 +117,21 @@ extern const CGSize kTileSize;
 
 - (void)sizeToFit
 {
-  self.height = kTileSize.height * numWeeks;
+  self.height = 1.f + kTileSize.height * numWeeks;
 }
+
+- (void)markTilesForDates:(NSArray *)dates
+{
+  for (KalTileView *tile in self.subviews)
+    tile.marked = [dates containsObject:tile.date];
+}
+
+- (void)dealloc
+{
+  [fromDate release];
+  [toDate release];
+  [super dealloc];
+}
+
 
 @end

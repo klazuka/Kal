@@ -3,8 +3,8 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
-@class KalGridView, KalLogic;
-@protocol KalViewDelegate;
+@class KalGridView, KalLogic, KalDate;
+@protocol KalViewDelegate, KalDataSourceCallbacks;
 
 /*
  *    KalView
@@ -40,33 +40,38 @@
   UILabel *headerTitleLabel;
   KalGridView *gridView;
   UITableView *tableView;
+  UIImageView *shadowView;
   id<KalViewDelegate> delegate;
   KalLogic *logic;
 }
 
 @property (nonatomic, assign) id<KalViewDelegate> delegate;
 @property (nonatomic, readonly) UITableView *tableView;
+@property (nonatomic, readonly) KalDate *fromDate;
+@property (nonatomic, readonly) KalDate *toDate;
+@property (nonatomic, readonly) KalDate *selectedDate;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)delegate logic:(KalLogic *)logic;
+- (BOOL)isSliding;
+- (void)selectTodayIfVisible;
+- (void)markTilesForDates:(NSArray *)dates;
 
 // These 3 methods are exposed for the delegate. They should be called 
-// *after* the KalLogic has moved to the previous or following month.
+// *after* the KalLogic has moved to the month specified by the user.
 - (void)slideDown;
 - (void)slideUp;
 - (void)jumpToSelectedMonth;    // change months without animation (i.e. when directly switching to "Today")
-
-- (BOOL)isSliding;
-- (void)selectTodayIfVisible;
 
 @end
 
 #pragma mark -
 
+@class KalDate;
+
 @protocol KalViewDelegate
 
 - (void)showPreviousMonth;
 - (void)showFollowingMonth;
-- (BOOL)shouldMarkTileForDate:(NSDate *)date;
-- (void)didSelectDate:(NSDate *)date;
+- (void)didSelectDate:(KalDate *)date;
 
 @end
