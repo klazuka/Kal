@@ -3,17 +3,18 @@
 
 @implementation Holiday
 
-@synthesize date, name;
+@synthesize date, name, country;
 
-+ (Holiday*)holidayNamed:(NSString *)aName onDate:(NSDate *)aDate
++ (Holiday*)holidayNamed:(NSString *)aName country:(NSString *)aCountry date:(NSDate *)aDate;
 {
-  return [[[Holiday alloc] initWithName:aName onDate:aDate] autorelease];
+  return [[[Holiday alloc] initWithName:aName country:aCountry date:aDate] autorelease];
 }
 
-- (id)initWithName:(NSString *)aName onDate:(NSDate *)aDate
+- (id)initWithName:(NSString *)aName country:(NSString *)aCountry date:(NSDate *)aDate
 {
   if ((self = [super init])) {
     name = [aName copy];
+    country = [aCountry copy];
     date = [aDate retain];
   }
   return self;

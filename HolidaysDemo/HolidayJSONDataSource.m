@@ -5,31 +5,22 @@
 
 #import "JSON/JSON.h"
 
-#import "HolidayCalendarDataSource.h"
+#import "HolidayJSONDataSource.h"
 #import "Holiday.h"
 
-NSDate *DateForMonthDayYear(NSUInteger month, NSUInteger day, NSUInteger year)
-{
-  NSDateComponents *c = [[[NSDateComponents alloc] init] autorelease];
-  c.month = month;
-  c.day = day;
-  c.year = year;
-  return [[NSCalendar currentCalendar] dateFromComponents:c];
-}
-
-BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
+static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 {
   return [date compare:begin] != NSOrderedAscending && [date compare:end] != NSOrderedDescending;
 }
 
-@interface HolidayCalendarDataSource ()
+@interface HolidayJSONDataSource ()
 - (NSArray *)holidaysFrom:(NSDate *)fromDate to:(NSDate *)toDate;
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate;
 @end
 
-@implementation HolidayCalendarDataSource
+@implementation HolidayJSONDataSource
 
-+ (HolidayCalendarDataSource *)dataSource
++ (HolidayJSONDataSource *)dataSource
 {
   return [[[[self class] alloc] init] autorelease];
 }
@@ -53,9 +44,12 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   if (!cell) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
   }
-  
-  cell.textLabel.text = [items objectAtIndex:indexPath.row];
+
+  Holiday *holiday = [items objectAtIndex:indexPath.row];
+  cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"flags/%@.gif", holiday.country]];
+  cell.textLabel.text = holiday.name;
   return cell;
 }
 
@@ -88,8 +82,6 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  NSLog(@"Fetch completed.");
-  
   NSString *str = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
   NSArray *array = [str JSONValue];
   if (!array)
@@ -99,7 +91,7 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   [fmt setDateFormat:@"yyyy-MM-dd"];
   for (NSDictionary *dict in array) {
     NSDate *d = [fmt dateFromString:[dict objectForKey:@"date"]];
-    [holidays addObject:[Holiday holidayNamed:[dict objectForKey:@"name"] onDate:d]];
+    [holidays addObject:[Holiday holidayNamed:[dict objectForKey:@"name"] country:[dict objectForKey:@"country"] date:d]];
   }
   
   dataReady = YES;
@@ -115,7 +107,6 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
-  NSLog(@"dataSource presenting from %@ to %@", fromDate, toDate);
   /* 
    * In this example, I load the entire dataset in one HTTP request, so the date range that is 
    * being presented is irrelevant. So all I need to do is make sure that the data is loaded
@@ -145,8 +136,7 @@ BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   if (!dataReady)
     return;
   
-  for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
-    [items addObject:holiday.name];
+  [items addObjectsFromArray:[self holidaysFrom:fromDate to:toDate]];
 }
 
 - (void)removeAllItems

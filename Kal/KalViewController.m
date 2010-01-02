@@ -9,7 +9,7 @@
 #import "KalDate.h"
 #import "KalPrivate.h"
 
-#define PROFILER 1
+#define PROFILER 0
 #if PROFILER
 #include <mach/mach_time.h>
 #include <time.h>
@@ -96,9 +96,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 - (void)loadedDataSource:(id<KalDataSource>)theDataSource;
 {
-  NSLog(@"loadedDataSource");
   NSArray *markedDates = [theDataSource markedDatesFrom:[self fromDate] to:[self toDate]];
-  NSLog(@"received marked dates: %@", markedDates);
   NSMutableArray *dates = [markedDates mutableCopy];
   for (int i=0; i<[dates count]; i++)
     [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
