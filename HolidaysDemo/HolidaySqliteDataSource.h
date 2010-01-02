@@ -9,7 +9,6 @@
 {
   NSMutableArray *items;
   NSMutableArray *holidays;
-  id<KalDataSourceCallbacks> callback;
 }
 
 + (HolidaySqliteDataSource *)dataSource;

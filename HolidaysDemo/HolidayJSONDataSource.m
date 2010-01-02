@@ -44,9 +44,12 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   if (!cell) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
   }
-  
-  cell.textLabel.text = [items objectAtIndex:indexPath.row];
+
+  Holiday *holiday = [items objectAtIndex:indexPath.row];
+  cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"flags/%@.gif", holiday.country]];
+  cell.textLabel.text = holiday.name;
   return cell;
 }
 
@@ -79,8 +82,6 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-  NSLog(@"Fetch completed.");
-  
   NSString *str = [[[NSString alloc] initWithData:buffer encoding:NSUTF8StringEncoding] autorelease];
   NSArray *array = [str JSONValue];
   if (!array)
@@ -90,7 +91,7 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   [fmt setDateFormat:@"yyyy-MM-dd"];
   for (NSDictionary *dict in array) {
     NSDate *d = [fmt dateFromString:[dict objectForKey:@"date"]];
-    [holidays addObject:[Holiday holidayNamed:[dict objectForKey:@"name"] onDate:d]];
+    [holidays addObject:[Holiday holidayNamed:[dict objectForKey:@"name"] country:[dict objectForKey:@"country"] date:d]];
   }
   
   dataReady = YES;
@@ -106,7 +107,6 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
-  NSLog(@"JSON dataSource presenting from %@ to %@", fromDate, toDate);
   /* 
    * In this example, I load the entire dataset in one HTTP request, so the date range that is 
    * being presented is irrelevant. So all I need to do is make sure that the data is loaded
@@ -136,8 +136,7 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   if (!dataReady)
     return;
   
-  for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
-    [items addObject:holiday.name];
+  [items addObjectsFromArray:[self holidaysFrom:fromDate to:toDate]];
 }
 
 - (void)removeAllItems

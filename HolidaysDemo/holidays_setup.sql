@@ -1,9 +1,4 @@
-CREATE TABLE holidays (
-    id INTEGER PRIMARY KEY,
-    name VARCHAR(50),
-    country VARCHAR(30),
-    date_of_event VARCHAR(10)
-);
+CREATE TABLE holidays ( id INTEGER PRIMARY KEY, name VARCHAR(50), country VARCHAR(30), date_of_event VARCHAR(10) );
 
 INSERT INTO holidays (country, name, date_of_event) VALUES ('India', 'Republic Day', '2009-01-26');
 INSERT INTO holidays (country, name, date_of_event) VALUES ('India', 'Republic Day', '2010-01-26');

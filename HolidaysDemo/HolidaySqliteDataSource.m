@@ -42,9 +42,12 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   if (!cell) {
     cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] autorelease];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
   }
   
-  cell.textLabel.text = [items objectAtIndex:indexPath.row];
+  Holiday *holiday = [items objectAtIndex:indexPath.row];
+  cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"flags/%@.gif", holiday.country]];
+  cell.textLabel.text = holiday.name;
   return cell;
 }
 
@@ -60,14 +63,14 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   return [[NSBundle mainBundle] pathForResource:@"holidays" ofType:@"db"];
 }
 
-- (void)loadHolidaysFrom:(NSDate *)fromDate to:(NSDate *)toDate
+- (void)loadHolidaysFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
-  NSLog(@"Fetching results from the database...");
+  NSLog(@"Fetching holidays from the database between %@ and %@...", fromDate, toDate);
 	sqlite3 *db;
   NSDateFormatter *fmt = [[[NSDateFormatter alloc] init] autorelease];
   
 	if(sqlite3_open([[self databasePath] UTF8String], &db) == SQLITE_OK) {
-		const char *sql = "select name, date_of_event from holidays where date_of_event between ? and ?";
+		const char *sql = "select name, country, date_of_event from holidays where date_of_event between ? and ?";
 		sqlite3_stmt *stmt;
 		if(sqlite3_prepare_v2(db, sql, -1, &stmt, NULL) == SQLITE_OK) {
       [fmt setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
@@ -76,24 +79,23 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
       [fmt setDateFormat:@"yyyy-MM-dd"];
 			while(sqlite3_step(stmt) == SQLITE_ROW) {
 				NSString *name = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 0)];
-				NSString *dateAsText = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 1)];
-        [holidays addObject:[Holiday holidayNamed:name onDate:[fmt dateFromString:dateAsText]]];
+				NSString *country = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 1)];
+        NSString *dateAsText = [NSString stringWithUTF8String:(char *)sqlite3_column_text(stmt, 2)];
+        [holidays addObject:[Holiday holidayNamed:name country:country date:[fmt dateFromString:dateAsText]]];
 			}
 		}
 		sqlite3_finalize(stmt);
 	}
 	sqlite3_close(db);
-  [callback loadedDataSource:self];
+  [delegate loadedDataSource:self];
 }
 
 #pragma mark KalDataSource protocol conformance
 
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate
 {
-  NSLog(@"Sqlite dataSource presenting from %@ to %@", fromDate, toDate);
-  callback = delegate;
   [holidays removeAllObjects];
-  [self loadHolidaysFrom:fromDate to:toDate];
+  [self loadHolidaysFrom:fromDate to:toDate delegate:delegate];
 }
 
 - (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
@@ -103,8 +105,7 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 - (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate
 {
-  for (Holiday *holiday in [self holidaysFrom:fromDate to:toDate])
-    [items addObject:holiday.name];
+  [items addObjectsFromArray:[self holidaysFrom:fromDate to:toDate]];
 }
 
 - (void)removeAllItems
