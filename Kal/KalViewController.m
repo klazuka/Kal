@@ -100,7 +100,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [self fetchDataForCurrentMonth];
 }
 
-// ----------------------------------------
+// -----------------------------------------
 #pragma mark KalDataSourceCallbacks protocol
 
 - (void)loadedDataSource:(id<KalDataSource>)theDataSource;
@@ -142,19 +142,6 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [self fetchDataForCurrentMonth];
 }
 
-/*
-- (void)showAndSelectToday
-{
-  if ([[self calendarView] isSliding])
-    return;
-  
-  [logic moveToTodaysMonth];
-  [[self calendarView] jumpToSelectedMonth];
-  [[self calendarView] selectTodayIfVisible];
-  [self fetchDataForCurrentMonth];
-}
- */
-
 // -----------------------------------------------------------------------------------
 #pragma mark UIViewController
 
@@ -190,6 +177,4 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [super dealloc];
 }
 
-
 @end
-

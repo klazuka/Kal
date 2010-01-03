@@ -8,11 +8,9 @@
 #import "HolidaySqliteDataSource.h"
 #import "Kal.h"
 
-
 @implementation HolidayAppDelegate
 
 @synthesize window;
-
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application
 {

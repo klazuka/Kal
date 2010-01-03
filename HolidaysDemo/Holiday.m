@@ -1,5 +1,9 @@
-#import "Holiday.h"
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
+#import "Holiday.h"
 
 @implementation Holiday
 
@@ -35,6 +39,5 @@
   [name release];
   [super dealloc];
 }
-
 
 @end

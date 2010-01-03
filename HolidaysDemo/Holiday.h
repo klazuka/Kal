@@ -1,4 +1,15 @@
+/* 
+ * Copyright (c) 2009 Keith Lazuka
+ * License: http://www.opensource.org/licenses/mit-license.html
+ */
 
+/*
+ *    Holiday
+ *    -------
+ *
+ *  An immutable value object that represents a single element
+ *  in the dataset.
+ */
 @interface Holiday : NSObject
 {
   NSDate *date;

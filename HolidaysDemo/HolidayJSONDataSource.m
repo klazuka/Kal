@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2009 Keith Lazuka
  * License: http://www.opensource.org/licenses/mit-license.html
  */
@@ -163,6 +163,5 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   [buffer release];
   [super dealloc];
 }
-
 
 @end

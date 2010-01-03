@@ -256,5 +256,4 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   [super dealloc];
 }
 
-
 @end

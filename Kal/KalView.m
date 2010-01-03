@@ -231,22 +231,4 @@ static const CGFloat kMonthLabelHeight = 17.f;
   [super dealloc];
 }
 
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
