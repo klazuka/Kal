@@ -106,7 +106,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 - (void)loadedDataSource:(id<KalDataSource>)theDataSource;
 {
   NSArray *markedDates = [theDataSource markedDatesFrom:logic.fromDate to:logic.toDate];
-  NSMutableArray *dates = [markedDates mutableCopy];
+  NSMutableArray *dates = [[markedDates mutableCopy] autorelease];
   for (int i=0; i<[dates count]; i++)
     [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
   

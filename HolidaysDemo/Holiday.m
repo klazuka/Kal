@@ -37,6 +37,7 @@
 {
   [date release];
   [name release];
+  [country release];
   [super dealloc];
 }
 
