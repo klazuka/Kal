@@ -24,22 +24,17 @@ static const CGFloat kMonthLabelHeight = 17.f;
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)theDelegate logic:(KalLogic *)theLogic
 {
   if ((self = [super initWithFrame:frame])) {
-    
     delegate = theDelegate;
-    
     logic = [theLogic retain];
     [logic addObserver:self forKeyPath:@"selectedMonthNameAndYear" options:NSKeyValueObservingOptionNew context:NULL];
-    
     self.autoresizesSubviews = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     
-    // Header
     UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, kHeaderHeight)] autorelease];
     headerView.backgroundColor = [UIColor grayColor];
     [self addSubviewsToHeaderView:headerView];
     [self addSubview:headerView];
     
-    // Content
     UIView *contentView = [[[UIView alloc] initWithFrame:CGRectMake(0.f, kHeaderHeight, frame.size.width, frame.size.height - kHeaderHeight)] autorelease];
     contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     [self addSubviewsToContentView:contentView];

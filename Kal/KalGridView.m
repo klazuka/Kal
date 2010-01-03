@@ -50,8 +50,6 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
     frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
     backMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
-//    frontMonthView.backgroundColor = [UIColor colorWithRed:1.f green:0.0f blue:0.0f alpha:0.3f];
-//    backMonthView.backgroundColor = [UIColor colorWithRed:0.f green:0.0f blue:1.f alpha:0.3f];
     backMonthView.hidden = YES;
     [self addSubview:backMonthView];
     [self addSubview:frontMonthView];
@@ -152,13 +150,6 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   self.highlightedTile = nil;
 }
 
-- (void)selectTodayIfVisible
-{
-  KalTileView *todayTile = [frontMonthView todaysTileIfVisible];
-  if (todayTile)
-    self.selectedTile = todayTile;
-}
-
 #pragma mark -
 #pragma mark Slide Animation
 
@@ -226,6 +217,13 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 }
 
 #pragma mark -
+
+- (void)selectTodayIfVisible
+{
+  KalTileView *todayTile = [frontMonthView todaysTileIfVisible];
+  if (todayTile)
+    self.selectedTile = todayTile;
+}
 
 - (void)swapMonthViews
 {

@@ -33,36 +33,22 @@ extern const CGSize kTileSize;
 
 - (void)showDates:(NSArray *)mainDates leadingAdjacentDates:(NSArray *)leadingAdjacentDates trailingAdjacentDates:(NSArray *)trailingAdjacentDates
 {
-  int i = 0;
+  int tileNum = 0;
+  NSArray *dates[] = { leadingAdjacentDates, mainDates, trailingAdjacentDates };
   
-  for (KalDate *d in leadingAdjacentDates) {
-    KalTileView *tile = [self.subviews objectAtIndex:i];
-    [tile resetState];
-    tile.type = KalTileTypeAdjacent;
-    tile.date = d;
-    [tile setNeedsDisplay];
-    i++;
+  for (int i=0; i<3; i++) {
+    for (KalDate *d in dates[i]) {
+      KalTileView *tile = [self.subviews objectAtIndex:tileNum];
+      [tile resetState];
+      tile.date = d;
+      tile.type = dates[i] != mainDates
+                    ? KalTileTypeAdjacent
+                    : [d isToday] ? KalTileTypeToday : KalTileTypeRegular;
+      tileNum++;
+    }
   }
   
-  for (KalDate *d in mainDates) {
-    KalTileView *tile = [self.subviews objectAtIndex:i];
-    [tile resetState];
-    tile.type = [d isToday] ? KalTileTypeToday : KalTileTypeRegular;
-    tile.date = d;
-    [tile setNeedsDisplay];
-    i++;
-  }
-  
-  for (KalDate *d in trailingAdjacentDates) {
-    KalTileView *tile = [self.subviews objectAtIndex:i];
-    [tile resetState];
-    tile.type = KalTileTypeAdjacent;
-    tile.date = d;
-    [tile setNeedsDisplay];
-    i++;
-  }
-  
-  numWeeks = ceilf(i / 7.f);
+  numWeeks = ceilf(tileNum / 7.f);
   [self sizeToFit];
   [self setNeedsDisplay];
 }
