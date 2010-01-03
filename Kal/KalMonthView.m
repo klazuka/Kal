@@ -14,7 +14,7 @@ extern const CGSize kTileSize;
 
 @implementation KalMonthView
 
-@synthesize fromDate, toDate, numWeeks;
+@synthesize numWeeks;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -34,9 +34,6 @@ extern const CGSize kTileSize;
 - (void)showDates:(NSArray *)mainDates leadingAdjacentDates:(NSArray *)leadingAdjacentDates trailingAdjacentDates:(NSArray *)trailingAdjacentDates
 {
   int i = 0;
-  
-  self.fromDate = [leadingAdjacentDates count] > 0 ? [leadingAdjacentDates objectAtIndex:0] : [mainDates objectAtIndex:0];
-  self.toDate = [trailingAdjacentDates count] > 0 ? [trailingAdjacentDates lastObject] : [mainDates lastObject];
   
   for (KalDate *d in leadingAdjacentDates) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
@@ -125,13 +122,5 @@ extern const CGSize kTileSize;
   for (KalTileView *tile in self.subviews)
     tile.marked = [dates containsObject:tile.date];
 }
-
-- (void)dealloc
-{
-  [fromDate release];
-  [toDate release];
-  [super dealloc];
-}
-
 
 @end

@@ -7,13 +7,9 @@
 
 @interface KalMonthView : UIView
 {
-  KalDate *fromDate;
-  KalDate *toDate;
   NSUInteger numWeeks;
 }
 
-@property (nonatomic, retain) KalDate *fromDate;
-@property (nonatomic, retain) KalDate *toDate;
 @property (nonatomic) NSUInteger numWeeks;
 
 - (id)initWithFrame:(CGRect)rect; // designated initializer

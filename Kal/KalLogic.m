@@ -8,13 +8,22 @@
 #import "KalPrivate.h"
 
 @interface KalLogic ()
+- (void)moveToMonthForDate:(NSDate *)date;
+- (void)recalculateVisibleDays;
 - (NSUInteger)numberOfDaysInPreviousPartialWeek;
 - (NSUInteger)numberOfDaysInFollowingPartialWeek;
+
+@property (nonatomic, retain) NSDate *fromDate;
+@property (nonatomic, retain) NSDate *toDate;
+@property (nonatomic, retain) NSArray *daysInSelectedMonth;
+@property (nonatomic, retain) NSArray *daysInFinalWeekOfPreviousMonth;
+@property (nonatomic, retain) NSArray *daysInFirstWeekOfFollowingMonth;
+
 @end
 
 @implementation KalLogic
 
-@synthesize baseDate;
+@synthesize baseDate, fromDate, toDate, daysInSelectedMonth, daysInFinalWeekOfPreviousMonth, daysInFirstWeekOfFollowingMonth;
 
 + (NSSet *)keyPathsForValuesAffectingSelectedMonthNameAndYear
 {
@@ -24,29 +33,55 @@
 - (id)init
 {
   if ((self = [super init])) {
-    self.baseDate = [[NSDate date] cc_dateByMovingToFirstDayOfTheMonth];
     monthAndYearFormatter = [[NSDateFormatter alloc] init];
     [monthAndYearFormatter setDateFormat:@"MMMM yyyy"];
+    [self moveToMonthForDate:[[NSDate date] cc_dateByMovingToFirstDayOfTheMonth]];
   }
   return self;
 }
 
+- (void)moveToMonthForDate:(NSDate *)date
+{
+  self.baseDate = date;
+  [self recalculateVisibleDays];
+}
+
 - (void)retreatToPreviousMonth
 {
-  self.baseDate = [self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth];
+  [self moveToMonthForDate:[self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth]];
 }
 
 - (void)advanceToFollowingMonth
 {
-  self.baseDate = [self.baseDate cc_dateByMovingToFirstDayOfTheFollowingMonth];
+  [self moveToMonthForDate:[self.baseDate cc_dateByMovingToFirstDayOfTheFollowingMonth]];
 }
 
 - (void)moveToTodaysMonth
 {
-  self.baseDate = [[NSDate date] cc_dateByMovingToFirstDayOfTheMonth];
+  [self moveToMonthForDate:[[NSDate date] cc_dateByMovingToFirstDayOfTheMonth]];
 }
 
-- (NSArray *)daysInFinalWeekOfPreviousMonth
+- (NSString *)selectedMonthNameAndYear;
+{
+  return [monthAndYearFormatter stringFromDate:self.baseDate];
+}
+
+#pragma mark Low-level implementation details
+
+- (NSUInteger)numberOfDaysInPreviousPartialWeek
+{
+  return [self.baseDate cc_weekday] - 1;
+}
+
+- (NSUInteger)numberOfDaysInFollowingPartialWeek
+{
+  NSDateComponents *c = [self.baseDate cc_componentsForMonthDayAndYear];
+  c.day = [self.baseDate cc_numberOfDaysInMonth];
+  NSDate *lastDayOfTheMonth = [[NSCalendar currentCalendar] dateFromComponents:c];
+  return 7 - [lastDayOfTheMonth cc_weekday];
+}
+
+- (NSArray *)calculateDaysInFinalWeekOfPreviousMonth
 {
   NSMutableArray *days = [NSMutableArray array];
   
@@ -60,7 +95,7 @@
   return days;
 }
 
-- (NSArray *)daysInSelectedMonth
+- (NSArray *)calculateDaysInSelectedMonth
 {
   NSMutableArray *days = [NSMutableArray array];
   
@@ -72,7 +107,7 @@
   return days;
 }
 
-- (NSArray *)daysInFirstWeekOfFollowingMonth
+- (NSArray *)calculateDaysInFirstWeekOfFollowingMonth
 {
   NSMutableArray *days = [NSMutableArray array];
   
@@ -85,25 +120,15 @@
   return days;
 }
 
-- (NSString *)selectedMonthNameAndYear;
+- (void)recalculateVisibleDays
 {
-  return [monthAndYearFormatter stringFromDate:self.baseDate];
-}
-
-#pragma mark Low-level implementation details
-
-- (NSUInteger)numberOfDaysInPreviousPartialWeek
-{
-  // weekday(first day of the month) - 1
-  return [self.baseDate cc_weekday] - 1;
-}
-
-- (NSUInteger)numberOfDaysInFollowingPartialWeek
-{
-  NSDateComponents *c = [self.baseDate cc_componentsForMonthDayAndYear];
-  c.day = [self.baseDate cc_numberOfDaysInMonth];
-  NSDate *lastDayOfTheMonth = [[NSCalendar currentCalendar] dateFromComponents:c];
-  return 7 - [lastDayOfTheMonth cc_weekday];
+  self.daysInSelectedMonth = [self calculateDaysInSelectedMonth];
+  self.daysInFinalWeekOfPreviousMonth = [self calculateDaysInFinalWeekOfPreviousMonth];
+  self.daysInFirstWeekOfFollowingMonth = [self calculateDaysInFirstWeekOfFollowingMonth];
+  KalDate *from = [self.daysInFinalWeekOfPreviousMonth count] > 0 ? [self.daysInFinalWeekOfPreviousMonth objectAtIndex:0] : [self.daysInSelectedMonth objectAtIndex:0];
+  KalDate *to = [self.daysInFirstWeekOfFollowingMonth count] > 0 ? [self.daysInFirstWeekOfFollowingMonth lastObject] : [self.daysInSelectedMonth lastObject];
+  self.fromDate = [[from NSDate] cc_dateByMovingToBeginningOfDay];
+  self.toDate = [[to NSDate] cc_dateByMovingToEndOfDay];
 }
 
 #pragma mark -
@@ -112,6 +137,11 @@
 {
   [monthAndYearFormatter release];
   [baseDate release];
+  [fromDate release];
+  [toDate release];
+  [daysInSelectedMonth release];
+  [daysInFinalWeekOfPreviousMonth release];
+  [daysInFirstWeekOfFollowingMonth release];
   [super dealloc];
 }
 

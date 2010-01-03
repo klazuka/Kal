@@ -199,17 +199,17 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 {
   transitioning = YES;
   
+  [backMonthView showDates:logic.daysInSelectedMonth
+      leadingAdjacentDates:logic.daysInFinalWeekOfPreviousMonth
+     trailingAdjacentDates:logic.daysInFirstWeekOfFollowingMonth];
+  
   // At this point, the calendar logic has already been advanced or retreated to the
   // following/previous month, so in order to determine whether there are 
   // any cells to keep, we need to check for a partial week in the month
   // that is sliding offscreen.
   
-  [backMonthView showDates:[logic daysInSelectedMonth]
-      leadingAdjacentDates:[logic daysInFinalWeekOfPreviousMonth]
-     trailingAdjacentDates:[logic daysInFirstWeekOfFollowingMonth]];
-  
-  BOOL keepOneRow = (direction == SLIDE_UP && [[logic daysInFinalWeekOfPreviousMonth] count] > 0)
-                    || (direction == SLIDE_DOWN  && [[logic daysInFirstWeekOfFollowingMonth] count] > 0);
+  BOOL keepOneRow = (direction == SLIDE_UP && [logic.daysInFinalWeekOfPreviousMonth count] > 0)
+                    || (direction == SLIDE_DOWN  && [logic.daysInFirstWeekOfFollowingMonth count] > 0);
   
   [self swapMonthsAndSlide:direction keepOneRow:keepOneRow];
   
@@ -242,8 +242,6 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)markTilesForDates:(NSArray *)dates { [frontMonthView markTilesForDates:dates]; }
 
-- (KalDate *)fromDate { return frontMonthView.fromDate; }
-- (KalDate *)toDate { return frontMonthView.toDate; }
 - (KalDate *)selectedDate { return selectedTile.date; }
 
 #pragma mark -

@@ -55,12 +55,9 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [tableView reloadData];
 }
 
-- (NSDate *)fromDate { return [[self.calendarView.fromDate NSDate] cc_dateByMovingToBeginningOfDay]; }
-- (NSDate *)toDate { return [[self.calendarView.toDate NSDate] cc_dateByMovingToEndOfDay]; }
-
 - (void)fetchDataForCurrentMonth
 {
-  [dataSource presentingDatesFrom:[self fromDate] to:[self toDate] delegate:self];
+  [dataSource presentingDatesFrom:logic.fromDate to:logic.toDate delegate:self];
 }
 
 // -----------------------------------------
@@ -96,7 +93,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 - (void)loadedDataSource:(id<KalDataSource>)theDataSource;
 {
-  NSArray *markedDates = [theDataSource markedDatesFrom:[self fromDate] to:[self toDate]];
+  NSArray *markedDates = [theDataSource markedDatesFrom:logic.fromDate to:logic.toDate];
   NSMutableArray *dates = [markedDates mutableCopy];
   for (int i=0; i<[dates count]; i++)
     [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];

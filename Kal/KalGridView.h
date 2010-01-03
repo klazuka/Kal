@@ -30,8 +30,6 @@
 @property (nonatomic, retain) KalTileView *selectedTile;
 @property (nonatomic, retain) KalTileView *highlightedTile;
 @property (nonatomic, readonly) BOOL transitioning;
-@property (nonatomic, readonly) KalDate *fromDate;
-@property (nonatomic, readonly) KalDate *toDate;
 @property (nonatomic, readonly) KalDate *selectedDate;
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)logic delegate:(id<KalViewDelegate>)delegate;

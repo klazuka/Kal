@@ -47,8 +47,6 @@
 
 @property (nonatomic, assign) id<KalViewDelegate> delegate;
 @property (nonatomic, readonly) UITableView *tableView;
-@property (nonatomic, readonly) KalDate *fromDate;
-@property (nonatomic, readonly) KalDate *toDate;
 @property (nonatomic, readonly) KalDate *selectedDate;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)delegate logic:(KalLogic *)logic;
