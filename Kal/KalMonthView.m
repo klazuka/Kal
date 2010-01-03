@@ -31,14 +31,14 @@ extern const CGSize kTileSize;
   return self;
 }
 
-- (void)showDates:(NSArray *)mainDates beginShared:(NSArray *)firstWeekShared endShared:(NSArray *)finalWeekShared
+- (void)showDates:(NSArray *)mainDates leadingAdjacentDates:(NSArray *)leadingAdjacentDates trailingAdjacentDates:(NSArray *)trailingAdjacentDates
 {
   int i = 0;
   
-  self.fromDate = [firstWeekShared count] > 0 ? [firstWeekShared objectAtIndex:0] : [mainDates objectAtIndex:0];
-  self.toDate = [finalWeekShared count] > 0 ? [finalWeekShared lastObject] : [mainDates lastObject];
+  self.fromDate = [leadingAdjacentDates count] > 0 ? [leadingAdjacentDates objectAtIndex:0] : [mainDates objectAtIndex:0];
+  self.toDate = [trailingAdjacentDates count] > 0 ? [trailingAdjacentDates lastObject] : [mainDates lastObject];
   
-  for (KalDate *d in firstWeekShared) {
+  for (KalDate *d in leadingAdjacentDates) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = KalTileTypeAdjacent;
@@ -56,7 +56,7 @@ extern const CGSize kTileSize;
     i++;
   }
   
-  for (KalDate *d in finalWeekShared) {
+  for (KalDate *d in trailingAdjacentDates) {
     KalTileView *tile = [self.subviews objectAtIndex:i];
     [tile resetState];
     tile.type = KalTileTypeAdjacent;

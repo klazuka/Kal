@@ -24,7 +24,7 @@
 - (id)init
 {
   if ((self = [super init])) {
-    self.baseDate = [[NSDate cc_today] cc_dateByMovingToFirstDayOfTheMonth];
+    self.baseDate = [[NSDate date] cc_dateByMovingToFirstDayOfTheMonth];
     monthAndYearFormatter = [[NSDateFormatter alloc] init];
     [monthAndYearFormatter setDateFormat:@"MMMM yyyy"];
   }
@@ -43,7 +43,7 @@
 
 - (void)moveToTodaysMonth
 {
-  self.baseDate = [[NSDate cc_today] cc_dateByMovingToFirstDayOfTheMonth];
+  self.baseDate = [[NSDate date] cc_dateByMovingToFirstDayOfTheMonth];
 }
 
 - (NSArray *)daysInFinalWeekOfPreviousMonth

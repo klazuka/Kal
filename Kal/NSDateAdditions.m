@@ -7,27 +7,6 @@
 
 @implementation NSDate (KalAdditions)
 
-+ (NSDate *)cc_today { return [NSDate date]; }
-
-+ (NSDate *)cc_dateForDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year
-{
-  NSDateComponents *c = [[[NSDateComponents alloc] init] autorelease];
-  c.day = day;
-  c.month = month;
-  c.year = year;
-  return [[NSCalendar currentCalendar] dateFromComponents:c];
-}
-
-- (BOOL)cc_isToday
-{
-  // Performance optimization because [NSCalendar components:fromDate:] is expensive.
-  // (I verified this with Shark)
-  if (ABS([self timeIntervalSinceDate:[NSDate date]]) > 86400)
-    return NO;
- 
-  return [self cc_day] == [[NSDate cc_today] cc_day];
-}
-
 - (NSDate *)cc_dateByMovingToBeginningOfDay
 {
   unsigned int flags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit | NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
@@ -73,11 +52,6 @@
 - (NSDateComponents *)cc_componentsForMonthDayAndYear
 {
   return [[NSCalendar currentCalendar] components:NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit fromDate:self];
-}
-
-- (NSUInteger)cc_day
-{
-  return (NSUInteger)[[[NSCalendar currentCalendar] components:NSDayCalendarUnit fromDate:self] day];
 }
 
 - (NSUInteger)cc_weekday

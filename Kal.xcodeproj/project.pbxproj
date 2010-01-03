@@ -42,7 +42,6 @@
 		53D9F89010DD9CEE00759172 /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87510DD9CEE00759172 /* KalView.m */; };
 		53D9F89110DD9CEE00759172 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87710DD9CEE00759172 /* KalViewController.m */; };
 		53D9F89710DD9CEE00759172 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */; };
-		53D9F89810DD9CEE00759172 /* NSMutableArrayAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */; };
 		53D9F89F10DD9CEE00759172 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F88910DD9CEE00759172 /* UIViewAdditions.m */; };
 		53D9F8AE10DD9D9D00759172 /* HolidayAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F8AC10DD9D9D00759172 /* HolidayAppDelegate.m */; };
 		53D9F95F10DFC21D00759172 /* kal_grid_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F95310DFC21D00759172 /* kal_grid_background.png */; };
@@ -109,8 +108,6 @@
 		53D9F87710DD9CEE00759172 /* KalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalViewController.m; sourceTree = "<group>"; };
 		53D9F87D10DD9CEE00759172 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
 		53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
-		53D9F87F10DD9CEE00759172 /* NSMutableArrayAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArrayAdditions.h; sourceTree = "<group>"; };
-		53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableArrayAdditions.m; sourceTree = "<group>"; };
 		53D9F88810DD9CEE00759172 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
 		53D9F88910DD9CEE00759172 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
 		53D9F8A910DD9D9D00759172 /* Holiday_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Holiday_Prefix.pch; sourceTree = "<group>"; };
@@ -252,8 +249,6 @@
 			children = (
 				53D9F87D10DD9CEE00759172 /* NSDateAdditions.h */,
 				53D9F87E10DD9CEE00759172 /* NSDateAdditions.m */,
-				53D9F87F10DD9CEE00759172 /* NSMutableArrayAdditions.h */,
-				53D9F88010DD9CEE00759172 /* NSMutableArrayAdditions.m */,
 				53D9F88810DD9CEE00759172 /* UIViewAdditions.h */,
 				53D9F88910DD9CEE00759172 /* UIViewAdditions.m */,
 			);
@@ -361,7 +356,6 @@
 				53D9F89010DD9CEE00759172 /* KalView.m in Sources */,
 				53D9F89110DD9CEE00759172 /* KalViewController.m in Sources */,
 				53D9F89710DD9CEE00759172 /* NSDateAdditions.m in Sources */,
-				53D9F89810DD9CEE00759172 /* NSMutableArrayAdditions.m in Sources */,
 				53D9F89F10DD9CEE00759172 /* UIViewAdditions.m in Sources */,
 				53D9F8AE10DD9D9D00759172 /* HolidayAppDelegate.m in Sources */,
 				5387B4A310E902EF0011C4BA /* KalMonthView.m in Sources */,

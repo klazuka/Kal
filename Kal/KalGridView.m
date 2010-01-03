@@ -205,8 +205,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   // that is sliding offscreen.
   
   [backMonthView showDates:[logic daysInSelectedMonth]
-               beginShared:[logic daysInFinalWeekOfPreviousMonth]
-                 endShared:[logic daysInFirstWeekOfFollowingMonth]];
+      leadingAdjacentDates:[logic daysInFinalWeekOfPreviousMonth]
+     trailingAdjacentDates:[logic daysInFirstWeekOfFollowingMonth]];
   
   BOOL keepOneRow = (direction == SLIDE_UP && [[logic daysInFinalWeekOfPreviousMonth] count] > 0)
                     || (direction == SLIDE_DOWN  && [[logic daysInFirstWeekOfFollowingMonth] count] > 0);
