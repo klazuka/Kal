@@ -27,9 +27,10 @@
 }
 
 @property (nonatomic, readonly) KalView *calendarView;
+@property (nonatomic, readonly) UITableView *tableView;
 
 - (id)initWithDataSource:(id<KalDataSource>)source; // designated initializer
-- (void)showAndSelectToday;
+- (void)showAndSelectToday; // Updates the state of the calendar to display today's month and selects the tile for today's date.
 
 @end
 

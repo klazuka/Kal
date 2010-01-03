@@ -60,6 +60,17 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [dataSource presentingDatesFrom:logic.fromDate to:logic.toDate delegate:self];
 }
 
+- (UITableView *)tableView
+{
+  UITableView *table = [[self calendarView] tableView];
+  if (!table) {
+    [self loadView];
+    table = [[self calendarView] tableView];
+  }
+  
+  return table;
+}
+
 // -----------------------------------------
 #pragma mark KalViewDelegate protocol
 

@@ -15,7 +15,7 @@
  *  The protocol is a mix of asynchronous and synchronous methods.
  *  The primary asynchronous method, presentingDatesFrom:to:delegate:, 
  *  allows implementations to retrieve data from the network or disk
- *  without causing a delay when the user slides between months.
+ *  without causing the UI to hang when the user slides between months.
  *
  *  --- Asynchronous part of the protocol ---
  *  
@@ -25,7 +25,10 @@
  *        switches to a different month. Your code should respond by
  *        loading application data for the specified range of dates and sending the
  *        loadedDataSource: callback message as soon as the appplication data
- *        is ready and available in memory.
+ *        is ready and available in memory. If the lookup of your application
+ *        data is expensive, you should perform the lookup using an asynchronous
+ *        API (like NSURLConnection for web service resources) or in a background
+ *        thread.
  *
  *        If the application data for the new month is already in-memory,
  *        you must still issue the callback.
@@ -43,7 +46,7 @@
  *        data.
  *
  *        If this message is received but the application data is not yet
- *        ready, your code should return an empty NSArray.
+ *        ready, your code should immediately return an empty NSArray.
  *
  *    loadItemsFromDate:toDate:
  *
