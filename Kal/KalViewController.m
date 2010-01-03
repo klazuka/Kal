@@ -70,6 +70,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [self clearTable];
   [dataSource loadItemsFromDate:from toDate:to];
   [tableView reloadData];
+  [tableView flashScrollIndicators];
 }
 
 - (void)showPreviousMonth
