@@ -19,11 +19,17 @@
  *  the data to the user in the same way (via UITableViewCells).
  *  The only difference is in the way that they retrieve the data.
  *
+ *  HolidayAppDelegate implements the UITableViewDelegate protocol
+ *  so that it can respond to the user tapping the name of a holiday
+ *  below the calendar by pushing a details view controller onto
+ *  the navigation stack.
+ *
  */
-@interface HolidayAppDelegate : NSObject <UIApplicationDelegate>
+@interface HolidayAppDelegate : NSObject <UIApplicationDelegate, UITableViewDelegate>
 {
   UIWindow *window;
   UINavigationController *navController;
+  id dataSource;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

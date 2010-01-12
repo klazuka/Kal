@@ -23,13 +23,14 @@
 {
   KalLogic *logic;
   UITableView *tableView;
+  id <UITableViewDelegate> delegate;
   id <KalDataSource> dataSource;
 }
 
-@property (nonatomic, readonly) KalView *calendarView;
-@property (nonatomic, readonly) UITableView *tableView;
+@property (nonatomic, assign) id<UITableViewDelegate> delegate;
+@property (nonatomic, assign) id<KalDataSource> dataSource;
 
-- (id)initWithDataSource:(id<KalDataSource>)source; // designated initializer
+- (void)reloadData; // If you change the KalDataSource after the KalViewController has already been displayed to the user, you must call this method in order for the view to reflect the new data.
 - (void)showAndSelectToday; // Updates the state of the calendar to display today's month and selects the tile for today's date.
 
 @end

@@ -34,6 +34,7 @@
 		5387C0E810EE389A0011C4BA /* HolidaySqliteDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387C0E710EE389A0011C4BA /* HolidaySqliteDataSource.m */; };
 		5387C10B10EE3D560011C4BA /* holidays.db in Resources */ = {isa = PBXBuildFile; fileRef = 5387C10A10EE3D560011C4BA /* holidays.db */; };
 		5387C17310EEC7100011C4BA /* flags in Resources */ = {isa = PBXBuildFile; fileRef = 5387C16810EEC7100011C4BA /* flags */; };
+		53C660B310FCBB8C00A12D4F /* HolidaysDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C660B210FCBB8C00A12D4F /* HolidaysDetailViewController.m */; };
 		53D9F86810DD9CC800759172 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F86310DD9CC800759172 /* main.m */; };
 		53D9F86910DD9CC800759172 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 53D9F86410DD9CC800759172 /* MainWindow.xib */; };
 		53D9F88C10DD9CEE00759172 /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 53D9F86D10DD9CEE00759172 /* KalDataSource.m */; };
@@ -94,6 +95,8 @@
 		5387C0E710EE389A0011C4BA /* HolidaySqliteDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidaySqliteDataSource.m; sourceTree = "<group>"; };
 		5387C10A10EE3D560011C4BA /* holidays.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = holidays.db; sourceTree = "<group>"; };
 		5387C16810EEC7100011C4BA /* flags */ = {isa = PBXFileReference; lastKnownFileType = folder; path = flags; sourceTree = "<group>"; };
+		53C660B110FCBB8C00A12D4F /* HolidaysDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HolidaysDetailViewController.h; sourceTree = "<group>"; };
+		53C660B210FCBB8C00A12D4F /* HolidaysDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HolidaysDetailViewController.m; sourceTree = "<group>"; };
 		53D9F86310DD9CC800759172 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		53D9F86410DD9CC800759172 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		53D9F86C10DD9CEE00759172 /* KalDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalDataSource.h; sourceTree = "<group>"; };
@@ -201,6 +204,8 @@
 				5387C10A10EE3D560011C4BA /* holidays.db */,
 				53D9F8AB10DD9D9D00759172 /* HolidayAppDelegate.h */,
 				53D9F8AC10DD9D9D00759172 /* HolidayAppDelegate.m */,
+				53C660B110FCBB8C00A12D4F /* HolidaysDetailViewController.h */,
+				53C660B210FCBB8C00A12D4F /* HolidaysDetailViewController.m */,
 				5387BCFB10EBB1960011C4BA /* Holiday.h */,
 				5387BCFC10EBB1960011C4BA /* Holiday.m */,
 				53D9F86310DD9CC800759172 /* main.m */,
@@ -370,6 +375,7 @@
 				5387BFA110ECEE570011C4BA /* SBJsonWriter.m in Sources */,
 				5387C0DF10EE38440011C4BA /* HolidayJSONDataSource.m in Sources */,
 				5387C0E810EE389A0011C4BA /* HolidaySqliteDataSource.m in Sources */,
+				53C660B310FCBB8C00A12D4F /* HolidaysDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

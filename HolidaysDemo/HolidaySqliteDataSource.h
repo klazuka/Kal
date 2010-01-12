@@ -5,6 +5,8 @@
 
 #import "Kal.h"
 
+@class Holiday;
+
 /*
  *    HolidaySqliteDataSource
  *    ---------------------
@@ -23,5 +25,6 @@
 }
 
 + (HolidaySqliteDataSource *)dataSource;
+- (Holiday *)holidayAtIndexPath:(NSIndexPath *)indexPath;  // exposed for HolidayAppDelegate so that it can implement the UITableViewDelegate protocol.
 
 @end

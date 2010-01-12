@@ -34,20 +34,29 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 @implementation KalViewController
 
-- (id)initWithDataSource:(id<KalDataSource>)source
-{
-  if ((self = [super init])) {
-    dataSource = [source retain];
-  }
-  return self;
-}  
-
-- (id)init
-{
-  return [self initWithDataSource:[SimpleKalDataSource dataSource]];
-}
+@synthesize dataSource, delegate;
 
 - (KalView*)calendarView { return (KalView*)self.view; }
+
+- (void)setDataSource:(id<KalDataSource>)aDataSource
+{
+  if (dataSource != aDataSource) {
+    [dataSource release];
+    [aDataSource retain];
+    dataSource = aDataSource;
+    tableView.dataSource = dataSource;
+  }
+}
+
+- (void)setDelegate:(id<UITableViewDelegate>)aDelegate
+{
+  if (delegate != aDelegate) {
+    [delegate release];
+    [aDelegate retain];
+    delegate = aDelegate;
+    tableView.delegate = delegate;
+  }
+}
 
 - (void)clearTable
 {
@@ -55,20 +64,9 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [tableView reloadData];
 }
 
-- (void)fetchDataForCurrentMonth
+- (void)reloadData
 {
   [dataSource presentingDatesFrom:logic.fromDate to:logic.toDate delegate:self];
-}
-
-- (UITableView *)tableView
-{
-  UITableView *table = [[self calendarView] tableView];
-  if (!table) {
-    [self loadView];
-    table = [[self calendarView] tableView];
-  }
-  
-  return table;
 }
 
 // -----------------------------------------
@@ -89,7 +87,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [self clearTable];
   [logic retreatToPreviousMonth];
   [[self calendarView] slideDown];
-  [self fetchDataForCurrentMonth];
+  [self reloadData];
 }
 
 - (void)showFollowingMonth
@@ -97,7 +95,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   [self clearTable];
   [logic advanceToFollowingMonth];
   [[self calendarView] slideUp];
-  [self fetchDataForCurrentMonth];
+  [self reloadData];
 }
 
 // -----------------------------------------
@@ -139,7 +137,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 #endif
   
   [[self calendarView] selectTodayIfVisible];
-  [self fetchDataForCurrentMonth];
+  [self reloadData];
 }
 
 // -----------------------------------------------------------------------------------
@@ -149,10 +147,15 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 {
   self.title = @"Calendar";
   logic = [[KalLogic alloc] init];
-  self.view = [[[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] autorelease];
-  tableView = [[[self calendarView] tableView] retain];
+  
+  KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic];
+  self.view = kalView;
+  tableView = kalView.tableView;
   tableView.dataSource = dataSource;
-  [self fetchDataForCurrentMonth];
+  tableView.delegate = delegate;
+  [tableView retain];
+  [kalView release];
+  [self reloadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -173,7 +176,6 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 {
   [logic release];
   [tableView release];
-  [dataSource release];
   [super dealloc];
 }
 

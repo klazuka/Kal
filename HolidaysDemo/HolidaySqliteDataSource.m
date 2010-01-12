@@ -33,6 +33,11 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
   return self;
 }
 
+- (Holiday *)holidayAtIndexPath:(NSIndexPath *)indexPath
+{
+  return [items objectAtIndex:indexPath.row];
+}
+
 #pragma mark UITableViewDataSource protocol conformance
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -45,7 +50,7 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
     cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
   }
   
-  Holiday *holiday = [items objectAtIndex:indexPath.row];
+  Holiday *holiday = [self holidayAtIndexPath:indexPath];
   cell.imageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"flags/%@.gif", holiday.country]];
   cell.textLabel.text = holiday.name;
   return cell;

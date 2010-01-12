@@ -5,6 +5,8 @@
 
 #import "Kal.h"
 
+@class Holiday;
+
 /*
  *    HolidayJSONDataSource
  *    ---------------------
@@ -25,5 +27,6 @@
 }
 
 + (HolidayJSONDataSource *)dataSource;
+- (Holiday *)holidayAtIndexPath:(NSIndexPath *)indexPath;  // exposed for HolidayAppDelegate so that it can implement the UITableViewDelegate protocol.
 
 @end
