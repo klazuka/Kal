@@ -53,7 +53,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     backMonthView.hidden = YES;
     [self addSubview:backMonthView];
     [self addSubview:frontMonthView];
-    
+
     [self jumpToSelectedMonth];
     [self selectTodayIfVisible];
   }
@@ -184,6 +184,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     
     [self swapMonthViews];
   } [UIView commitAnimations];
+ [UIView setAnimationsEnabled:YES];
 }
 
 - (void)slide:(int)direction
