@@ -22,7 +22,8 @@ const CGSize kTileSize = { 46.f, 44.f };
 static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 @interface KalGridView ()
-- (void)selectTodayIfVisible;
+@property (nonatomic, retain) KalTileView *selectedTile;
+@property (nonatomic, retain) KalTileView *highlightedTile;
 - (void)swapMonthViews;
 @end
 
@@ -55,7 +56,6 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     [self addSubview:frontMonthView];
 
     [self jumpToSelectedMonth];
-    [self selectTodayIfVisible];
   }
   return self;
 }
@@ -201,7 +201,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   // that is sliding offscreen.
   
   BOOL keepOneRow = (direction == SLIDE_UP && [logic.daysInFinalWeekOfPreviousMonth count] > 0)
-                    || (direction == SLIDE_DOWN  && [logic.daysInFirstWeekOfFollowingMonth count] > 0);
+                 || (direction == SLIDE_DOWN && [logic.daysInFirstWeekOfFollowingMonth count] > 0);
   
   [self swapMonthsAndSlide:direction keepOneRow:keepOneRow];
   
@@ -219,18 +219,18 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 #pragma mark -
 
-- (void)selectTodayIfVisible
+- (void)selectDateIfVisible:(KalDate *)date
 {
-  KalTileView *todayTile = [frontMonthView todaysTileIfVisible];
-  if (todayTile)
-    self.selectedTile = todayTile;
+  KalTileView *tile = [frontMonthView tileForDate:date];
+  if (tile)
+    self.selectedTile = tile;
 }
 
 - (void)swapMonthViews
 {
   KalMonthView *tmp = backMonthView;
-	backMonthView = frontMonthView;
-	frontMonthView = tmp;
+  backMonthView = frontMonthView;
+  frontMonthView = tmp;
   [self exchangeSubviewAtIndex:[self.subviews indexOfObject:frontMonthView] withSubviewAtIndex:[self.subviews indexOfObject:backMonthView]];
 }
 

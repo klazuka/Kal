@@ -14,7 +14,6 @@
 
 - (id)initWithFrame:(CGRect)rect; // designated initializer
 - (void)showDates:(NSArray *)mainDates leadingAdjacentDates:(NSArray *)leadingAdjacentDates trailingAdjacentDates:(NSArray *)trailingAdjacentDates;
-- (KalTileView *)todaysTileIfVisible;
 - (KalTileView *)firstTileOfMonth;
 - (KalTileView *)tileForDate:(KalDate *)date;
 - (void)markTilesForDates:(NSArray *)dates;

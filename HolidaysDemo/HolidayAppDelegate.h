@@ -25,10 +25,14 @@
  *  the navigation stack.
  *
  */
+
+@class KalViewController;
+
 @interface HolidayAppDelegate : NSObject <UIApplicationDelegate, UITableViewDelegate>
 {
   UIWindow *window;
   UINavigationController *navController;
+  KalViewController *kal;
   id dataSource;
 }
 

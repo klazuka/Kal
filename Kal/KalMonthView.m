@@ -59,19 +59,6 @@ extern const CGSize kTileSize;
   CGContextDrawTiledImage(ctx, (CGRect){CGPointZero,kTileSize}, [[UIImage imageNamed:@"kal_tile.png"] CGImage]);
 }
 
-- (KalTileView *)todaysTileIfVisible
-{
-  KalTileView *tile = nil;
-  for (KalTileView *t in self.subviews) {
-    if ([t isToday]) {
-      tile = t;
-      break;
-    }
-  }
-  
-  return tile;
-}
-
 - (KalTileView *)firstTileOfMonth
 {
   KalTileView *tile = nil;

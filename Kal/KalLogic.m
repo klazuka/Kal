@@ -30,19 +30,24 @@
   return [NSSet setWithObjects:@"baseDate", nil];
 }
 
-- (id)init
+- (id)initForDate:(NSDate *)date
 {
   if ((self = [super init])) {
     monthAndYearFormatter = [[NSDateFormatter alloc] init];
     [monthAndYearFormatter setDateFormat:@"MMMM yyyy"];
-    [self moveToMonthForDate:[[NSDate date] cc_dateByMovingToFirstDayOfTheMonth]];
+    [self moveToMonthForDate:date];
   }
   return self;
 }
 
+- (id)init
+{
+  return [self initForDate:[NSDate date]];
+}
+
 - (void)moveToMonthForDate:(NSDate *)date
 {
-  self.baseDate = date;
+  self.baseDate = [date cc_dateByMovingToFirstDayOfTheMonth];
   [self recalculateVisibleDays];
 }
 
@@ -54,11 +59,6 @@
 - (void)advanceToFollowingMonth
 {
   [self moveToMonthForDate:[self.baseDate cc_dateByMovingToFirstDayOfTheFollowingMonth]];
-}
-
-- (void)moveToTodaysMonth
-{
-  [self moveToMonthForDate:[[NSDate date] cc_dateByMovingToFirstDayOfTheMonth]];
 }
 
 - (NSString *)selectedMonthNameAndYear;

@@ -16,6 +16,7 @@
  *  and provides the logic for switching between months and determining which days
  *  are in a month as well as which days are in partial weeks adjacent to the selected
  *  month.
+ *
  */
 @interface KalLogic : NSObject
 {
@@ -36,8 +37,10 @@
 @property (nonatomic, retain, readonly) NSArray *daysInFirstWeekOfFollowingMonth; // array of KalDate
 @property (nonatomic, readonly) NSString *selectedMonthNameAndYear; // localized (e.g. "September 2010" for USA locale)
 
+- (id)initForDate:(NSDate *)date; // designated initializer.
+
 - (void)retreatToPreviousMonth;
 - (void)advanceToFollowingMonth;
-- (void)moveToTodaysMonth;
+- (void)moveToMonthForDate:(NSDate *)date;
 
 @end

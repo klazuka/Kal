@@ -36,6 +36,20 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 @synthesize dataSource, delegate;
 
+- (id)initWithSelectedDate:(NSDate *)selectedDate
+{
+  if ((self = [super init])) {
+    logic = [[KalLogic alloc] initForDate:selectedDate];
+    initialSelectedDate = [selectedDate retain];
+  }
+  return self;
+}
+
+- (id)init
+{
+  return [self initWithSelectedDate:[NSDate date]];
+}
+
 - (KalView*)calendarView { return (KalView*)self.view; }
 
 - (void)setDataSource:(id<KalDataSource>)aDataSource
@@ -115,12 +129,12 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 // ---------------------------------------
 #pragma mark -
 
-- (void)showAndSelectToday
+- (void)showAndSelectDate:(NSDate *)date
 {
   if ([[self calendarView] isSliding])
     return;
   
-  [logic moveToTodaysMonth];
+  [logic moveToMonthForDate:date];
   
 #if PROFILER
   uint64_t start, end;
@@ -136,7 +150,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   printf("[[self calendarView] jumpToSelectedMonth]: %.1f ms\n", tp.tv_nsec / 1e6);
 #endif
   
-  [[self calendarView] selectTodayIfVisible];
+  [[self calendarView] selectDateIfVisible:[KalDate dateFromNSDate:date]];
   [self reloadData];
 }
 
@@ -146,7 +160,6 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 - (void)loadView
 {
   self.title = @"Calendar";
-  logic = [[KalLogic alloc] init];
   
   KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic];
   self.view = kalView;
@@ -154,6 +167,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   tableView.dataSource = dataSource;
   tableView.delegate = delegate;
   [tableView retain];
+  [kalView selectDateIfVisible:[KalDate dateFromNSDate:initialSelectedDate]];
   [kalView release];
   [self reloadData];
 }
@@ -174,6 +188,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 - (void)dealloc
 {
+  [initialSelectedDate release];
   [logic release];
   [tableView release];
   [super dealloc];
