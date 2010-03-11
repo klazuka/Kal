@@ -219,11 +219,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 #pragma mark -
 
-- (void)selectDateIfVisible:(KalDate *)date
+- (void)selectDate:(KalDate *)date
 {
-  KalTileView *tile = [frontMonthView tileForDate:date];
-  if (tile)
-    self.selectedTile = tile;
+  self.selectedTile = [frontMonthView tileForDate:date];
 }
 
 - (void)swapMonthViews

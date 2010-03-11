@@ -150,7 +150,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   printf("[[self calendarView] jumpToSelectedMonth]: %.1f ms\n", tp.tv_nsec / 1e6);
 #endif
   
-  [[self calendarView] selectDateIfVisible:[KalDate dateFromNSDate:date]];
+  [[self calendarView] selectDate:[KalDate dateFromNSDate:date]];
   [self reloadData];
 }
 
@@ -167,7 +167,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   tableView.dataSource = dataSource;
   tableView.delegate = delegate;
   [tableView retain];
-  [kalView selectDateIfVisible:[KalDate dateFromNSDate:initialSelectedDate]];
+  [kalView selectDate:[KalDate dateFromNSDate:initialSelectedDate]];
   [kalView release];
   [self reloadData];
 }

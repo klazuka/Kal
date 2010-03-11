@@ -31,7 +31,7 @@
 @property (nonatomic, readonly) KalDate *selectedDate;
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)logic delegate:(id<KalViewDelegate>)delegate;
-- (void)selectDateIfVisible:(KalDate *)date;
+- (void)selectDate:(KalDate *)date;
 - (void)markTilesForDates:(NSArray *)dates;
 
 // These 3 methods should be called *after* the KalLogic

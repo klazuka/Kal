@@ -51,7 +51,7 @@
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)delegate logic:(KalLogic *)logic;
 - (BOOL)isSliding;
-- (void)selectDateIfVisible:(KalDate *)date;
+- (void)selectDate:(KalDate *)date;
 - (void)markTilesForDates:(NSArray *)dates;
 
 // These 3 methods are exposed for the delegate. They should be called 

@@ -205,7 +205,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 - (void)jumpToSelectedMonth { [gridView jumpToSelectedMonth]; }
 
-- (void)selectDateIfVisible:(KalDate *)date { [gridView selectDateIfVisible:date]; }
+- (void)selectDate:(KalDate *)date { [gridView selectDate:date]; }
 
 - (BOOL)isSliding { return gridView.transitioning; }
 
