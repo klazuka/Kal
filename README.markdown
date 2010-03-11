@@ -17,6 +17,10 @@ KalDataSource.h and the included demo app for more details.
 Release Notes
 -------------
 
+**March 11, 2010**
+
+A lot of people have emailed me asking for support for selecting and displaying an arbitrary date on the calendar. So today I pushed some commits that make this easy to do. You can specify which date should be initially selected and shown when the calendar is first created by using -[KalViewController initWithSelectedDate:]. If you would like to programmatically switch the calendar to display the month for an arbitrary date and select that date, use -[KalViewController showAndSelectDate:].
+
 **January 1, 2010**
 
 I have made significant changes to the KalDataSource API so that the client
@@ -47,9 +51,11 @@ an implementation of the KalDataSource protocol. Then all you need to do
 to display your annotated calendar is instantiate the KalViewController
 and tell it to use your KalDataSource implementation (in this case, "MyKalDataSource"):
 
-    id<KalDataSource> source = [[[MyKalDataSource alloc] init] autorelease];
+    id<KalDataSource> source = [[MyKalDataSource alloc] init];
     KalViewController *calendar = [[[KalViewController alloc] initWithDataSource:source] autorelease];
     [self.navigationController pushViewController:calendar animated:YES];
+
+NOTE: KalViewController does not retain its datasource. You probably will want to store a reference to the dataSource in an instance variable so that you can release it after the calendar has been destroyed.
 
 Additional Notes
 ----------------

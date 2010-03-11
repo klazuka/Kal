@@ -18,11 +18,10 @@
 
 - (void)loadView
 {
-  UILabel *label = [[UILabel alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+  UILabel *label = [[[UILabel alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]] autorelease];
   label.text = [NSString stringWithFormat:@"%@ - %@", holiday.country, holiday.name];
   label.textAlignment = UITextAlignmentCenter;
   self.view = label;
-  [label release];
 }
 
 - (void)dealloc

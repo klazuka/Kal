@@ -55,9 +55,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   Holiday *holiday = [dataSource holidayAtIndexPath:indexPath];
-  HolidaysDetailViewController *vc = [[HolidaysDetailViewController alloc] initWithHoliday:holiday];
+  HolidaysDetailViewController *vc = [[[HolidaysDetailViewController alloc] initWithHoliday:holiday] autorelease];
   [navController pushViewController:vc animated:YES];
-  [vc release];
 }
 
 #pragma mark -
