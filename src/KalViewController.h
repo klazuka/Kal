@@ -3,6 +3,7 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#import <UIKit/UIKit.h>
 #import "KalView.h"       // for the KalViewDelegate protocol
 #import "KalDataSource.h" // for the KalDataSourceCallbacks protocol
 

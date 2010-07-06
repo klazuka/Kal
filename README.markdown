@@ -17,6 +17,10 @@ KalDataSource.h and the included demo app for more details.
 Release Notes
 -------------
 
+**July 6, 2010**
+
+Two big changes related to building Kal: I have made the switch to the iOS 4.0 SDK and I have refactored the project into 2 separate Xcode projects. There is now one project that builds a static library and another that builds an iPhone application with a sub-project dependency on the static library project. These changes will make it easier for me to deliver new features (EventKit example app, Retina Display support), and it will be easier for you to integrate Kal into your project.
+
 **March 11, 2010**
 
 A lot of people have emailed me asking for support for selecting and displaying an arbitrary date on the calendar. So today I pushed some commits that make this easy to do. You can specify which date should be initially selected and shown when the calendar is first created by using -[KalViewController initWithSelectedDate:]. If you would like to programmatically switch the calendar to display the month for an arbitrary date and select that date, use -[KalViewController showAndSelectDate:].
@@ -56,6 +60,20 @@ and tell it to use your KalDataSource implementation (in this case, "MyKalDataSo
     [self.navigationController pushViewController:calendar animated:YES];
 
 NOTE: KalViewController does not retain its datasource. You probably will want to store a reference to the dataSource in an instance variable so that you can release it after the calendar has been destroyed.
+
+Integrating Kal into Your Project
+---------------------------------
+
+Kal is compiled as a static library, and the recommended way to add it to your project is to use Xcode's "dependent project" facilities by following these step-by-step instructions:
+
+1. Clone the Kal git repository: git clone git://github.com/klazuka/Kal.git. Make sure you store the repository in a permanent place because Xcode will need to reference the files every time you compile your project.
+2. Locate the "Kal.xcodeproj" file under "Kal/src/". Drag Kal.xcodeproj and drop it onto the root of your Xcode project's "Groups and Files" sidebar. A dialog will appear -- make sure "Copy items" is unchecked and "Reference Type" is "Relative to Project" before clicking "Add".
+3. Now you need to link the Kal static library to your project. Select the Kal.xcodeproj file that you just added to the sidebar. Under the "Details" table, you will see libKal.a. Check the checkbox on the far right for this file. This will tell Xcode to link against Kal when building your app.
+4. Now you need to add Kal as a dependency of your project so that Xcode will compile it whenever you compile your project. Expand the "Targets" section of the sidebar and double-click your application's target. Under the "General" tab you will see a "Direct Dependencies" section. Click the "+" button, select "Kal" and click "Add Target".
+5. Now you need to add the bundle of image resources internally used by Kal's UI. Locate "Kal.bundle" under "Kal/src" and drag and drop it into your project. A dialog will appear -- make sure "Create Folder References" is selected, "Copy items" is unchecked, and "Reference Type" is "Relative to Project" before clicking "Add".
+6. Finally, we need to tell your project where to find the Kal headers. Open your "Project Settings" and go to the "Build" tab. Look for "Header Search Paths" and double-click it. Add the relative path from your project's directory to the "Kal/src" directory.
+7. While you are in Project Settings, go to "Other Linker Flags" under the "Linker" section, and add "-all_load" to the list of flags.
+8. You're ready to go. Just #import "Kal.h" anywhere you want to use KalViewController in your project.
 
 Additional Notes
 ----------------

@@ -3,6 +3,8 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#import <UIKit/UIKit.h>
+
 @interface UIView (KalAdditions)
 
 @property(nonatomic) CGFloat left;

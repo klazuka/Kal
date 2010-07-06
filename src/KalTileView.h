@@ -3,6 +3,8 @@
  * License: http://www.opensource.org/licenses/mit-license.html
  */
 
+#import <UIKit/UIKit.h>
+
 enum {
   KalTileTypeRegular   = 0,
   KalTileTypeAdjacent  = 1 << 0,
