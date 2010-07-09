@@ -36,3 +36,8 @@
 
 #import "KalViewController.h"
 #import "KalDataSource.h"
+
+// The KalDataSource implementation should post this notification
+// whenever its content has changed. Kal uses this notification to
+// keep the UI in sync with the data source.
+extern NSString *const KalDataSourceChangedNotification;

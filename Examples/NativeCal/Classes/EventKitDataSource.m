@@ -29,8 +29,14 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
     eventStore = [[EKEventStore alloc] init];
     events = [[NSMutableArray alloc] init];
     items = [[NSMutableArray alloc] init];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(eventStoreChanged:) name:EKEventStoreChangedNotification object:nil];
   }
   return self;
+}
+
+- (void)eventStoreChanged:(NSNotification *)note
+{
+  [[NSNotificationCenter defaultCenter] postNotificationName:KalDataSourceChangedNotification object:nil];
 }
 
 - (EKEvent *)eventAtIndexPath:(NSIndexPath *)indexPath
@@ -100,6 +106,7 @@ static BOOL IsDateBetweenInclusive(NSDate *date, NSDate *begin, NSDate *end)
 
 - (void)dealloc
 {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:EKEventStoreChangedNotification object:nil];
   [eventStore release];
   [items release];
   [events release];

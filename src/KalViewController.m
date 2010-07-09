@@ -28,6 +28,8 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 }
 #endif
 
+NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotification";
+
 @interface KalViewController ()
 - (KalView*)calendarView;
 @end
@@ -41,6 +43,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
   if ((self = [super init])) {
     logic = [[KalLogic alloc] initForDate:selectedDate];
     initialSelectedDate = [selectedDate retain];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KalDataSourceChangedNotification object:nil];
   }
   return self;
 }
@@ -188,6 +191,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
 - (void)dealloc
 {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:KalDataSourceChangedNotification object:nil];
   [initialSelectedDate release];
   [logic release];
   [tableView release];
