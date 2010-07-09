@@ -1,25 +1,29 @@
 Kal - a calendar component for the iPhone
 -----------------------------------------
 
-This project aims to provide an open-source implementation of the month view
-in Apple's mobile calendar app (MobileCal). When the user taps a day on the calendar,
-any associated data for that day will be displayed in a table view directly
-below the calendar. As a client of the Kal component, you have 2 responsibilities:
+This project aims to provide an open-source implementation of the month view in Apple's mobile calendar app (MobileCal). When the user taps a day on the calendar, any associated data for that day will be displayed in a table view directly below the calendar. As a client of the Kal component, you have 2 responsibilities:
 
 1. Tell Kal which days need to be marked with a dot because they have associated data.
-2. Provide UITableViewCells which display the details (if any) for the currently
-selected day.
+2. Provide UITableViewCells which display the details (if any) for the currently selected day.
 
-In order to use Kal in your application, you will need to provide an implementation
-of the KalDataSource protocol to satisfy these responsibilities. Please see
-KalDataSource.h and the included demo app for more details.
+In order to use Kal in your application, you will need to provide an implementation of the KalDataSource protocol to satisfy these responsibilities. Please see KalDataSource.h and the included demo app for more details.
 
 Release Notes
 -------------
 
-**July 6, 2010**
+**July 9, 2010**
 
-Two big changes related to building Kal: I have made the switch to the iOS 4.0 SDK and I have refactored the project into 2 separate Xcode projects. There is now one project that builds a static library and another that builds an iPhone application with a sub-project dependency on the static library project. These changes will make it easier for me to deliver new features (EventKit example app, Retina Display support), and it will be easier for you to integrate Kal into your project.
+This is the iOS 4.0 / iPhone4 release. New features include:
+
+1) A refactored project file. Kal is now built as a static library in a separate Xcode project. Regardless of whether you are a new or existing user of Kal, please read the section entitled "Integrating Kal into Your Project" below.
+
+2) The project now specifies iOS 4.0 as the Base SDK. So if you want to upgrade to this release of Kal, you must upgrade your SDK.
+
+3) Added hi-res graphics for Retina Display support. Extra special thanks to Paul Calnan for sending me the hi-res graphics.
+
+4) Added a new example app, "NativeCal," which demonstrates how to integrate Kal with the EventKit framework that Apple made available in iOS 4.
+
+**NOTE** I'm not crazy about the KalDataSource asynchronous/synchronous API. I will probably be changing it in the future and updating the example apps to use GCD and blocks.
 
 **March 11, 2010**
 
@@ -27,9 +31,7 @@ A lot of people have emailed me asking for support for selecting and displaying 
 
 **January 1, 2010**
 
-I have made significant changes to the KalDataSource API so that the client
-can respond to the data request asynchronously. The Kal demo app, "Holidays,"
-now includes 2 example datasources:
+I have made significant changes to the KalDataSource API so that the client can respond to the data request asynchronously. The Kal demo app, "Holidays," now includes 2 example datasources:
 
 1. HolidayJSONDataSource - retrieves data asynchronously from http://keith.lazuka.org/holidays.json
 2. HolidaySqliteDataSource - queries an Sqlite database inside the application bundle and responds synchronously (because the query is fast enough that it doesn't affect UI responsiveness too badly).
@@ -78,9 +80,9 @@ Kal is compiled as a static library, and the recommended way to add it to your p
 Additional Notes
 ----------------
 
-The Xcode project includes a simple demo app that demonstrates how to use
-the Kal component to display several 2009 and 2010 world holidays.
-I have provided both a JSON and an Sqlite example datasource for your convenience.
+The Xcode project includes two demo apps:
+1) "Holiday" demonstrates how to use Kal to display several 2009 and 2010 world holidays using both JSON and Sqlite datasources.
+2) "NativeCal" demonstrates how to use Kal with the EventKit framework.
 
 Kal is fully localized. The month name and days of the week will automatically
 use the appropriate language and style for the iPhone's current regional settings.

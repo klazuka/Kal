@@ -35,14 +35,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 533B284B11E2D3F400B3CC07 /* Kal.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libKal.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = Kal;
 		};
 		533B285411E2D42700B3CC07 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 533B284B11E2D3F400B3CC07 /* Kal.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* Kal */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = Kal;
 		};
 /* End PBXContainerItemProxy section */
