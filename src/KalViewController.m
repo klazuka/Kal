@@ -43,6 +43,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   if ((self = [super init])) {
     logic = [[KalLogic alloc] initForDate:selectedDate];
     initialSelectedDate = [selectedDate retain];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:UIApplicationSignificantTimeChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KalDataSourceChangedNotification object:nil];
   }
   return self;
@@ -191,6 +192,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)dealloc
 {
+  [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationSignificantTimeChangeNotification object:nil];
   [[NSNotificationCenter defaultCenter] removeObserver:self name:KalDataSourceChangedNotification object:nil];
   [initialSelectedDate release];
   [logic release];

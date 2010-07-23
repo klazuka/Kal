@@ -8,12 +8,24 @@
 
 static KalDate *today;
 
+
+@interface KalDate ()
++ (void)cacheTodaysDate;
+@end
+
+
 @implementation KalDate
 
 + (void)initialize
 {
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cacheTodaysDate) name:UIApplicationSignificantTimeChangeNotification object:nil];
+  [self cacheTodaysDate];
+}
+
++ (void)cacheTodaysDate
+{
+  [today release];
   today = [[KalDate dateFromNSDate:[NSDate date]] retain];
-  // TODO set a timer for midnight to recache this value
 }
 
 + (KalDate *)dateForDay:(unsigned int)day month:(unsigned int)month year:(unsigned int)year
