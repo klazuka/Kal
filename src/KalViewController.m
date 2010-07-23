@@ -43,7 +43,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   if ((self = [super init])) {
     logic = [[KalLogic alloc] initForDate:selectedDate];
     initialSelectedDate = [selectedDate retain];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:UIApplicationSignificantTimeChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:[self calendarView] selector:@selector(redrawEntireMonth) name:UIApplicationSignificantTimeChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KalDataSourceChangedNotification object:nil];
   }
   return self;

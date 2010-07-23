@@ -50,6 +50,8 @@ static const CGFloat kMonthLabelHeight = 17.f;
   return nil;
 }
 
+- (void)redrawEntireMonth { [self jumpToSelectedMonth]; }
+
 - (void)slideDown { [gridView slideDown]; }
 - (void)slideUp { [gridView slideUp]; }
 
