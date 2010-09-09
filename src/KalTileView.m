@@ -175,7 +175,7 @@ extern const CGSize kTileSize;
     rect.origin.x--;
     rect.size.width++;
     rect.size.height++;
-  } else {
+  } else if (flags.type == KalTileTypeToday) {
     rect.origin.x++;
     rect.size.width--;
     rect.size.height--;
