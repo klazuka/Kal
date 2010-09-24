@@ -164,6 +164,12 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   [self reloadData];
 }
 
+- (NSDate *)selectedDate
+{
+  return [self.calendarView.selectedDate NSDate];
+}
+
+
 // -----------------------------------------------------------------------------------
 #pragma mark UIViewController
 
