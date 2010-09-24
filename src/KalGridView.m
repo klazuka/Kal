@@ -179,6 +179,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     
     frontMonthView.top = -backMonthView.top;
     backMonthView.top = 0.f;
+
+    frontMonthView.alpha = 0.f;
+    backMonthView.alpha = 1.f;
     
     self.height = backMonthView.height;
     
