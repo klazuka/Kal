@@ -59,8 +59,6 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)setDataSource:(id<KalDataSource>)aDataSource
 {
   if (dataSource != aDataSource) {
-    [dataSource release];
-    [aDataSource retain];
     dataSource = aDataSource;
     tableView.dataSource = dataSource;
   }
@@ -69,8 +67,6 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 - (void)setDelegate:(id<UITableViewDelegate>)aDelegate
 {
   if (delegate != aDelegate) {
-    [delegate release];
-    [aDelegate retain];
     delegate = aDelegate;
     tableView.delegate = delegate;
   }
