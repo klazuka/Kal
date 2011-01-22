@@ -171,8 +171,8 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)loadView
 {
-  self.title = @"Calendar";
-  
+  if (!self.title)
+    self.title = @"Calendar";
   KalView *kalView = [[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic];
   self.view = kalView;
   tableView = kalView.tableView;
