@@ -7,8 +7,6 @@ def gen_sqlite():
     print
     for line in sys.stdin:
         parts = [a.strip() for a in line.split('\t') if len(a) > 0]
-        print "INSERT INTO holidays (country, name, date_of_event) VALUES ('%s', '%s', '%s');" % tuple(parts[0:3])
-        del parts[2]
         print "INSERT INTO holidays (country, name, date_of_event) VALUES ('%s', '%s', '%s');" % tuple(parts)
 
 def gen_json():
@@ -18,9 +16,7 @@ def gen_json():
         parts = [a.strip() for a in line.split('\t') if len(a) > 0]
         if not first_time: print ",",
         first_time = False
-        print "{ \"country\": \"%s\", \"name\": \"%s\", \"date\": \"%s\" }" % tuple(parts[0:3])
-        del parts[2]
-        print ", { \"country\": \"%s\", \"name\": \"%s\", \"date\": \"%s\" }" % tuple(parts)
+        print "{ \"country\": \"%s\", \"name\": \"%s\", \"date\": \"%s\" }" % tuple(parts)
     print "]"
 
 

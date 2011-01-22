@@ -27,7 +27,7 @@
    *    Kal Configuration
    *
    * This demo app includes 2 example datasources for the Kal component. Both datasources
-   * contain 2009 and 2010 world holidays, however, one datasource retrieves the data
+   * contain 2009-2011 holidays, however, one datasource retrieves the data
    * from a remote web server using JSON while the other datasource retrieves the data
    * from a local Sqlite database. For this demo, I am going to set it up to just use
    * the Sqlite database.

@@ -11,7 +11,7 @@
  *    HolidayJSONDataSource
  *    ---------------------
  *
- *  This example data source retrieves 2009 and 2010 world holidays
+ *  This example data source retrieves world holidays
  *  from a JSON resource located at http://keith.lazuka.org/holidays.json.
  *  It uses Stig Brautaset's JSON library to parse the JSON and store
  *  it in an array of Holiday objects.
