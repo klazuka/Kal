@@ -353,7 +353,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
 				OTHER_LDFLAGS = "-all_load";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = ". ../../src";
 			};
 			name = Debug;
@@ -370,7 +370,7 @@
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				OTHER_LDFLAGS = "-all_load";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos;
 				USER_HEADER_SEARCH_PATHS = ". ../../src";
 			};
 			name = Release;
