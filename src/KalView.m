@@ -14,12 +14,25 @@
 - (void)setHeaderTitleText:(NSString *)text;
 @end
 
-static const CGFloat kHeaderHeight = 44.f;
 static const CGFloat kMonthLabelHeight = 17.f;
 
 @implementation KalView
 
 @synthesize delegate, tableView;
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
+  #define KAL_IPAD_VERSION (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#else
+  #define KAL_IPAD_VERSION	(NO)
+#endif
+
+-(CGFloat) headerHeight
+{
+	if(KAL_IPAD_VERSION)
+		return 80.f;
+	
+	return 44.f;
+}
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)theDelegate logic:(KalLogic *)theLogic
 {
@@ -29,6 +42,8 @@ static const CGFloat kMonthLabelHeight = 17.f;
     [logic addObserver:self forKeyPath:@"selectedMonthNameAndYear" options:NSKeyValueObservingOptionNew context:NULL];
     self.autoresizesSubviews = YES;
     self.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+	  
+	const CGFloat kHeaderHeight = [self headerHeight];
     
     UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0.f, 0.f, frame.size.width, kHeaderHeight)] autorelease];
     headerView.backgroundColor = [UIColor grayColor];
@@ -72,7 +87,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
   const CGFloat kChangeMonthButtonWidth = 46.0f;
   const CGFloat kChangeMonthButtonHeight = 30.0f;
   const CGFloat kMonthLabelWidth = 200.0f;
-  const CGFloat kHeaderVerticalAdjust = 3.f;
+  const CGFloat kHeaderVerticalAdjust = KAL_IPAD_VERSION ? 7.f : 3.f;
   
   // Header background gradient
   UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Kal.bundle/kal_grid_background.png"]];
@@ -127,11 +142,15 @@ static const CGFloat kMonthLabelHeight = 17.f;
   NSArray *weekdayNames = [[[[NSDateFormatter alloc] init] autorelease] shortWeekdaySymbols];
   NSUInteger firstWeekday = [[NSCalendar currentCalendar] firstWeekday];
   NSUInteger i = firstWeekday - 1;
-  for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += 46.f, i = (i+1)%7) {
-    CGRect weekdayFrame = CGRectMake(xOffset, 30.f, 46.f, kHeaderHeight - 29.f);
+  CGSize tileSize = [KalGridView	tileSize];
+  CGFloat columnWidth = tileSize.width;
+  CGFloat fontSize = KAL_IPAD_VERSION ? 20.f : 10.f;
+  const CGFloat kHeaderHeight = [self headerHeight];
+  for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += columnWidth, i = (i+1)%7) {
+    CGRect weekdayFrame = CGRectMake(xOffset, 30.f, columnWidth, kHeaderHeight - 29.f);
     UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:weekdayFrame];
     weekdayLabel.backgroundColor = [UIColor clearColor];
-    weekdayLabel.font = [UIFont boldSystemFontOfSize:10.f];
+    weekdayLabel.font = [UIFont boldSystemFontOfSize:fontSize];
     weekdayLabel.textAlignment = UITextAlignmentCenter;
     weekdayLabel.textColor = [UIColor colorWithRed:0.3f green:0.3f blue:0.3f alpha:1.f];
     weekdayLabel.shadowColor = [UIColor whiteColor];

@@ -17,8 +17,6 @@
 #define SLIDE_UP 1
 #define SLIDE_DOWN 2
 
-const CGSize kTileSize = { 46.f, 44.f };
-
 static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 @interface KalGridView ()
@@ -31,6 +29,22 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 @synthesize selectedTile, highlightedTile, transitioning;
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
+  #define KAL_IPAD_VERSION (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#else
+  #define KAL_IPAD_VERSION	(NO)
+#endif
+
++(CGSize) tileSize
+{
+	if (KAL_IPAD_VERSION)
+	{
+		return CGSizeMake(110.f, 104.f);
+	}
+	
+	return CGSizeMake(46.f, 44.f);
+}
+
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)theLogic delegate:(id<KalViewDelegate>)theDelegate
 {
   // MobileCal uses 46px wide tiles, with a 2px inner stroke 
@@ -41,7 +55,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   // to accomodate all 7 columns. The 7th day's 2px inner stroke
   // will be clipped off the screen, but that's fine because
   // MobileCal does the same thing.
-  frame.size.width = 7 * kTileSize.width;
+  CGSize tileSize = [KalGridView tileSize];
+  if( frame.size.width < 7 * tileSize.width )
+    frame.size.width = 7 * tileSize.width;
   
   if (self = [super initWithFrame:frame]) {
     self.clipsToBounds = YES;
@@ -156,16 +172,17 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 - (void)swapMonthsAndSlide:(int)direction keepOneRow:(BOOL)keepOneRow
 {
   backMonthView.hidden = NO;
+  CGSize tileSize = [KalGridView tileSize];
   
   // set initial positions before the slide
   if (direction == SLIDE_UP) {
     backMonthView.top = keepOneRow
-      ? frontMonthView.bottom - kTileSize.height
+      ? frontMonthView.bottom - tileSize.height
       : frontMonthView.bottom;
   } else if (direction == SLIDE_DOWN) {
     NSUInteger numWeeksToKeep = keepOneRow ? 1 : 0;
     NSInteger numWeeksToSlide = [backMonthView numWeeks] - numWeeksToKeep;
-    backMonthView.top = -numWeeksToSlide * kTileSize.height;
+    backMonthView.top = -numWeeksToSlide * tileSize.height;
   } else {
     backMonthView.top = 0.f;
   }
