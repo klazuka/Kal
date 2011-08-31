@@ -5,6 +5,8 @@
 
 #import "UIViewAdditions.h"
 
+LOAD_CATEGORY(UIViewAdditions)
+
 @implementation UIView (KalAdditions)
 
 - (CGFloat)left

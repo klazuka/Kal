@@ -5,6 +5,8 @@
 
 #import "NSDateAdditions.h"
 
+LOAD_CATEGORY(NSDateAdditions)
+
 @implementation NSDate (KalAdditions)
 
 - (NSDate *)cc_dateByMovingToBeginningOfDay

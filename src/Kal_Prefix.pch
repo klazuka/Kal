@@ -2,6 +2,10 @@
 // Prefix header for all source files of the 'CocoaTouchStaticLibrary' target in the 'CocoaTouchStaticLibrary' project.
 //
 
+//Hack to load category without requiring the -all_load flag
+#define LOAD_CATEGORY(name) @interface LOAD_CATEGORY_##name @end \
+                            @implementation LOAD_CATEGORY_##name @end
+
 #ifdef __OBJC__
     #import <Foundation/Foundation.h>
 #endif
