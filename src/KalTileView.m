@@ -5,9 +5,8 @@
 
 #import "KalTileView.h"
 #import "KalDate.h"
+#import "KalGridView.h"
 #import "KalPrivate.h"
-
-extern const CGSize kTileSize;
 
 @implementation KalTileView
 
@@ -34,22 +33,23 @@ extern const CGSize kTileSize;
   UIColor *textColor = nil;
   UIImage *markerImage = nil;
   CGContextSelectFont(ctx, [font.fontName cStringUsingEncoding:NSUTF8StringEncoding], fontSize, kCGEncodingMacRoman);
-      
-  CGContextTranslateCTM(ctx, 0, kTileSize.height);
+
+  CGSize tileSize = [KalGridView	tileSize];
+  CGContextTranslateCTM(ctx, 0, tileSize.height);
   CGContextScaleCTM(ctx, 1, -1);
   
   if ([self isToday] && self.selected) {
-    [[[UIImage imageNamed:@"Kal.bundle/kal_tile_today_selected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    [[[UIImage imageNamed:@"Kal.bundle/kal_tile_today_selected.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, tileSize.width+1, tileSize.height+1)];
     textColor = [UIColor whiteColor];
     shadowColor = [UIColor blackColor];
     markerImage = [UIImage imageNamed:@"Kal.bundle/kal_marker_today.png"];
   } else if ([self isToday] && !self.selected) {
-    [[[UIImage imageNamed:@"Kal.bundle/kal_tile_today.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    [[[UIImage imageNamed:@"Kal.bundle/kal_tile_today.png"] stretchableImageWithLeftCapWidth:6 topCapHeight:0] drawInRect:CGRectMake(0, -1, tileSize.width+1, tileSize.height+1)];
     textColor = [UIColor whiteColor];
     shadowColor = [UIColor blackColor];
     markerImage = [UIImage imageNamed:@"Kal.bundle/kal_marker_today.png"];
   } else if (self.selected) {
-    [[[UIImage imageNamed:@"Kal.bundle/kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, kTileSize.width+1, kTileSize.height+1)];
+    [[[UIImage imageNamed:@"Kal.bundle/kal_tile_selected.png"] stretchableImageWithLeftCapWidth:1 topCapHeight:0] drawInRect:CGRectMake(0, -1, tileSize.width+1, tileSize.height+1)];
     textColor = [UIColor whiteColor];
     shadowColor = [UIColor blackColor];
     markerImage = [UIImage imageNamed:@"Kal.bundle/kal_marker_selected.png"];
@@ -71,8 +71,8 @@ extern const CGSize kTileSize;
   const char *day = [dayText cStringUsingEncoding:NSUTF8StringEncoding];
   CGSize textSize = [dayText sizeWithFont:font];
   CGFloat textX, textY;
-  textX = roundf(0.5f * (kTileSize.width - textSize.width));
-  textY = 6.f + roundf(0.5f * (kTileSize.height - textSize.height));
+  textX = roundf(0.5f * (tileSize.width - textSize.width));
+  textY = 6.f + roundf(0.5f * (tileSize.height - textSize.height));
   if (shadowColor) {
     [shadowColor setFill];
     CGContextShowTextAtPoint(ctx, textX, textY, day, n >= 10 ? 2 : 1);
@@ -83,7 +83,7 @@ extern const CGSize kTileSize;
   
   if (self.highlighted) {
     [[UIColor colorWithWhite:0.25f alpha:0.3f] setFill];
-    CGContextFillRect(ctx, CGRectMake(0.f, 0.f, kTileSize.width, kTileSize.height));
+    CGContextFillRect(ctx, CGRectMake(0.f, 0.f, tileSize.width, tileSize.height));
   }
 }
 
@@ -92,10 +92,9 @@ extern const CGSize kTileSize;
   // realign to the grid
   CGRect frame = self.frame;
   frame.origin = origin;
-  frame.size = kTileSize;
+  frame.size = [KalGridView	tileSize];
   self.frame = frame;
   
-  [date release];
   date = nil;
   flags.type = KalTileTypeRegular;
   flags.highlighted = NO;
@@ -108,8 +107,7 @@ extern const CGSize kTileSize;
   if (date == aDate)
     return;
 
-  [date release];
-  date = [aDate retain];
+  date = aDate;
 
   [self setNeedsDisplay];
 }
@@ -190,10 +188,5 @@ extern const CGSize kTileSize;
 
 - (BOOL)belongsToAdjacentMonth { return flags.type == KalTileTypeAdjacent; }
 
-- (void)dealloc
-{
-  [date release];
-  [super dealloc];
-}
 
 @end

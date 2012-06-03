@@ -30,7 +30,7 @@
 }
 
 @property (nonatomic, readonly) BOOL transitioning;
-@property (nonatomic, readonly) KalDate *selectedDate;
+@property (nonatomic, weak, readonly) KalDate *selectedDate;
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)logic delegate:(id<KalViewDelegate>)delegate;
 - (void)selectDate:(KalDate *)date;
@@ -42,4 +42,5 @@
 - (void)slideDown;
 - (void)jumpToSelectedMonth;    // see comment on KalView
 
++(CGSize) tileSize;
 @end
