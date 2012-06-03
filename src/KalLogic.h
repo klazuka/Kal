@@ -31,13 +31,13 @@
   NSDateFormatter *monthAndYearFormatter;
 }
 
-@property (nonatomic, retain) NSDate *baseDate;    // The first day of the currently selected month
-@property (nonatomic, retain, readonly) NSDate *fromDate;  // The date corresponding to the tile in the upper-left corner of the currently selected month
-@property (nonatomic, retain, readonly) NSDate *toDate;    // The date corresponding to the tile in the bottom-right corner of the currently selected month
-@property (nonatomic, retain, readonly) NSArray *daysInSelectedMonth;             // array of KalDate
-@property (nonatomic, retain, readonly) NSArray *daysInFinalWeekOfPreviousMonth;  // array of KalDate
-@property (nonatomic, retain, readonly) NSArray *daysInFirstWeekOfFollowingMonth; // array of KalDate
-@property (nonatomic, readonly) NSString *selectedMonthNameAndYear; // localized (e.g. "September 2010" for USA locale)
+@property (nonatomic) NSDate *baseDate;    // The first day of the currently selected month
+@property (nonatomic, readonly) NSDate *fromDate;  // The date corresponding to the tile in the upper-left corner of the currently selected month
+@property (nonatomic, readonly) NSDate *toDate;    // The date corresponding to the tile in the bottom-right corner of the currently selected month
+@property (nonatomic, readonly) NSArray *daysInSelectedMonth;             // array of KalDate
+@property (nonatomic, readonly) NSArray *daysInFinalWeekOfPreviousMonth;  // array of KalDate
+@property (nonatomic, readonly) NSArray *daysInFirstWeekOfFollowingMonth; // array of KalDate
+@property (weak, nonatomic, readonly) NSString *selectedMonthNameAndYear; // localized (e.g. "September 2010" for USA locale)
 
 - (id)initForDate:(NSDate *)date; // designated initializer.
 

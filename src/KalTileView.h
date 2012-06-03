@@ -26,7 +26,7 @@ typedef char KalTileType;
   } flags;
 }
 
-@property (nonatomic, retain) KalDate *date;
+@property (nonatomic) KalDate *date;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic, getter=isSelected) BOOL selected;
 @property (nonatomic, getter=isMarked) BOOL marked;

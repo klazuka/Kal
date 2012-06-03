@@ -24,13 +24,12 @@ static KalDate *today;
 
 + (void)cacheTodaysDate
 {
-  [today release];
-  today = [[KalDate dateFromNSDate:[NSDate date]] retain];
+  today = [KalDate dateFromNSDate:[NSDate date]];
 }
 
 + (KalDate *)dateForDay:(unsigned int)day month:(unsigned int)month year:(unsigned int)year
 {
-  return [[[KalDate alloc] initForDay:day month:month year:year] autorelease];
+  return [[KalDate alloc] initForDay:day month:month year:year];
 }
 
 + (KalDate *)dateFromNSDate:(NSDate *)date
@@ -55,7 +54,7 @@ static KalDate *today;
 
 - (NSDate *)NSDate
 {
-  NSDateComponents *c = [[[NSDateComponents alloc] init] autorelease];
+  NSDateComponents *c = [[NSDateComponents alloc] init];
   c.day = a.day;
   c.month = a.month;
   c.year = a.year;
