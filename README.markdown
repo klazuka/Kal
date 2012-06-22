@@ -11,6 +11,12 @@ In order to use Kal in your application, you will need to provide an implementat
 Release Notes
 -------------
 
+**June 21, 2012**
+
+Today I added VoiceOver/Accessibility support. Special thanks to Matt Gemmell's [excellent article](http://mattgemmell.com/2010/12/19/accessibility-for-iphone-and-ipad-apps/) on adding accessibility support to your iPhone app. I wish I would have done this a long time ago.
+
+If your app is localized, then you will also want to localize the 4 new accessibility strings that I added in this release: "Previous month", "Next month", "Marked" and "Today".
+
 **July 9, 2010**
 
 This is the iOS 4.0 / iPhone4 release. New features include:

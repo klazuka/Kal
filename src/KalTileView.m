@@ -20,6 +20,8 @@ extern const CGSize kTileSize;
     self.backgroundColor = [UIColor clearColor];
     self.clipsToBounds = NO;
     origin = frame.origin;
+    [self setIsAccessibilityElement:YES];
+    [self setAccessibilityTraits:UIAccessibilityTraitButton];
     [self resetState];
   }
   return self;

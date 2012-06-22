@@ -10,6 +10,7 @@
 @interface KalMonthView : UIView
 {
   NSUInteger numWeeks;
+  NSDateFormatter *tileAccessibilityFormatter;
 }
 
 @property (nonatomic) NSUInteger numWeeks;
