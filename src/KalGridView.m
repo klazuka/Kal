@@ -95,7 +95,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     selectedTile = [tile retain];
     tile.selected = YES;
     [delegate didSelectDate:tile.date];
-  }
+  } else [[NSNotificationCenter defaultCenter] postNotificationName:NOTIFICATION_DISMISS_POPOVER object:nil];
 }
 
 - (void)receivedTouches:(NSSet *)touches withEvent:event
@@ -142,7 +142,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
       } else {
         [delegate showPreviousMonth];
       }
-      self.selectedTile = [frontMonthView tileForDate:tile.date];
+        //self.selectedTile = [frontMonthView tileForDate:tile.date];
     } else {
       self.selectedTile = tile;
     }

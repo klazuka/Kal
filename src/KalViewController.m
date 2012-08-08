@@ -40,16 +40,22 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 @synthesize dataSource, delegate, initialDate, selectedDate;
 
-- (id)initWithSelectedDate:(NSDate *)date
+- (id)initWithSelectedDate:(NSDate *)date andDelegate:(id<KalViewDelegate,UITableViewDelegate>)aDelegate
 {
   if ((self = [super init])) {
     logic = [[KalLogic alloc] initForDate:date];
     self.initialDate = date;
     self.selectedDate = date;
+    self.delegate = aDelegate;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(significantTimeChangeOccurred) name:UIApplicationSignificantTimeChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KalDataSourceChangedNotification object:nil];
   }
   return self;
+}
+
+- (id)initWithSelectedDate:(NSDate *)date
+{
+    return [self initWithSelectedDate:[NSDate date]];
 }
 
 - (id)init
@@ -67,7 +73,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   }
 }
 
-- (void)setDelegate:(id<UITableViewDelegate>)aDelegate
+- (void)setDelegate:(id<KalViewDelegate,UITableViewDelegate>)aDelegate
 {
   if (delegate != aDelegate) {
     delegate = aDelegate;
@@ -189,7 +195,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     
   CGRect rect = CGRectMake(0, 0, MIN(popoverRect.size.width, windowsRect.size.width), MIN(popoverRect.size.height, windowsRect.size.height));
     
-  KalView *kalView = [[[KalView alloc] initWithFrame:rect delegate:self logic:logic] autorelease];
+  KalView *kalView = [[[KalView alloc] initWithFrame:rect delegate:delegate != nil ? (id<KalViewDelegate>)delegate:self logic:logic] autorelease];
   self.view = kalView;
   tableView = kalView.tableView;
   tableView.dataSource = dataSource;
