@@ -4,6 +4,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#define NOTIFICATION_SELECTED_DATE @"notificationSelectedDate"
 
 @class KalTileView, KalMonthView, KalLogic, KalDate;
 @protocol KalViewDelegate;
