@@ -5,6 +5,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "KalLogic.h"
+
 @class KalTileView, KalDate;
 
 @interface KalMonthView : UIView
@@ -16,6 +18,8 @@
 @property (nonatomic) NSUInteger numWeeks;
 
 - (id)initWithFrame:(CGRect)rect; // designated initializer
+- (id)initWithFrame:(CGRect)rect logic:(KalLogic *)logic;
+
 - (void)showDates:(NSArray *)mainDates leadingAdjacentDates:(NSArray *)leadingAdjacentDates trailingAdjacentDates:(NSArray *)trailingAdjacentDates;
 - (KalTileView *)firstTileOfMonth;
 - (KalTileView *)tileForDate:(KalDate *)date;

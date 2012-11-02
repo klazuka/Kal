@@ -49,8 +49,8 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     delegate = theDelegate;
     
     CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
-    frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
-    backMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
+    frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect logic:theLogic];
+    backMonthView = [[KalMonthView alloc] initWithFrame:monthRect logic:theLogic];
     backMonthView.hidden = YES;
     [self addSubview:backMonthView];
     [self addSubview:frontMonthView];

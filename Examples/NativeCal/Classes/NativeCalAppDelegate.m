@@ -23,7 +23,8 @@
    * If your application requires an arbitrary starting date, use -[KalViewController initWithSelectedDate:]
    * instead of -[KalViewController init].
    */
-  kal = [[KalViewController alloc] init];
+  NSLocale *locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"zh-HK"] autorelease];
+  kal = [[KalViewController alloc] initWithLocale:locale];
   kal.title = @"NativeCal";
 
   /*

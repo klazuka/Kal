@@ -126,8 +126,11 @@ static const CGFloat kMonthLabelHeight = 17.f;
   [nextMonthButton release];
   
   // Add column labels for each weekday (adjusting based on the current locale's first weekday)
-  NSArray *weekdayNames = [[[[NSDateFormatter alloc] init] autorelease] shortWeekdaySymbols];
-  NSArray *fullWeekdayNames = [[[[NSDateFormatter alloc] init] autorelease] standaloneWeekdaySymbols];
+  NSDateFormatter *df = [[NSDateFormatter alloc] init];
+  [df setLocale:logic.locale];
+  NSArray *weekdayNames = [df shortWeekdaySymbols];
+  NSArray *fullWeekdayNames = [df standaloneWeekdaySymbols];
+  [df release];
   NSUInteger firstWeekday = [[NSCalendar currentCalendar] firstWeekday];
   NSUInteger i = firstWeekday - 1;
   for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += 46.f, i = (i+1)%7) {
