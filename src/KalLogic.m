@@ -40,7 +40,7 @@
 {
     if ((self = [super init])) {
         self.locale = theLocale;
-        NSString *format = [NSDateFormatter dateFormatFromTemplate:@"MMM yyyy" options:0 locale:theLocale];        
+        NSString *format = [NSDateFormatter dateFormatFromTemplate:@"MMMM yyyy" options:0 locale:theLocale];        
         monthAndYearFormatter = [[NSDateFormatter alloc] init];
         [monthAndYearFormatter setDateFormat:format];
         [monthAndYearFormatter setLocale:theLocale];
