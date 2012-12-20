@@ -8,7 +8,7 @@
 #import "KalDataSource.h"
 #import "KalDate.h"
 #import "KalPrivate.h"
-
+#import "NSDateAdditions.h"
 #define PROFILER 0
 #if PROFILER
 #include <mach/mach_time.h>
@@ -40,16 +40,31 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 @synthesize dataSource, delegate, initialDate, selectedDate;
 
-- (id)initWithSelectedDate:(NSDate *)date
+-(void) _configureWithDate:(NSDate *)date
 {
-  if ((self = [super init])) {
     logic = [[KalLogic alloc] initForDate:date];
     self.initialDate = date;
     self.selectedDate = date;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(significantTimeChangeOccurred) name:UIApplicationSignificantTimeChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:KalDataSourceChangedNotification object:nil];
-  }
-  return self;
+}
+
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder])) {
+        [self _configureWithDate:[NSDate date]];
+    }
+    return self;
+}
+
+
+- (id)initWithSelectedDate:(NSDate *)date
+{
+    if ((self = [super init])) {
+        [self _configureWithDate:date];
+    }
+    return self;
 }
 
 - (id)init
