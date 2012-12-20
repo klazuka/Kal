@@ -1,0 +1,343 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		649D968516837595005DAEB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 649D968416837595005DAEB2 /* UIKit.framework */; };
+		649D968716837595005DAEB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 649D968616837595005DAEB2 /* Foundation.framework */; };
+		649D968916837595005DAEB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 649D968816837595005DAEB2 /* CoreGraphics.framework */; };
+		649D968F16837595005DAEB2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 649D968D16837595005DAEB2 /* InfoPlist.strings */; };
+		649D969116837595005DAEB2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 649D969016837595005DAEB2 /* main.m */; };
+		649D969516837595005DAEB2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 649D969416837595005DAEB2 /* AppDelegate.m */; };
+		649D969716837595005DAEB2 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 649D969616837595005DAEB2 /* Default.png */; };
+		649D969916837595005DAEB2 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649D969816837595005DAEB2 /* Default@2x.png */; };
+		649D969B16837595005DAEB2 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 649D969A16837595005DAEB2 /* Default-568h@2x.png */; };
+		649D969E16837595005DAEB2 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 649D969C16837595005DAEB2 /* MainStoryboard.storyboard */; };
+		649D96A116837595005DAEB2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 649D96A016837595005DAEB2 /* ViewController.m */; };
+		649D96B0168375BC005DAEB2 /* libKal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 649D96AF168375A9005DAEB2 /* libKal.a */; };
+		649D96C116837C66005DAEB2 /* Kal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 649D96C016837C66005DAEB2 /* Kal.bundle */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		649D96AE168375A9005DAEB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 649D96A7168375A9005DAEB2 /* Kal.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = Kal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		649D968016837595005DAEB2 /* SimpelKal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpelKal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		649D968416837595005DAEB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		649D968616837595005DAEB2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		649D968816837595005DAEB2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		649D968C16837595005DAEB2 /* SimpelKal-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SimpelKal-Info.plist"; sourceTree = "<group>"; };
+		649D968E16837595005DAEB2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		649D969016837595005DAEB2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		649D969216837595005DAEB2 /* SimpelKal-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SimpelKal-Prefix.pch"; sourceTree = "<group>"; };
+		649D969316837595005DAEB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		649D969416837595005DAEB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		649D969616837595005DAEB2 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		649D969816837595005DAEB2 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		649D969A16837595005DAEB2 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		649D969D16837595005DAEB2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		649D969F16837595005DAEB2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		649D96A016837595005DAEB2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		649D96A7168375A9005DAEB2 /* Kal.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Kal.xcodeproj; path = ../../../src/Kal.xcodeproj; sourceTree = "<group>"; };
+		649D96C016837C66005DAEB2 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = file; name = Kal.bundle; path = ../../../src/Kal.bundle; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		649D967D16837595005DAEB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				649D96B0168375BC005DAEB2 /* libKal.a in Frameworks */,
+				649D968516837595005DAEB2 /* UIKit.framework in Frameworks */,
+				649D968716837595005DAEB2 /* Foundation.framework in Frameworks */,
+				649D968916837595005DAEB2 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		649D967516837595005DAEB2 = {
+			isa = PBXGroup;
+			children = (
+				649D968A16837595005DAEB2 /* SimpelKal */,
+				649D968316837595005DAEB2 /* Frameworks */,
+				649D968116837595005DAEB2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		649D968116837595005DAEB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				649D968016837595005DAEB2 /* SimpelKal.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		649D968316837595005DAEB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				649D96C016837C66005DAEB2 /* Kal.bundle */,
+				649D96A7168375A9005DAEB2 /* Kal.xcodeproj */,
+				649D968416837595005DAEB2 /* UIKit.framework */,
+				649D968616837595005DAEB2 /* Foundation.framework */,
+				649D968816837595005DAEB2 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		649D968A16837595005DAEB2 /* SimpelKal */ = {
+			isa = PBXGroup;
+			children = (
+				649D969316837595005DAEB2 /* AppDelegate.h */,
+				649D969416837595005DAEB2 /* AppDelegate.m */,
+				649D969C16837595005DAEB2 /* MainStoryboard.storyboard */,
+				649D969F16837595005DAEB2 /* ViewController.h */,
+				649D96A016837595005DAEB2 /* ViewController.m */,
+				649D968B16837595005DAEB2 /* Supporting Files */,
+			);
+			path = SimpelKal;
+			sourceTree = "<group>";
+		};
+		649D968B16837595005DAEB2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				649D968C16837595005DAEB2 /* SimpelKal-Info.plist */,
+				649D968D16837595005DAEB2 /* InfoPlist.strings */,
+				649D969016837595005DAEB2 /* main.m */,
+				649D969216837595005DAEB2 /* SimpelKal-Prefix.pch */,
+				649D969616837595005DAEB2 /* Default.png */,
+				649D969816837595005DAEB2 /* Default@2x.png */,
+				649D969A16837595005DAEB2 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		649D96A8168375A9005DAEB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				649D96AF168375A9005DAEB2 /* libKal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		649D967F16837595005DAEB2 /* SimpelKal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 649D96A416837595005DAEB2 /* Build configuration list for PBXNativeTarget "SimpelKal" */;
+			buildPhases = (
+				649D967C16837595005DAEB2 /* Sources */,
+				649D967D16837595005DAEB2 /* Frameworks */,
+				649D967E16837595005DAEB2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpelKal;
+			productName = SimpelKal;
+			productReference = 649D968016837595005DAEB2 /* SimpelKal.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		649D967716837595005DAEB2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = yourcompany;
+			};
+			buildConfigurationList = 649D967A16837595005DAEB2 /* Build configuration list for PBXProject "SimpelKal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 649D967516837595005DAEB2;
+			productRefGroup = 649D968116837595005DAEB2 /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 649D96A8168375A9005DAEB2 /* Products */;
+					ProjectRef = 649D96A7168375A9005DAEB2 /* Kal.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				649D967F16837595005DAEB2 /* SimpelKal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		649D96AF168375A9005DAEB2 /* libKal.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libKal.a;
+			remoteRef = 649D96AE168375A9005DAEB2 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		649D967E16837595005DAEB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				649D968F16837595005DAEB2 /* InfoPlist.strings in Resources */,
+				649D969716837595005DAEB2 /* Default.png in Resources */,
+				649D969916837595005DAEB2 /* Default@2x.png in Resources */,
+				649D969B16837595005DAEB2 /* Default-568h@2x.png in Resources */,
+				649D969E16837595005DAEB2 /* MainStoryboard.storyboard in Resources */,
+				649D96C116837C66005DAEB2 /* Kal.bundle in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		649D967C16837595005DAEB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				649D969116837595005DAEB2 /* main.m in Sources */,
+				649D969516837595005DAEB2 /* AppDelegate.m in Sources */,
+				649D96A116837595005DAEB2 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		649D968D16837595005DAEB2 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				649D968E16837595005DAEB2 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		649D969C16837595005DAEB2 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				649D969D16837595005DAEB2 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		649D96A216837595005DAEB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		649D96A316837595005DAEB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		649D96A516837595005DAEB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpelKal/SimpelKal-Prefix.pch";
+				HEADER_SEARCH_PATHS = ../../../src;
+				INFOPLIST_FILE = "SimpelKal/SimpelKal-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		649D96A616837595005DAEB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SimpelKal/SimpelKal-Prefix.pch";
+				HEADER_SEARCH_PATHS = ../../../src;
+				INFOPLIST_FILE = "SimpelKal/SimpelKal-Info.plist";
+				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		649D967A16837595005DAEB2 /* Build configuration list for PBXProject "SimpelKal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				649D96A216837595005DAEB2 /* Debug */,
+				649D96A316837595005DAEB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		649D96A416837595005DAEB2 /* Build configuration list for PBXNativeTarget "SimpelKal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				649D96A516837595005DAEB2 /* Debug */,
+				649D96A616837595005DAEB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 649D967716837595005DAEB2 /* Project object */;
+}
