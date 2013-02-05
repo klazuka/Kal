@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (c) 2009 Keith Lazuka
  * License: http://www.opensource.org/licenses/mit-license.html
  */
@@ -21,7 +21,7 @@ void mach_absolute_difference(uint64_t end, uint64_t start, struct timespec *tp)
 
     if (info.denom == 0)
         mach_timebase_info(&info);
-    
+
     uint64_t elapsednano = difference * (info.numer / info.denom);
     tp->tv_sec = elapsednano * 1e-9;
     tp->tv_nsec = elapsednano - (tp->tv_sec * 1e9);
@@ -131,7 +131,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   NSMutableArray *dates = [[markedDates mutableCopy] autorelease];
   for (int i=0; i<[dates count]; i++)
     [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
-  
+
   [[self calendarView] markTilesForDates:dates];
   [self didSelectDate:self.calendarView.selectedDate];
 }
@@ -143,23 +143,23 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 {
   if ([[self calendarView] isSliding])
     return;
-  
+
   [logic moveToMonthForDate:date];
-  
+
 #if PROFILER
   uint64_t start, end;
   struct timespec tp;
   start = mach_absolute_time();
 #endif
-  
+
   [[self calendarView] jumpToSelectedMonth];
-  
+
 #if PROFILER
   end = mach_absolute_time();
   mach_absolute_difference(end, start, &tp);
   printf("[[self calendarView] jumpToSelectedMonth]: %.1f ms\n", tp.tv_nsec / 1e6);
 #endif
-  
+
   [[self calendarView] selectDate:[KalDate dateFromNSDate:date]];
   [self reloadData];
 }
@@ -183,7 +183,10 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 {
   if (!self.title)
     self.title = @"Calendar";
-  KalView *kalView = [[[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] autorelease];
+
+  CGRect screenBounds = [[UIScreen mainScreen] bounds];
+  screenBounds.size.height -= 20;
+  KalView *kalView = [[[KalView alloc] initWithFrame:screenBounds delegate:self logic:logic] autorelease];
   self.view = kalView;
   tableView = kalView.tableView;
   tableView.dataSource = dataSource;
