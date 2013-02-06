@@ -185,7 +185,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     self.title = @"Calendar";
 
   CGRect screenBounds = [[UIScreen mainScreen] bounds];
-  screenBounds.size.height -= 20;
+  screenBounds.size.height -= [UIApplication sharedApplication].statusBarFrame.size.height;
   KalView *kalView = [[[KalView alloc] initWithFrame:screenBounds delegate:self logic:logic] autorelease];
   self.view = kalView;
   tableView = kalView.tableView;
