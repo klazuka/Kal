@@ -184,8 +184,12 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   if (!self.title)
     self.title = @"Calendar";
 
+  // calculate the height of the status bar independent of device orientation
+  CGSize statusBarSize = [UIApplication sharedApplication].statusBarFrame.size;
+  CGFloat statusBarHeight = MIN(statusBarSize.width, statusBarSize.height);
+
   CGRect screenBounds = [[UIScreen mainScreen] bounds];
-  screenBounds.size.height -= [UIApplication sharedApplication].statusBarFrame.size.height;
+  screenBounds.size.height -= statusBarHeight;
   KalView *kalView = [[[KalView alloc] initWithFrame:screenBounds delegate:self logic:logic] autorelease];
   self.view = kalView;
   tableView = kalView.tableView;
