@@ -34,7 +34,7 @@
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)logic delegate:(id<KalViewDelegate>)delegate;
 - (void)selectDate:(KalDate *)date;
-- (void)markTilesForDates:(NSArray *)dates;
+- (void)markTilesForDates:(NSSet *)dates specialDates:(NSSet *)specialDates;
 
 // These 3 methods should be called *after* the KalLogic
 // has moved to the previous or following month.
