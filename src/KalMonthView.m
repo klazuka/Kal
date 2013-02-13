@@ -93,12 +93,14 @@ extern const CGSize kTileSize;
   self.height = 1.f + kTileSize.height * numWeeks;
 }
 
-- (void)markTilesForDates:(NSArray *)dates
+- (void)markTilesForDates:(NSSet *)dates specialDates:(NSSet *)specialDates
 {
   for (KalTileView *tile in self.subviews)
   {
-    tile.marked = [dates containsObject:tile.date];
-    NSString *dayString = [tileAccessibilityFormatter stringFromDate:[tile.date NSDate]];
+    NSDate *tileDate = [tile.date NSDate];
+    tile.marked = [dates containsObject:tileDate];
+    tile.speciallyMarked = [specialDates containsObject:tileDate];
+    NSString *dayString = [tileAccessibilityFormatter stringFromDate:tileDate];
     if (dayString) {
       NSMutableString *helperText = [[[NSMutableString alloc] initWithCapacity:128] autorelease];
       if ([tile.date isToday])

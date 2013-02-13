@@ -40,9 +40,9 @@
   [delegate loadedDataSource:self];
 }
 
-- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate
+- (NSSet *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate speciallyMarkedDates:(NSSet **)speciallyMarkedDates
 {
-  return [NSArray array];
+  return [NSSet set];
 }
 
 - (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate

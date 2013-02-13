@@ -37,14 +37,15 @@
  *
  *  --- Synchronous part of the protocol ---
  *
- *    markedDatesFrom:to:
+ *    markedDatesFrom:to:speciallyMarkedDates:
  *
  *        This message will be sent to your dataSource immediately
  *        after you issue the loadedDataSource: callback message
  *        from the body of your presentingDatesFrom:to:delegate method.
- *        You should respond to this message by returning an array of NSDates
+ *        You should respond to this message by returning a set of NSDates
  *        for each day in the specified range which has associated application
- *        data.
+ *        data. If you want to mark some dates with special mark pass them into
+ *        `speciallyMarkedDates`.
  *
  *        If this message is received but the application data is not yet
  *        ready, your code should immediately return an empty NSArray.
@@ -73,7 +74,7 @@
 
 @protocol KalDataSource <NSObject, UITableViewDataSource>
 - (void)presentingDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate delegate:(id<KalDataSourceCallbacks>)delegate;
-- (NSArray *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate;
+- (NSSet *)markedDatesFrom:(NSDate *)fromDate to:(NSDate *)toDate speciallyMarkedDates:(NSSet **)speciallyMarkedDates;
 - (void)loadItemsFromDate:(NSDate *)fromDate toDate:(NSDate *)toDate;
 - (void)removeAllItems;
 @end

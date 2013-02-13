@@ -22,6 +22,7 @@ typedef char KalTileType;
     unsigned int selected : 1;
     unsigned int highlighted : 1;
     unsigned int marked : 1;
+    unsigned int speciallyMarked : 1;
     unsigned int type : 2;
   } flags;
 }
@@ -29,6 +30,7 @@ typedef char KalTileType;
 @property (nonatomic, retain) KalDate *date;
 @property (nonatomic, getter=isHighlighted) BOOL highlighted;
 @property (nonatomic, getter=isSelected) BOOL selected;
+@property (nonatomic, getter=isSpeciallyMarked) BOOL speciallyMarked;
 @property (nonatomic, getter=isMarked) BOOL marked;
 @property (nonatomic) KalTileType type;
 
