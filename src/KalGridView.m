@@ -218,6 +218,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 {
   transitioning = NO;
   backMonthView.hidden = YES;
+  [UIView setAnimationsEnabled:YES];
 }
 
 #pragma mark -
