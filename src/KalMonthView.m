@@ -10,7 +10,10 @@
 #import "KalDate.h"
 #import "KalPrivate.h"
 
-extern const CGSize kTileSize;
+//extern const CGSize kTileSize;
+static CGSize kTileSize;
+extern const CGSize kTileIPHONE;
+extern const CGSize kTileIPAD;
 
 @implementation KalMonthView
 
@@ -19,6 +22,12 @@ extern const CGSize kTileSize;
 - (id)initWithFrame:(CGRect)frame
 {
   if ((self = [super initWithFrame:frame])) {
+    
+      if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone)
+          kTileSize = kTileIPHONE;
+      else if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad)
+          kTileSize = kTileIPAD;
+
     tileAccessibilityFormatter = [[NSDateFormatter alloc] init];
     [tileAccessibilityFormatter setDateFormat:@"EEEE, MMMM d"];
     self.opaque = NO;
