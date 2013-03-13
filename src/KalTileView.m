@@ -7,7 +7,10 @@
 #import "KalDate.h"
 #import "KalPrivate.h"
 
-extern const CGSize kTileSize;
+//extern const CGSize kTileSize;
+static CGSize kTileSize;
+extern const CGSize kTileIPHONE;
+extern const CGSize kTileIPAD;
 
 @implementation KalTileView
 
@@ -16,6 +19,12 @@ extern const CGSize kTileSize;
 - (id)initWithFrame:(CGRect)frame
 {
   if ((self = [super initWithFrame:frame])) {
+      if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone)
+          kTileSize = kTileIPHONE;
+      else if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad)
+          kTileSize = kTileIPAD;
+
+    
     self.opaque = NO;
     self.backgroundColor = [UIColor clearColor];
     self.clipsToBounds = NO;
