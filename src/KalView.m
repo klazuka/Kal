@@ -130,7 +130,19 @@ static const CGFloat kMonthLabelHeight = 17.f;
   NSArray *fullWeekdayNames = [[[[NSDateFormatter alloc] init] autorelease] standaloneWeekdaySymbols];
   NSUInteger firstWeekday = [[NSCalendar currentCalendar] firstWeekday];
   NSUInteger i = firstWeekday - 1;
-  for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += 46.f, i = (i+1)%7) {
+  
+    float offset_tile;
+    if ([[UIDevice currentDevice]userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
+    {
+        offset_tile = 46.f;
+    }
+    else
+    {
+        offset_tile = 110.f;
+    }
+
+ for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += offset_tile, i = (i+1)%7) {
+
     CGRect weekdayFrame = CGRectMake(xOffset, 30.f, 46.f, kHeaderHeight - 29.f);
     UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:weekdayFrame];
     weekdayLabel.backgroundColor = [UIColor clearColor];
