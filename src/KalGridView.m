@@ -17,7 +17,10 @@
 #define SLIDE_UP 1
 #define SLIDE_DOWN 2
 
-const CGSize kTileSize = { 46.f, 44.f };
+//const CGSize kTileSize = { 46.f, 44.f };
+static CGSize kTileSize;
+const CGSize kTileIPAD = {110.f, 44.f}; //for iPAD
+const CGSize kTileIPHONE = { 46.f, 44.f }; //for iPhone
 
 static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
@@ -41,6 +44,13 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   // to accomodate all 7 columns. The 7th day's 2px inner stroke
   // will be clipped off the screen, but that's fine because
   // MobileCal does the same thing.
+  
+    if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPhone)
+        kTileSize = kTileIPHONE;
+    else if ([[UIDevice currentDevice]userInterfaceIdiom]==UIUserInterfaceIdiomPad)
+        kTileSize = kTileIPAD;
+
+  
   frame.size.width = 7 * kTileSize.width;
   
   if (self = [super initWithFrame:frame]) {
