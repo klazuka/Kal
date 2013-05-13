@@ -5,7 +5,7 @@
 
 #import "KalDate.h"
 #import "KalPrivate.h"
-
+#import "KalView.h"
 static KalDate *today;
 
 
@@ -59,7 +59,7 @@ static KalDate *today;
   c.day = a.day;
   c.month = a.month;
   c.year = a.year;
-  return [[NSCalendar currentCalendar] dateFromComponents:c];
+  return [[NSCalendar myCalendar] dateFromComponents:c];
 }
 
 - (BOOL)isToday { return [self isEqual:today]; }

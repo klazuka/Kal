@@ -7,7 +7,7 @@
 
 @interface NSDate (KalAdditions)
 
-// All of the following methods use [NSCalendar currentCalendar] to perform
+// All of the following methods use [NSCalendar myCalendar] to perform
 // their calculations.
 
 - (NSDate *)cc_dateByMovingToBeginningOfDay;

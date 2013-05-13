@@ -8,6 +8,21 @@
 #import "KalLogic.h"
 #import "KalPrivate.h"
 
+@implementation NSCalendar (MyCalendar)
+
++ (NSCalendar *)myCalendar
+{
+    static NSCalendar *result;
+    if (!result)
+    {
+        result = [[self currentCalendar] retain];
+        [result setFirstWeekday:2];
+    }
+    return result;
+}
+
+@end
+
 @interface KalView ()
 - (void)addSubviewsToHeaderView:(UIView *)headerView;
 - (void)addSubviewsToContentView:(UIView *)contentView;
