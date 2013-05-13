@@ -17,7 +17,7 @@
 #define SLIDE_UP 1
 #define SLIDE_DOWN 2
 
-const CGSize kTileSize = { 46.f, 44.f };
+const CGSize kTileSize = { 46.f, 34.f };
 
 static NSString *kSlideAnimationId = @"KalSwitchMonths";
 

@@ -73,3 +73,7 @@
 - (void)didSelectDate:(KalDate *)date;
 
 @end
+
+@interface NSCalendar (MyCalendar)
++ (NSCalendar *)myCalendar;
+@end

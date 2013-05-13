@@ -10,6 +10,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		4B90CC7C17412BAB00BCA255 /* kal_left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B90CC7A17412BAB00BCA255 /* kal_left_arrow@2x.png */; };
+		4B90CC7D17412BAB00BCA255 /* kal_right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B90CC7B17412BAB00BCA255 /* kal_right_arrow@2x.png */; };
 		534581FC10E1374500451238 /* kal_header_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 534581FB10E1374500451238 /* kal_header_text_fill.png */; };
 		5345824010E1427B00451238 /* kal_tile_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 5345823F10E1427B00451238 /* kal_tile_text_fill.png */; };
 		5387B4A310E902EF0011C4BA /* KalMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387B4A210E902EF0011C4BA /* KalMonthView.m */; };
@@ -57,6 +59,8 @@
 		1D6058910D05DD3D006BFB54 /* Holidays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holidays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4B90CC7A17412BAB00BCA255 /* kal_left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kal_left_arrow@2x.png"; sourceTree = "<group>"; };
+		4B90CC7B17412BAB00BCA255 /* kal_right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kal_right_arrow@2x.png"; sourceTree = "<group>"; };
 		534581FB10E1374500451238 /* kal_header_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_header_text_fill.png; sourceTree = "<group>"; };
 		5345823F10E1427B00451238 /* kal_tile_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_tile_text_fill.png; sourceTree = "<group>"; };
 		5387B4A110E902EF0011C4BA /* KalMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalMonthView.h; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 			isa = PBXGroup;
 			children = (
 				5387BDA510EBDBB50011C4BA /* kal_left_arrow.png */,
+				4B90CC7A17412BAB00BCA255 /* kal_left_arrow@2x.png */,
+				4B90CC7B17412BAB00BCA255 /* kal_right_arrow@2x.png */,
 				5387BDA810EBDBB50011C4BA /* kal_right_arrow.png */,
 				53D9F95810DFC21D00759172 /* kal_marker.png */,
 				53D9F95710DFC21D00759172 /* kal_marker_selected.png */,
@@ -306,7 +312,11 @@
 			isa = PBXProject;
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Kal" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -339,6 +349,8 @@
 				5387BDB710EBDC000011C4BA /* kal_tile_dim_text_fill.png in Resources */,
 				5387C10B10EE3D560011C4BA /* holidays.db in Resources */,
 				5387C17310EEC7100011C4BA /* flags in Resources */,
+				4B90CC7C17412BAB00BCA255 /* kal_left_arrow@2x.png in Resources */,
+				4B90CC7D17412BAB00BCA255 /* kal_right_arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +398,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HolidaysDemo/Holiday_Prefix.pch;
 				INFOPLIST_FILE = "HolidaysDemo/Holiday-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Holidays;
 			};
 			name = Debug;
@@ -398,6 +411,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = HolidaysDemo/Holiday_Prefix.pch;
 				INFOPLIST_FILE = "HolidaysDemo/Holiday-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = Holidays;
 			};
 			name = Release;

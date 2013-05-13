@@ -6,7 +6,7 @@
 #import "KalLogic.h"
 #import "KalDate.h"
 #import "KalPrivate.h"
-
+#import "KalView.h"
 @interface KalLogic ()
 - (void)moveToMonthForDate:(NSDate *)date;
 - (void)recalculateVisibleDays;
@@ -34,7 +34,7 @@
 {
   if ((self = [super init])) {
     monthAndYearFormatter = [[NSDateFormatter alloc] init];
-    [monthAndYearFormatter setDateFormat:@"MMMM yyyy"];
+    [monthAndYearFormatter setDateFormat:@"yyyy年MM月"];
     [self moveToMonthForDate:[[NSDate date] cc_dateByMovingToFirstDayOfTheMonth]];
   }
   return self;
@@ -77,7 +77,7 @@
 {
   NSDateComponents *c = [self.baseDate cc_componentsForMonthDayAndYear];
   c.day = [self.baseDate cc_numberOfDaysInMonth];
-  NSDate *lastDayOfTheMonth = [[NSCalendar currentCalendar] dateFromComponents:c];
+  NSDate *lastDayOfTheMonth = [[NSCalendar myCalendar] dateFromComponents:c];
   return 7 - [lastDayOfTheMonth cc_weekday];
 }
 

@@ -8,6 +8,21 @@
 #import "KalLogic.h"
 #import "KalPrivate.h"
 
+@implementation NSCalendar (MyCalendar)
+
++ (NSCalendar *)myCalendar
+{
+    static NSCalendar *result;
+    if (!result)
+    {
+        result = [[self currentCalendar] retain];
+        [result setFirstWeekday:2];
+    }
+    return result;
+}
+
+@end
+
 @interface KalView ()
 - (void)addSubviewsToHeaderView:(UIView *)headerView;
 - (void)addSubviewsToContentView:(UIView *)contentView;
@@ -127,8 +142,8 @@ static const CGFloat kMonthLabelHeight = 17.f;
   [nextMonthButton release];
   
   // Add column labels for each weekday (adjusting based on the current locale's first weekday)
-  NSArray *weekdayNames = [[[[NSDateFormatter alloc] init] autorelease] shortWeekdaySymbols];
-  NSUInteger firstWeekday = [[NSCalendar currentCalendar] firstWeekday];
+    NSArray *weekdayNames = @[@"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六"];
+  NSUInteger firstWeekday = [[NSCalendar myCalendar] firstWeekday];
   NSUInteger i = firstWeekday - 1;
   for (CGFloat xOffset = 0.f; xOffset < headerView.width; xOffset += 46.f, i = (i+1)%7) {
     CGRect weekdayFrame = CGRectMake(xOffset, 30.f, 46.f, kHeaderHeight - 29.f);
