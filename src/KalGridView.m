@@ -30,6 +30,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 @implementation KalGridView
 
 @synthesize selectedTile, highlightedTile, transitioning;
+@synthesize backgroundView;
 
 - (id)initWithFrame:(CGRect)frame logic:(KalLogic *)theLogic delegate:(id<KalViewDelegate>)theDelegate
 {
@@ -60,8 +61,17 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   return self;
 }
 
+- (void)sizeToFit
+{
+  self.height = frontMonthView.height;
+}
+
+#pragma mark -
+#pragma mark Appearance
+
 - (void)drawRect:(CGRect)rect
 {
+  if (backgroundView) { return; } // backgroundView supersedes default drawing
   [[UIImage imageNamed:@"Kal.bundle/kal_grid_background.png"] drawInRect:rect];
   [[UIColor colorWithRed:0.63f green:0.65f blue:0.68f alpha:1.f] setFill];
   CGRect line;
@@ -70,10 +80,19 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   CGContextFillRect(UIGraphicsGetCurrentContext(), line);
 }
 
-- (void)sizeToFit
+- (void)setBackgroundView:(UIView *)view
 {
-  self.height = frontMonthView.height;
+  if (backgroundView != view) {
+    [backgroundView removeFromSuperview];
+    backgroundView = view;
+    backgroundView.frame = self.bounds;
+    backgroundView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self addSubview:backgroundView];
+    [self sendSubviewToBack:backgroundView];
+    [self setNeedsDisplay]; // see drawRect:
+  }
 }
+
 
 #pragma mark -
 #pragma mark Touches
@@ -94,6 +113,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
     selectedTile.selected = NO;
     selectedTile = [tile retain];
     tile.selected = YES;
+    [tile.superview bringSubviewToFront:tile];
     [delegate didSelectDate:tile.date];
   }
 }
