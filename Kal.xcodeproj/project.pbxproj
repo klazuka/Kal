@@ -10,6 +10,10 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		4B6B573F176CC4E70027267E /* mark_gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B573E176CC4E70027267E /* mark_gray@2x.png */; };
+		4B6B5743176CC4F00027267E /* mark.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B5740176CC4F00027267E /* mark.png */; };
+		4B6B5744176CC4F00027267E /* mark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B5741176CC4F00027267E /* mark@2x.png */; };
+		4B6B5745176CC4F00027267E /* mark_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B6B5742176CC4F00027267E /* mark_gray.png */; };
 		4B90CC7C17412BAB00BCA255 /* kal_left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B90CC7A17412BAB00BCA255 /* kal_left_arrow@2x.png */; };
 		4B90CC7D17412BAB00BCA255 /* kal_right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B90CC7B17412BAB00BCA255 /* kal_right_arrow@2x.png */; };
 		534581FC10E1374500451238 /* kal_header_text_fill.png in Resources */ = {isa = PBXBuildFile; fileRef = 534581FB10E1374500451238 /* kal_header_text_fill.png */; };
@@ -59,6 +63,10 @@
 		1D6058910D05DD3D006BFB54 /* Holidays.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Holidays.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4B6B573E176CC4E70027267E /* mark_gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark_gray@2x.png"; sourceTree = "<group>"; };
+		4B6B5740176CC4F00027267E /* mark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark.png; sourceTree = "<group>"; };
+		4B6B5741176CC4F00027267E /* mark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mark@2x.png"; sourceTree = "<group>"; };
+		4B6B5742176CC4F00027267E /* mark_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mark_gray.png; sourceTree = "<group>"; };
 		4B90CC7A17412BAB00BCA255 /* kal_left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kal_left_arrow@2x.png"; sourceTree = "<group>"; };
 		4B90CC7B17412BAB00BCA255 /* kal_right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kal_right_arrow@2x.png"; sourceTree = "<group>"; };
 		534581FB10E1374500451238 /* kal_header_text_fill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kal_header_text_fill.png; sourceTree = "<group>"; };
@@ -229,6 +237,10 @@
 		53D9F8A010DD9CF200759172 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4B6B5740176CC4F00027267E /* mark.png */,
+				4B6B5741176CC4F00027267E /* mark@2x.png */,
+				4B6B5742176CC4F00027267E /* mark_gray.png */,
+				4B6B573E176CC4E70027267E /* mark_gray@2x.png */,
 				5387BDA510EBDBB50011C4BA /* kal_left_arrow.png */,
 				4B90CC7A17412BAB00BCA255 /* kal_left_arrow@2x.png */,
 				4B90CC7B17412BAB00BCA255 /* kal_right_arrow@2x.png */,
@@ -351,6 +363,10 @@
 				5387C17310EEC7100011C4BA /* flags in Resources */,
 				4B90CC7C17412BAB00BCA255 /* kal_left_arrow@2x.png in Resources */,
 				4B90CC7D17412BAB00BCA255 /* kal_right_arrow@2x.png in Resources */,
+				4B6B573F176CC4E70027267E /* mark_gray@2x.png in Resources */,
+				4B6B5743176CC4F00027267E /* mark.png in Resources */,
+				4B6B5744176CC4F00027267E /* mark@2x.png in Resources */,
+				4B6B5745176CC4F00027267E /* mark_gray.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
