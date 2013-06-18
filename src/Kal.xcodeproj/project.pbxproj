@@ -1,0 +1,324 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		533B287611E2D46E00B3CC07 /* Kal.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286011E2D46E00B3CC07 /* Kal.h */; };
+		533B287711E2D46E00B3CC07 /* KalDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286111E2D46E00B3CC07 /* KalDataSource.h */; };
+		533B287811E2D46E00B3CC07 /* KalDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B286211E2D46E00B3CC07 /* KalDataSource.m */; };
+		533B287911E2D46E00B3CC07 /* KalDate.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286311E2D46E00B3CC07 /* KalDate.h */; };
+		533B287A11E2D46E00B3CC07 /* KalDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B286411E2D46E00B3CC07 /* KalDate.m */; };
+		533B287B11E2D46E00B3CC07 /* KalGridView.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286511E2D46E00B3CC07 /* KalGridView.h */; };
+		533B287C11E2D46E00B3CC07 /* KalGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B286611E2D46E00B3CC07 /* KalGridView.m */; };
+		533B287D11E2D46E00B3CC07 /* KalLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286711E2D46E00B3CC07 /* KalLogic.h */; };
+		533B287E11E2D46E00B3CC07 /* KalLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B286811E2D46E00B3CC07 /* KalLogic.m */; };
+		533B287F11E2D46E00B3CC07 /* KalMonthView.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286911E2D46E00B3CC07 /* KalMonthView.h */; };
+		533B288011E2D46E00B3CC07 /* KalMonthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B286A11E2D46E00B3CC07 /* KalMonthView.m */; };
+		533B288111E2D46E00B3CC07 /* KalPrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286B11E2D46E00B3CC07 /* KalPrivate.h */; };
+		533B288211E2D46E00B3CC07 /* KalTileView.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286C11E2D46E00B3CC07 /* KalTileView.h */; };
+		533B288311E2D46E00B3CC07 /* KalTileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B286D11E2D46E00B3CC07 /* KalTileView.m */; };
+		533B288411E2D46E00B3CC07 /* KalView.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B286E11E2D46E00B3CC07 /* KalView.h */; };
+		533B288511E2D46E00B3CC07 /* KalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B286F11E2D46E00B3CC07 /* KalView.m */; };
+		533B288611E2D46E00B3CC07 /* KalViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B287011E2D46E00B3CC07 /* KalViewController.h */; };
+		533B288711E2D46E00B3CC07 /* KalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B287111E2D46E00B3CC07 /* KalViewController.m */; };
+		533B288811E2D46E00B3CC07 /* NSDateAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B287211E2D46E00B3CC07 /* NSDateAdditions.h */; };
+		533B288911E2D46E00B3CC07 /* NSDateAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B287311E2D46E00B3CC07 /* NSDateAdditions.m */; };
+		533B288A11E2D46E00B3CC07 /* UIViewAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 533B287411E2D46E00B3CC07 /* UIViewAdditions.h */; };
+		533B288B11E2D46E00B3CC07 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 533B287511E2D46E00B3CC07 /* UIViewAdditions.m */; };
+		AA747D9F0F9514B9006C5449 /* Kal_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* Kal_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		533B285F11E2D46E00B3CC07 /* Kal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Kal.bundle; sourceTree = "<group>"; };
+		533B286011E2D46E00B3CC07 /* Kal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kal.h; sourceTree = SOURCE_ROOT; };
+		533B286111E2D46E00B3CC07 /* KalDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalDataSource.h; sourceTree = SOURCE_ROOT; };
+		533B286211E2D46E00B3CC07 /* KalDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalDataSource.m; sourceTree = SOURCE_ROOT; };
+		533B286311E2D46E00B3CC07 /* KalDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalDate.h; sourceTree = SOURCE_ROOT; };
+		533B286411E2D46E00B3CC07 /* KalDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalDate.m; sourceTree = SOURCE_ROOT; };
+		533B286511E2D46E00B3CC07 /* KalGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalGridView.h; sourceTree = SOURCE_ROOT; };
+		533B286611E2D46E00B3CC07 /* KalGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalGridView.m; sourceTree = SOURCE_ROOT; };
+		533B286711E2D46E00B3CC07 /* KalLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalLogic.h; sourceTree = SOURCE_ROOT; };
+		533B286811E2D46E00B3CC07 /* KalLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalLogic.m; sourceTree = SOURCE_ROOT; };
+		533B286911E2D46E00B3CC07 /* KalMonthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalMonthView.h; sourceTree = SOURCE_ROOT; };
+		533B286A11E2D46E00B3CC07 /* KalMonthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalMonthView.m; sourceTree = SOURCE_ROOT; };
+		533B286B11E2D46E00B3CC07 /* KalPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalPrivate.h; sourceTree = SOURCE_ROOT; };
+		533B286C11E2D46E00B3CC07 /* KalTileView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalTileView.h; sourceTree = SOURCE_ROOT; };
+		533B286D11E2D46E00B3CC07 /* KalTileView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalTileView.m; sourceTree = SOURCE_ROOT; };
+		533B286E11E2D46E00B3CC07 /* KalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalView.h; sourceTree = SOURCE_ROOT; };
+		533B286F11E2D46E00B3CC07 /* KalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalView.m; sourceTree = SOURCE_ROOT; };
+		533B287011E2D46E00B3CC07 /* KalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KalViewController.h; sourceTree = SOURCE_ROOT; };
+		533B287111E2D46E00B3CC07 /* KalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KalViewController.m; sourceTree = SOURCE_ROOT; };
+		533B287211E2D46E00B3CC07 /* NSDateAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateAdditions.h; sourceTree = "<group>"; };
+		533B287311E2D46E00B3CC07 /* NSDateAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateAdditions.m; sourceTree = "<group>"; };
+		533B287411E2D46E00B3CC07 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
+		533B287511E2D46E00B3CC07 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* Kal_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kal_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libKal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKal.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libKal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* Kal */ = {
+			isa = PBXGroup;
+			children = (
+				533B285F11E2D46E00B3CC07 /* Kal.bundle */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				533B289C11E2D48000B3CC07 /* Additions */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = Kal;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				533B286011E2D46E00B3CC07 /* Kal.h */,
+				533B286111E2D46E00B3CC07 /* KalDataSource.h */,
+				533B286211E2D46E00B3CC07 /* KalDataSource.m */,
+				533B286311E2D46E00B3CC07 /* KalDate.h */,
+				533B286411E2D46E00B3CC07 /* KalDate.m */,
+				533B286511E2D46E00B3CC07 /* KalGridView.h */,
+				533B286611E2D46E00B3CC07 /* KalGridView.m */,
+				533B286711E2D46E00B3CC07 /* KalLogic.h */,
+				533B286811E2D46E00B3CC07 /* KalLogic.m */,
+				533B286911E2D46E00B3CC07 /* KalMonthView.h */,
+				533B286A11E2D46E00B3CC07 /* KalMonthView.m */,
+				533B286B11E2D46E00B3CC07 /* KalPrivate.h */,
+				533B286C11E2D46E00B3CC07 /* KalTileView.h */,
+				533B286D11E2D46E00B3CC07 /* KalTileView.m */,
+				533B286E11E2D46E00B3CC07 /* KalView.h */,
+				533B286F11E2D46E00B3CC07 /* KalView.m */,
+				533B287011E2D46E00B3CC07 /* KalViewController.h */,
+				533B287111E2D46E00B3CC07 /* KalViewController.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* Kal_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		533B289C11E2D48000B3CC07 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				533B287211E2D46E00B3CC07 /* NSDateAdditions.h */,
+				533B287311E2D46E00B3CC07 /* NSDateAdditions.m */,
+				533B287411E2D46E00B3CC07 /* UIViewAdditions.h */,
+				533B287511E2D46E00B3CC07 /* UIViewAdditions.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* Kal_Prefix.pch in Headers */,
+				533B287611E2D46E00B3CC07 /* Kal.h in Headers */,
+				533B287711E2D46E00B3CC07 /* KalDataSource.h in Headers */,
+				533B287911E2D46E00B3CC07 /* KalDate.h in Headers */,
+				533B287B11E2D46E00B3CC07 /* KalGridView.h in Headers */,
+				533B287D11E2D46E00B3CC07 /* KalLogic.h in Headers */,
+				533B287F11E2D46E00B3CC07 /* KalMonthView.h in Headers */,
+				533B288111E2D46E00B3CC07 /* KalPrivate.h in Headers */,
+				533B288211E2D46E00B3CC07 /* KalTileView.h in Headers */,
+				533B288411E2D46E00B3CC07 /* KalView.h in Headers */,
+				533B288611E2D46E00B3CC07 /* KalViewController.h in Headers */,
+				533B288811E2D46E00B3CC07 /* NSDateAdditions.h in Headers */,
+				533B288A11E2D46E00B3CC07 /* UIViewAdditions.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* Kal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "Kal" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kal;
+			productName = Kal;
+			productReference = D2AAC07E0554694100DB518D /* libKal.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Kal" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* Kal */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* Kal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				533B287811E2D46E00B3CC07 /* KalDataSource.m in Sources */,
+				533B287A11E2D46E00B3CC07 /* KalDate.m in Sources */,
+				533B287C11E2D46E00B3CC07 /* KalGridView.m in Sources */,
+				533B287E11E2D46E00B3CC07 /* KalLogic.m in Sources */,
+				533B288011E2D46E00B3CC07 /* KalMonthView.m in Sources */,
+				533B288311E2D46E00B3CC07 /* KalTileView.m in Sources */,
+				533B288511E2D46E00B3CC07 /* KalView.m in Sources */,
+				533B288711E2D46E00B3CC07 /* KalViewController.m in Sources */,
+				533B288911E2D46E00B3CC07 /* NSDateAdditions.m in Sources */,
+				533B288B11E2D46E00B3CC07 /* UIViewAdditions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/Kal.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Kal_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Kal;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/Kal.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = Kal_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = Kal;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				OTHER_LDFLAGS = "-ObjC";
+				PREBINDING = NO;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "Kal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "Kal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}

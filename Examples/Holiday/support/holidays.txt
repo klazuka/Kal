@@ -1,0 +1,256 @@
+India			Republic Day					2009-01-26
+India			Maha Shivratri					2009-02-23
+India			Holi							2009-03-11
+India			Mahavir Jayanthi				2009-04-07
+India			Good Friday						2009-04-10
+India			May Day							2009-05-01
+India			Buddha Purnima					2009-05-08
+India			Krishna Janmastami				2009-08-14
+India			Independence Day				2009-08-15
+India			Ganesh Chaturthi				2009-08-23
+India			Id-Ul-Fitr						2009-09-21
+India			Vijaya Dashami					2009-09-28
+India			Mahatma Gandhi Jayanti			2009-10-02
+India			Diwali							2009-10-17
+India			Guru Nanak Jayanthi				2009-11-02
+India			Christmas						2009-12-25
+USA				New Years Day					2009-01-01
+USA				Martin Luther King Day			2009-01-19
+USA				Washingtons Birthday			2009-02-16
+USA				Memorial Day					2009-05-25
+USA				Independence Day				2009-07-04
+USA				Labor Day						2009-09-07
+USA				Columbus Day					2009-10-12
+USA				Veterans Day					2009-11-11
+USA				Thanksgiving Day				2009-11-26
+USA				Christmas Day					2009-12-25
+UK				New Years Day					2009-01-01
+UK				Good Friday						2009-04-10
+UK				Early May						2009-05-04
+UK				Spring Bank Holiday				2009-05-25
+UK				Summer Bank Holiday				2009-08-31
+UK				Christmas Day					2009-12-25
+UK				Boxing Day						2009-12-26
+UK				Bank Holiday					2009-12-28
+Japan			New Years Day					2009-01-01
+Japan			Coming of age day				2009-01-12
+Japan			National Foundation day			2009-02-11
+Japan			Vernal Equiniox day				2009-03-20
+Japan			Showa day						2009-04-29
+Japan			Constitution Memorial Day		2009-05-03
+Japan			Greenery day					2009-05-04
+Japan			Childrens Day					2009-05-05
+Japan			Marine Day						2009-07-20
+Japan			Respect for the aged Day		2009-09-21
+Japan			Bridge Public Holiday			2009-09-22
+Japan			Autumnal Equiniox day			2009-09-23
+Japan			Health and Sports Day			2009-10-12
+Japan			Culture Day						2009-11-03
+Japan			Labour Thanksgiving Day			2009-11-23
+Japan			The Emperors Birthday			2009-12-23
+China			New Years Day					2009-01-01
+China			Chinese Lunar New Year			2009-01-25
+China			Chinese Lunar New Year			2009-01-26
+China			Chinese Lunar New Year			2009-01-27
+China			Qing Ming Festival				2009-04-06
+China			Labor Day						2009-05-01
+China			Dragon Boat Festival			2009-05-28
+China			National Day					2009-10-01
+China			National Day					2009-10-02
+China			National Day					2009-10-03
+China			Mid-Autumn Festival				2009-10-03
+Singapore		New Years Day					2009-01-01
+Singapore		Chinese New Year				2009-01-26
+Singapore		Chinese New Year				2009-01-27
+Singapore		Good Friday						2009-04-10
+Singapore		Labour Day						2009-05-01
+Singapore		Vesak Day						2009-05-09
+Singapore		National Day					2009-08-09
+Singapore		Hari Raya Puasa					2009-09-21
+Singapore		Deepavali						2009-11-17
+Singapore		Hari Raya Haji					2009-11-27
+Singapore		Christmas						2009-12-25
+South Africa	New Years Day					2009-01-01
+South Africa	Human Rights Day				2009-03-21
+South Africa	Good Friday						2009-04-10
+South Africa	Family Day						2009-04-13
+South Africa	Freedom Day						2009-04-27
+South Africa	Workers Day						2009-05-01
+South Africa	Youth Day						2009-06-16
+South Africa	National Womens Day				2009-08-10
+South Africa	Heritage Day					2009-09-24
+South Africa	Day of Reconciliation			2009-12-16
+South Africa	Christmas Day					2009-12-25
+South Africa	Day of Goodwill					2009-12-26
+Italy			New Years Day					2009-01-01
+Italy			Epiphany						2009-01-06
+Italy			Easter							2009-04-12
+Italy			Easter Monday					2009-04-13
+Italy			Anniversary of Liberation		2009-04-25
+Italy			Labour Day						2009-05-01
+Italy			Republic Day					2009-06-02
+Italy			Assumption Day					2009-08-15
+Italy			All Saints						2009-11-01
+Italy			Immaculate Conception			2009-12-08
+Italy			Christmas Day					2009-12-25
+Italy			St Stephens Day					2009-12-26
+France			New Years Day					2009-01-01
+France			Easter							2009-04-12
+France			Easter Monday					2009-04-13
+France			V-E Day							2009-04-25
+France			Labour Day						2009-05-01
+France			Ascension Day					2009-05-21
+France			Pentecost						2009-05-31
+France			Whit Monday						2009-06-01
+France			Bastille Day					2009-07-14
+France			Assumption of Mary				2009-08-15
+France			All Saints Day					2009-11-01
+France			Armistice Day					2009-11-11
+France			Christmas Day					2009-12-25
+India			Republic Day					2010-01-26
+India			Maha Shivratri					2010-02-12
+India			Holi							2010-02-28
+India			Mahavir Jayanthi				2010-03-28
+India			Good Friday						2010-04-02
+India			May Day							2010-05-01
+India			Buddha Purnima					2010-05-27
+India			Krishna Janmastami				2010-09-02
+India			Independence Day				2010-08-15
+India			Ganesh Chaturthi				2010-09-11
+India			Id-Ul-Fitr						2010-09-10
+India			Vijaya Dashami					2010-10-17
+India			Mahatma Gandhi Jayanti			2010-10-02
+India			Diwali							2010-11-05
+India			Guru Nanak Jayanthi				2010-11-21
+India			Christmas						2010-12-25
+USA				New Years Day					2010-01-01
+USA				Martin Luther King Day			2010-01-18
+USA				Washingtons Birthday			2010-02-15
+USA				Memorial Day					2010-05-31
+USA				Independence Day				2010-07-04
+USA				Labor Day						2010-09-06
+USA				Columbus Day					2010-10-11
+USA				Veterans Day					2010-11-11
+USA				Thanksgiving Day				2010-11-25
+USA				Christmas Day					2010-12-25
+UK				New Years Day					2010-01-01
+UK				Good Friday						2010-04-02
+UK				Early May						2010-05-03
+UK				Spring Bank Holiday				2010-05-31
+UK				Summer Bank Holiday				2010-08-30
+UK				Christmas Day					2010-12-25
+UK				Boxing Day						2010-12-26
+UK				Bank Holiday					2010-12-27
+Japan			New Years Day					2010-01-01
+Japan			Coming of age day				2010-01-11
+Japan			National Foundation day			2010-02-11
+Japan			Vernal Equiniox day				2010-03-21
+Japan			Showa day						2010-04-29
+Japan			Constitution Memorial Day		2010-05-03
+Japan			Greenery day					2010-05-04
+Japan			Childrens Day					2010-05-05
+Japan			Marine Day						2010-07-19
+Japan			Respect for the aged Day		2010-09-20
+Japan			Bridge Public Holiday			2010-09-23
+Japan			Autumnal Equiniox day			2010-09-23
+Japan			Health and Sports Day			2010-10-11
+Japan			Culture Day						2010-11-23
+Japan			Labour Thanksgiving Day			2010-11-23
+Japan			The Emperors Birthday			2010-12-23
+China			New Years Day					2010-01-01
+China			Chinese Lunar New Year			2010-02-13
+China			Chinese Lunar New Year			2010-02-14
+China			Chinese Lunar New Year			2010-02-15
+China			Qing Ming Festival				2010-04-05
+China			Labor Day						2010-05-01
+China			Dragon Boat Festival			2010-06-16
+China			National Day					2010-10-01
+China			National Day					2010-10-02
+China			National Day					2010-10-03
+China			Mid-Autumn Festival				2010-09-22
+Singapore		New Years Day					2010-01-01
+Singapore		Chinese New Year				2010-02-15
+Singapore		Chinese New Year				2010-02-16
+Singapore		Good Friday						2010-04-02
+Singapore		Labour Day						2010-05-01
+Singapore		Vesak Day						2010-05-28
+Singapore		National Day					2010-08-09
+Singapore		Hari Raya Puasa					2010-09-10
+Singapore		Deepavali						2010-11-05
+Singapore		Hari Raya Haji					2010-11-17
+Singapore		Christmas						2010-12-25
+South Africa	New Years Day					2010-01-01
+South Africa	Human Rights Day				2010-03-22
+South Africa	Good Friday						2010-04-02
+South Africa	Family Day						2010-04-05
+South Africa	Freedom Day						2010-04-27
+South Africa	Workers Day						2010-05-01
+South Africa	Youth Day						2010-06-16
+South Africa	National Womens Day				2010-08-09
+South Africa	Heritage Day					2010-09-24
+South Africa	Day of Reconciliation			2010-12-16
+South Africa	Christmas Day					2010-12-25
+South Africa	Day of Goodwill					2010-12-27
+Italy			New Years Day					2010-01-01
+Italy			Epiphany						2010-01-06
+Italy			Easter							2010-04-04
+Italy			Easter Monday					2010-04-05
+Italy			Anniversary of Liberation		2010-04-25
+Italy			Labour Day						2010-05-01
+Italy			Republic Day					2010-06-02
+Italy			Assumption Day					2010-08-15
+Italy			All Saints						2010-11-01
+Italy			Immaculate Conception			2010-12-08
+Italy			Christmas Day					2010-12-25
+Italy			St Stephens Day					2010-12-26
+France			New Years Day					2010-01-01
+France			Easter							2010-04-04
+France			Easter Monday					2010-04-05
+France			V-E Day							2010-04-25
+France			Labour Day						2010-05-01
+France			Ascension Day					2010-05-13
+France			Pentecost						2010-05-23
+France			Whit Monday						2010-05-24
+France			Bastille Day					2010-07-14
+France			Assumption of Mary				2010-08-15
+France			All Saints Day					2010-11-01
+France			Armistice Day					2010-11-11
+France			Christmas Day					2010-12-25
+USA				New Year Day						2011-01-01
+USA				Martin Luther King Jr. Day			2011-01-17
+USA				Groundhog Day						2011-02-02
+USA				Super Bowl Sunday					2011-02-06
+USA				Valentines Day						2011-02-14
+USA				Washingtons Birthday				2011-02-21
+USA				Ash Wednesday						2011-03-09
+USA				St. Patrick Day						2011-03-17
+USA				April Fools Day						2011-04-01
+USA				Good Friday							2011-04-22
+USA				Earth Day							2011-04-22
+USA				Easter								2011-04-24
+USA				Arbor Day							2011-04-29
+USA				Cinco de Mayo						2011-05-05
+USA				Mothers Day							2011-05-08
+USA				Memorial Day						2011-05-30
+USA				Flag Day							2011-06-14
+USA				Fathers Day							2011-06-19
+USA				US Independence Day					2011-07-04
+USA				Womens Equality Day					2011-08-26
+USA				Workers or Labour Day				2011-09-05
+USA				Patriot Day							2011-09-11
+USA				Constitution Day					2011-09-17
+USA				Rosh Hashanah or Jewish New Year	2011-09-28
+USA				Yom Kippur or Day of Atonement		2011-10-07
+USA				Leif Erikson Day					2011-10-09
+USA				Columbus Day						2011-10-10
+USA				Halloween							2011-10-31
+USA				Election Day						2011-11-01
+USA				Veterans Day						2011-11-11
+USA				Thanksgiving Day					2011-11-24
+USA				Pearl Harbor Remembrance Day		2011-12-07
+USA				Hanukkah							2011-12-20
+USA				Winter solstice						2011-12-21
+USA				Christmas Eve						2011-12-24
+USA				Christmas Day						2011-12-25
+USA				Kwanzaa								2011-12-26
+USA				New Year Eve						2011-12-31
