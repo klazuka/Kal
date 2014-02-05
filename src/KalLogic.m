@@ -13,6 +13,7 @@
 - (NSUInteger)numberOfDaysInPreviousPartialWeek;
 - (NSUInteger)numberOfDaysInFollowingPartialWeek;
 
+@property (nonatomic, retain) NSLocale *locale;
 @property (nonatomic, retain) NSDate *fromDate;
 @property (nonatomic, retain) NSDate *toDate;
 @property (nonatomic, retain) NSArray *daysInSelectedMonth;
@@ -23,7 +24,7 @@
 
 @implementation KalLogic
 
-@synthesize baseDate, fromDate, toDate, daysInSelectedMonth, daysInFinalWeekOfPreviousMonth, daysInFirstWeekOfFollowingMonth;
+@synthesize locale, baseDate, fromDate, toDate, daysInSelectedMonth, daysInFinalWeekOfPreviousMonth, daysInFirstWeekOfFollowingMonth;
 
 + (NSSet *)keyPathsForValuesAffectingSelectedMonthNameAndYear
 {
@@ -32,12 +33,20 @@
 
 - (id)initForDate:(NSDate *)date
 {
-  if ((self = [super init])) {
-    monthAndYearFormatter = [[NSDateFormatter alloc] init];
-    [monthAndYearFormatter setDateFormat:@"LLLL yyyy"];
-    [self moveToMonthForDate:date];
-  }
-  return self;
+    return [self initForDate:date locale:nil];
+}
+
+- (id)initForDate:(NSDate *)date locale:(NSLocale *)theLocale
+{
+    if ((self = [super init])) {
+        self.locale = theLocale;
+        NSString *format = [NSDateFormatter dateFormatFromTemplate:@"MMMM yyyy" options:0 locale:theLocale];        
+        monthAndYearFormatter = [[NSDateFormatter alloc] init];
+        [monthAndYearFormatter setDateFormat:format];
+        [monthAndYearFormatter setLocale:theLocale];
+        [self moveToMonthForDate:date];
+    }
+    return self;
 }
 
 - (id)init
@@ -63,7 +72,7 @@
 
 - (NSString *)selectedMonthNameAndYear;
 {
-  return [monthAndYearFormatter stringFromDate:self.baseDate];
+    return [monthAndYearFormatter stringFromDate:self.baseDate];
 }
 
 #pragma mark Low-level implementation details

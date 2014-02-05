@@ -31,6 +31,7 @@
   NSDateFormatter *monthAndYearFormatter;
 }
 
+@property (nonatomic, retain, readonly) NSLocale *locale;
 @property (nonatomic, retain) NSDate *baseDate;    // The first day of the currently selected month
 @property (nonatomic, retain, readonly) NSDate *fromDate;  // The date corresponding to the tile in the upper-left corner of the currently selected month
 @property (nonatomic, retain, readonly) NSDate *toDate;    // The date corresponding to the tile in the bottom-right corner of the currently selected month
@@ -40,6 +41,7 @@
 @property (nonatomic, readonly) NSString *selectedMonthNameAndYear; // localized (e.g. "September 2010" for USA locale)
 
 - (id)initForDate:(NSDate *)date; // designated initializer.
+- (id)initForDate:(NSDate *)date locale:(NSLocale *)theLocale;
 
 - (void)retreatToPreviousMonth;
 - (void)advanceToFollowingMonth;

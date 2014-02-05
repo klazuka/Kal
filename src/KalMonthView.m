@@ -16,21 +16,28 @@ extern const CGSize kTileSize;
 
 @synthesize numWeeks;
 
+- (id)initWithFrame:(CGRect)rect logic:(KalLogic *)logic
+{
+    if ((self = [super initWithFrame:rect])) {
+        NSString *format = [NSDateFormatter dateFormatFromTemplate:@"EEEE, MMM d" options:0 locale:logic.locale];
+        tileAccessibilityFormatter = [[NSDateFormatter alloc] init];
+        [tileAccessibilityFormatter setDateFormat:format];
+        [tileAccessibilityFormatter setLocale:logic.locale];
+        self.opaque = NO;
+        self.clipsToBounds = YES;
+        for (int i=0; i<6; i++) {
+            for (int j=0; j<7; j++) {
+                CGRect r = CGRectMake(j*kTileSize.width, i*kTileSize.height, kTileSize.width, kTileSize.height);
+                [self addSubview:[[[KalTileView alloc] initWithFrame:r] autorelease]];
+            }
+        }
+    }
+    return self;
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
-  if ((self = [super initWithFrame:frame])) {
-    tileAccessibilityFormatter = [[NSDateFormatter alloc] init];
-    [tileAccessibilityFormatter setDateFormat:@"EEEE, MMMM d"];
-    self.opaque = NO;
-    self.clipsToBounds = YES;
-    for (int i=0; i<6; i++) {
-      for (int j=0; j<7; j++) {
-        CGRect r = CGRectMake(j*kTileSize.width, i*kTileSize.height, kTileSize.width, kTileSize.height);
-        [self addSubview:[[[KalTileView alloc] initWithFrame:r] autorelease]];
-      }
-    }
-  }
-  return self;
+    return [self initWithFrame:frame logic:nil];
 }
 
 - (void)showDates:(NSArray *)mainDates leadingAdjacentDates:(NSArray *)leadingAdjacentDates trailingAdjacentDates:(NSArray *)trailingAdjacentDates
