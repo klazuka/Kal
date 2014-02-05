@@ -19,7 +19,7 @@ static const CGFloat kMonthLabelHeight = 17.f;
 
 @implementation KalView
 
-@synthesize delegate, tableView;
+@synthesize delegate, tableView, gridView;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)theDelegate logic:(KalLogic *)theLogic
 {

@@ -50,6 +50,7 @@
 @property (nonatomic, assign) id<KalViewDelegate> delegate;
 @property (nonatomic, readonly) UITableView *tableView;
 @property (nonatomic, readonly) KalDate *selectedDate;
+@property (nonatomic, readonly) KalGridView *gridView;
 
 - (id)initWithFrame:(CGRect)frame delegate:(id<KalViewDelegate>)delegate logic:(KalLogic *)logic;
 - (BOOL)isSliding;
