@@ -97,6 +97,16 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 
 - (void)didSelectDate:(KalDate *)date
 {
+    if ([[date NSDate] compare:[NSDate date]] == NSOrderedDescending) {
+		[self showAndSelectDate:[NSDate date]];
+		return;
+	}
+	
+
+    if ([self.delegate respondsToSelector:@selector(didSelectDate:)]) {
+        [self.delegate performSelector:@selector(didSelectDate:) withObject:date];
+    }
+
   self.selectedDate = [date NSDate];
   NSDate *from = [[date NSDate] cc_dateByMovingToBeginningOfDay];
   NSDate *to = [[date NSDate] cc_dateByMovingToEndOfDay];
@@ -104,6 +114,14 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
   [dataSource loadItemsFromDate:from toDate:to];
   [tableView reloadData];
   [tableView flashScrollIndicators];
+
+}
+
+- (void)didSelectMonth
+{
+    [self clearTable];
+    [tableView reloadData];
+    [tableView flashScrollIndicators];
 }
 
 - (void)showPreviousMonth
@@ -133,7 +151,7 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
     [dates replaceObjectAtIndex:i withObject:[KalDate dateFromNSDate:[dates objectAtIndex:i]]];
   
   [[self calendarView] markTilesForDates:dates];
-  [self didSelectDate:self.calendarView.selectedDate];
+//  [self didSelectDate:self.calendarView.selectedDate];
 }
 
 // ---------------------------------------
@@ -183,11 +201,14 @@ NSString *const KalDataSourceChangedNotification = @"KalDataSourceChangedNotific
 {
   if (!self.title)
     self.title = @"Calendar";
-  KalView *kalView = [[[KalView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame] delegate:self logic:logic] autorelease];
+	CGRect frame = [[UIScreen mainScreen] applicationFrame];
+	frame.size.width = 252;
+  KalView *kalView = [[[KalView alloc] initWithFrame:frame delegate:self logic:logic] autorelease];
   self.view = kalView;
   tableView = kalView.tableView;
   tableView.dataSource = dataSource;
   tableView.delegate = delegate;
+  tableView.showsVerticalScrollIndicator = NO;
   [tableView retain];
   [kalView selectDate:[KalDate dateFromNSDate:self.initialDate]];
   [self reloadData];
