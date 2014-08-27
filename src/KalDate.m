@@ -28,7 +28,7 @@ static KalDate *today;
   today = [[KalDate dateFromNSDate:[NSDate date]] retain];
 }
 
-+ (KalDate *)dateForDay:(unsigned int)day month:(unsigned int)month year:(unsigned int)year
++ (KalDate *)dateForDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year
 {
   return [[[KalDate alloc] initForDay:day month:month year:year] autorelease];
 }
@@ -39,7 +39,7 @@ static KalDate *today;
   return [KalDate dateForDay:[parts day] month:[parts month] year:[parts year]];
 }
 
-- (id)initForDay:(unsigned int)day month:(unsigned int)month year:(unsigned int)year
+- (id)initForDay:(NSUInteger)day month:(NSUInteger)month year:(NSUInteger)year
 {
   if ((self = [super init])) {
     a.day = day;
@@ -49,9 +49,9 @@ static KalDate *today;
   return self;
 }
 
-- (unsigned int)day { return a.day; }
-- (unsigned int)month { return a.month; }
-- (unsigned int)year { return a.year; }
+- (NSUInteger)day { return a.day; }
+- (NSUInteger)month { return a.month; }
+- (NSUInteger)year { return a.year; }
 
 - (NSDate *)NSDate
 {
