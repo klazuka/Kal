@@ -17,7 +17,7 @@
 #define SLIDE_UP 1
 #define SLIDE_DOWN 2
 
-const CGSize kTileSize = { 46.f, 44.f };
+const CGSize kTileSize = { 36.f, 34.f };
 
 static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
@@ -45,10 +45,11 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   
   if (self = [super initWithFrame:frame]) {
     self.clipsToBounds = YES;
+	
     logic = [theLogic retain];
     delegate = theDelegate;
     
-    CGRect monthRect = CGRectMake(0.f, 0.f, frame.size.width, frame.size.height);
+    CGRect monthRect = CGRectMake(1.f, 0.f, frame.size.width-2, frame.size.height);
     frontMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
     backMonthView = [[KalMonthView alloc] initWithFrame:monthRect];
     backMonthView.hidden = YES;
@@ -62,12 +63,19 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)drawRect:(CGRect)rect
 {
-  [[UIImage imageNamed:@"Kal.bundle/kal_grid_background.png"] drawInRect:rect];
-  [[UIColor colorWithRed:0.63f green:0.65f blue:0.68f alpha:1.f] setFill];
-  CGRect line;
-  line.origin = CGPointMake(0.f, self.height - 1.f);
-  line.size = CGSizeMake(self.width, 1.f);
-  CGContextFillRect(UIGraphicsGetCurrentContext(), line);
+	[[UIImage imageNamed:@"Kal.bundle/kal_grid_background.png"] drawInRect:rect];
+	[[UIColor colorWithRed:0.63f green:0.65f blue:0.68f alpha:1.f] setFill];
+	CGRect line;
+	line.origin = CGPointMake(1.f, self.height - 1.f);
+	line.size = CGSizeMake(self.width, 1.f);
+	CGContextFillRect(UIGraphicsGetCurrentContext(), line);
+
+	UIColor *redColor = [UIColor colorWithRed:239/255.f green:75/255.f blue:136/255.f alpha:1];
+	CGPathRef path = CGPathCreateWithRect(rect, NULL);
+	[redColor setStroke];
+	CGContextAddPath(UIGraphicsGetCurrentContext(), path);
+	CGContextDrawPath(UIGraphicsGetCurrentContext(), kCGPathStroke);
+	CGPathRelease(path);
 }
 
 - (void)sizeToFit
@@ -90,12 +98,29 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
 
 - (void)setSelectedTile:(KalTileView *)tile
 {
+    if ([[tile.date NSDate] compare:[NSDate date]] == NSOrderedDescending) {
+		return;
+	}
+    
   if (selectedTile != tile) {
     selectedTile.selected = NO;
     selectedTile = [tile retain];
     tile.selected = YES;
     [delegate didSelectDate:tile.date];
   }
+  else {
+      [delegate didSelectDate:tile.date];
+  }
+}
+
+- (void)setSelectedTile2:(KalTileView *)tile
+{
+//    if (selectedTile != tile) {
+        selectedTile.selected = NO;
+        selectedTile = [tile retain];
+//        tile.selected = YES;
+        [delegate didSelectDate:nil];
+//    }
 }
 
 - (void)receivedTouches:(NSSet *)touches withEvent:event
@@ -113,7 +138,7 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
       self.highlightedTile = tile;
     } else {
       self.highlightedTile = nil;
-      self.selectedTile = tile;
+//      self.selectedTile = tile;
     }
   }
 }
@@ -208,7 +233,9 @@ static NSString *kSlideAnimationId = @"KalSwitchMonths";
   
   [self swapMonthsAndSlide:direction keepOneRow:keepOneRow];
   
-  self.selectedTile = [frontMonthView firstTileOfMonth];
+//  self.selectedTile = [frontMonthView firstTileOfMonth];
+	self.selectedTile2 = [frontMonthView tileForDate:[KalDate dateFromNSDate:[NSDate date]]];
+    
 }
 
 - (void)slideUp { [self slide:SLIDE_UP]; }

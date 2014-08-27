@@ -34,7 +34,8 @@
 {
   if ((self = [super init])) {
     monthAndYearFormatter = [[NSDateFormatter alloc] init];
-    [monthAndYearFormatter setDateFormat:@"LLLL yyyy"];
+//    [monthAndYearFormatter setDateFormat:@"LLLL yyyy"];
+	[monthAndYearFormatter setDateFormat:@"LLLL"];
     [self moveToMonthForDate:date];
   }
   return self;
@@ -86,10 +87,10 @@
   NSMutableArray *days = [NSMutableArray array];
   
   NSDate *beginningOfPreviousMonth = [self.baseDate cc_dateByMovingToFirstDayOfThePreviousMonth];
-  int n = [beginningOfPreviousMonth cc_numberOfDaysInMonth];
-  int numPartialDays = [self numberOfDaysInPreviousPartialWeek];
+  NSInteger n = [beginningOfPreviousMonth cc_numberOfDaysInMonth];
+  NSInteger numPartialDays = [self numberOfDaysInPreviousPartialWeek];
   NSDateComponents *c = [beginningOfPreviousMonth cc_componentsForMonthDayAndYear];
-  for (int i = n - (numPartialDays - 1); i < n + 1; i++)
+  for (NSInteger i = n - (numPartialDays - 1); i < n + 1; i++)
     [days addObject:[KalDate dateForDay:i month:c.month year:c.year]];
   
   return days;
